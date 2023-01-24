@@ -1,5 +1,5 @@
 package ifpr.pgua.eic.controllers;
 
-public class CadastroEsporte {
+public class EsporteController {
 
 }
