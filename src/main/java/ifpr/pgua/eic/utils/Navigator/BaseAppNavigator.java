@@ -47,8 +47,6 @@ public abstract class BaseAppNavigator extends Application {
         cena = new Scene(root, Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         this.palco = primaryStage;
 
-        atualizaEstilo();
-
         this.palco.setScene(cena);
         this.palco.setTitle(getAppTitle());
         this.palco.show();
