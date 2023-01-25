@@ -37,7 +37,4 @@
     <Label text="Esqueci minha senha" styleClass="btn-alternativo" onMouseClicked="#telaAlterarSenha"/>
     
     <MFXButton prefWidth="90" prefHeight="35" text="Entrar" styleClass="btn-entrar"/>
-    
-    <Label text="Cadastrar" styleClass="btn-alternativo" />
-
 </VBox>
