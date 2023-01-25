@@ -52,8 +52,8 @@
         alignment="center">
         <children>
             <Label text="Cadastrar Esporte" />
-            <MFXTextField prefWidth="400.0" promptText="Nome do Esporte" />
-            <MFXTextField prefWidth="400.0" promptText="Descrição" />
+            <MFXTextField floatMode="BORDER" floatingText="Nome do Esporte"  prefWidth="275" prefHeight="35"/>
+            <MFXTextField  floatMode="BORDER" floatingText="Descrição" prefWidth="275" prefHeight="35" />
             <MFXButton prefWidth="400.0" text="Cadastrar" />
         </children>
         
