@@ -13,7 +13,7 @@
 <VBox prefHeight="720.0" prefWidth="1280.0"
         spacing="20.0" xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
-        alignment="center" 
+        alignment="center" fx:controller="ifpr.pgua.eic.controllers.auth.AlterarSenhaController"
         stylesheets="@../../styles/auth/AlterarSenha.css">
 
     <padding>
@@ -38,6 +38,6 @@
 
     <MFXButton prefWidth="90" prefHeight="35" text="Entrar" styleClass="btn"/>
 
-    <MFXButton prefWidth="60" prefHeight="35" text="Voltar" styleClass="btn"/>
+    <MFXButton prefWidth="60" prefHeight="35" text="Voltar" styleClass="btn" onAction="#voltar" />
 
 </VBox>
