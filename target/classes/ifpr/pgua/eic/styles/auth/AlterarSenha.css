@@ -23,15 +23,10 @@
 }
 
 /* BOTÕES */
-.btn-entrar {
+.btn {
     -fx-background-color: #329e43;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
-    -fx-cursor: hand;
-}
-.btn-alternativo {
-    -fx-text-fill: #3761cc;
-    -fx-font-size: 14px;
 }

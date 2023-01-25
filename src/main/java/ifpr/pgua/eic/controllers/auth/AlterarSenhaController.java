@@ -4,7 +4,7 @@ import ifpr.pgua.eic.App;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.fxml.FXML;
 
-public class LoginController {
+public class AlterarSenhaController {
 
     @FXML
     private MFXTextField tfUsuario;
@@ -12,12 +12,11 @@ public class LoginController {
     @FXML
     private MFXPasswordField tfSenha;
 
-    public LoginController() {
+    public AlterarSenhaController() {
     }
 
     @FXML
-    public void telaAlterarSenha() {
-        App.pushScreen("ALTERAR_SENHA");
+    public void voltar() {
+        App.popScreen();
     }
-
 }

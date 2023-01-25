@@ -11,13 +11,13 @@
 <?import io.github.palexdev.materialfx.controls.*?>
 
 <VBox prefHeight="720.0" prefWidth="1280.0"
-        spacing="10.0" xmlns="http://javafx.com/javafx"
+        spacing="20.0" xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
-        alignment="center" fx:controller="ifpr.pgua.eic.controllers.auth.LoginController"
-        stylesheets="@../../styles/auth/Login.css">
+        alignment="center" fx:controller="ifpr.pgua.eic.controllers.auth.AlterarSenhaController"
+        stylesheets="@../../styles/auth/AlterarSenha.css">
 
     <padding>
-        <Insets topRightBottomLeft="10.0"/>
+        <Insets topRightBottomLeft="15.0"/>
     </padding>
 
     <children>
@@ -28,13 +28,16 @@
         </ImageView>    
     </children>
     
-    <Label text="IFPR EMPRESTIMOS" styleClass="title" />
+    <Label text="ALTERAR SENHA" styleClass="title" />
 
     <MFXTextField floatMode="BORDER" floatingText="Usuario" prefWidth="275" prefHeight="35" fx:id="tfUsuario" />
     
     <MFXPasswordField floatMode="BORDER" floatingText="Senha" prefWidth="275" prefHeight="35" fx:id="tfSenha" />
-    
-    <Label text="Esqueci minha senha" styleClass="btn-alternativo" onMouseClicked="#telaAlterarSenha"/>
-    
-    <MFXButton prefWidth="90" prefHeight="35" text="Entrar" styleClass="btn-entrar"/>
+
+    <MFXPasswordField floatMode="BORDER" floatingText="Confirmar Senha" prefWidth="275" prefHeight="35" fx:id="tfConfirmarSenha" />
+
+    <MFXButton prefWidth="90" prefHeight="35" text="Entrar" styleClass="btn"/>
+
+    <MFXButton prefWidth="60" prefHeight="35" text="Voltar" styleClass="btn" onAction="#voltar" />
+
 </VBox>
