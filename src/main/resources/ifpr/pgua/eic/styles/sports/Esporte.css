@@ -1,0 +1,30 @@
+.container-menu {
+  -fx-background-color: #cccccc;
+  -fx-spacing: 40;
+}
+
+.logo-menu {
+  -fx-spacing: 400;
+  -fx-alignment: center;
+}
+
+.button-sair {
+  -fx-background-color: #cccccc;
+  -fx-spacing: 400;
+}
+
+.button-sair .button-menu {
+  -fx-font-size: 16;
+}
+.buttons-menu {
+  -fx-background-color: #cccccc;
+}
+
+.button-menu {
+  -fx-effect: dropshadow(three-pass-box, rgb(255, 255, 255), 2, 0, 0, 0);
+  -fx-color: #000000;
+  -fx-font-weight: bold;
+  -fx-font-size: 13;
+  -fx-font-family: "Arial";
+  -fx-background-color: #b7b7b7;
+}
