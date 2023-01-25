@@ -1,0 +1,32 @@
+/* LABELS */
+.title {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+}
+
+/* CAMPOS DE TEXTO */
+.mfx-text-field:focus-within {
+    -fx-background-insets: 2;
+    -fx-border-color: #329e43;
+    -fx-border-width: 1.5;
+    -fx-border-insets: -0.5;
+}
+.mfx-text-field .floating-text {
+    -fx-font-family: 'Open Sans Regular';
+    -fx-text-fill: -mfx-text-he;
+}
+.mfx-text-field:floating .floating-text {
+    -fx-background-color: white;
+}
+.mfx-text-field:focus-within .floating-text {
+    -fx-text-fill: #329e43;
+}
+
+/* BOTÕES */
+.btn {
+    -fx-background-color: #329e43;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
