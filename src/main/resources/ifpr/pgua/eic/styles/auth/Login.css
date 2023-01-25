@@ -29,9 +29,7 @@
     -fx-font-size: 16px;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
-}
-.btn-entrar:hover {
-    -fx-cursor: pointer;
+    -fx-cursor: hand;
 }
 .btn-alternativo {
     -fx-text-fill: #3761cc;
