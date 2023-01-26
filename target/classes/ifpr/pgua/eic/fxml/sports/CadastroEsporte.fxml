@@ -14,32 +14,26 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<HBox prefHeight="720.0" prefWidth="1280.0" spacing="10.0" 
-        xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
-        stylesheets="@../../styles/sports/Esporte.css"
-         >
-
-
-
-    <VBox prefHeight="720.0" prefWidth="200.0" spacing="10.0" alignment="center" styleClass="container-menu">
+<HBox prefHeight="720.0" prefWidth="1280.0" 
+        xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="3.0"
+        stylesheets="@../../styles/sports/Esporte.css" >
+         
+    <VBox prefHeight="720.0" prefWidth="200.0" alignment="center" styleClass="container-menu" spacing="10.0">
         <children>
 
-            <VBox prefHeight="450.0" prefWidth="200.0" styleClass="logo-menu">
+            <VBox prefHeight="400.0" prefWidth="200.0" styleClass="logo-menu" spacing="10.0">
                 <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="image-menu">
                     <image>
                         <Image url="@../../images/Logo-IFPR.png" />
                     </image>
                 </ImageView>
             </VBox>
-                <VBox prefHeight="430.0" prefWidth="200.0" styleClass="buttons-menu">
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Listar Esportes" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Cadastrar Esporte" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Listar Equipamentos" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Cadastrar Equipamentos" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Listar Empréstimos" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Cadastrar Empréstimo" styleClass="button-menu"/>
+                <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu" spacing="4.0">
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu"/>
                 </VBox>
-        
             <VBox styleClass="button-sair" prefHeight="200">
                     <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu"/>
             </VBox>
@@ -48,14 +42,16 @@
 
   
     
-    <VBox prefHeight="720.0" prefWidth="1080.0" spacing="10.0"
-        alignment="center">
+    <VBox prefHeight="720.0" prefWidth="1280.0" alignment="center" spacing="20.0" styleClass="container-form">
         <children>
-            <Label text="Cadastrar Esporte" />
-            <MFXTextField floatMode="BORDER" floatingText="Nome do Esporte"  prefWidth="275" prefHeight="35"/>
-            <MFXTextField  floatMode="BORDER" floatingText="Descrição" prefWidth="275" prefHeight="35" />
-            <MFXButton prefWidth="400.0" text="Cadastrar" />
+            <Label text="Cadastrar Esporte" styleClass="title-form"  />
+            <Label text="Nome do Esporte" styleClass="labels-form" prefWidth="400"/>
+            <MFXTextField floatMode="BORDER" floatingText="Nome do Esporte"  prefWidth="400" prefHeight="50" />
+            <Label text="Descrição" styleClass="labels-form" prefWidth="400"/>
+            <MFXTextField  floatMode="BORDER" floatingText="Descrição" prefWidth="400" prefHeight="50" />
+            <MFXButton prefWidth="400.0" text="Cadastrar" styleClass="btn-submit-esporte" />
         </children>
+
         
     </VBox>
 
