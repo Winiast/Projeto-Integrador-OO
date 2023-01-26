@@ -1,0 +1,36 @@
+/* Container da barra lateral */
+.container-menu {
+  -fx-background-color: #e8e5e5;
+  -fx-spacing: 40;
+}
+
+/* Container da Imagem */
+.logo-menu {
+  -fx-spacing: 300;
+  -fx-alignment: center;
+}
+
+/* Botão de Sair / Css único pra ele */
+.button-sair {
+  -fx-background-color: #cccccc;
+  -fx-spacing: 400;
+}
+
+/* Botão de sair */
+.button-sair .button-menu {
+  -fx-font-size: 16;
+}
+
+/* Botões do Menu / Container */
+.button-menu {
+  -fx-effect: dropshadow(three-pass-box, rgb(255, 255, 255), 2, 0, 0, 0);
+  -fx-color: #000000;
+  -fx-font-weight: bold;
+  -fx-font-size: 13;
+  -fx-font-family: "Arial";
+  -fx-background-color: #d1d1d1;
+}
+
+.container-form {
+  -fx-background-color: #e8e5e5;
+}
