@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+
+<HBox xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml" 
+      prefHeight="720" prefWidth="1280"
+      stylesheets="@../../styles/users/CadastroUsuario.css"
+      fx:controller="ifpr.pgua.eic.controllers.users.CadastroUsuarioController"
+      >
+
+    <VBox prefHeight="720.0" prefWidth="200.0" spacing="10.0" alignment="center" styleClass="container-menu">
+        <children>
+            <VBox prefHeight="400.0" prefWidth="200.0" styleClass="logo-menu">
+                <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="image-menu">
+                    <image>
+                        <Image url="@../../images/Logo-IFPR.png" />
+                    </image>
+                </ImageView>
+            </VBox>
+                <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu">
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu"/>
+                </VBox>
+            <VBox styleClass="button-sair" prefHeight="200">
+                    <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu"/>
+            </VBox>
+         </children>
+    </VBox>
+
+    <VBox prefHeight="720" prefWidth="1080" alignment="center" styleClass="container-principal">
+        <children>
+            <Label text="Cadastrar Usuário" styleClass="title"/>
+                <VBox alignment="center">
+                    <Label text="Email" styleClass="label-form" />
+                    <MFXTextField floatMode="DISABLED" prefWidth="300" fx:id="tfEmail" />
+                </VBox>
+                <VBox alignment="center">
+                    <Label text="Nome" styleClass="label-form"/>
+                    <MFXTextField floatMode="DISABLED" prefWidth="300" fx:id="tfNome" />
+                </VBox>
+                <VBox alignment="center">
+                    <Label text="Sobrenome" styleClass="label-form"/>
+                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfSobrenome" />
+                </VBox>
+
+                <MFXButton alignment="center" prefHeight="35" prefWidth="90" text="Cadastrar" styleClass="btn-cadastrar" onAction="#cadastrar"/>
+        </children>
+    </VBox>
+
+</HBox>
