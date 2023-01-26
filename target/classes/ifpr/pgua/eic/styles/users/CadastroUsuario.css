@@ -5,7 +5,8 @@
 }
 
 .label-form {
-    -fx-font-size: 20px;
+    -fx-font-size: 18px;
+    -fx-pref-width: 300;
 }
 
 /* CAMPOS DE TEXTO */
@@ -38,7 +39,7 @@
 
 /* TELA PRINCIPAL */
 .container-principal {
-    -fx-spacing: 20;
+    -fx-spacing: 40;
 }
 
 /* BOTOES */

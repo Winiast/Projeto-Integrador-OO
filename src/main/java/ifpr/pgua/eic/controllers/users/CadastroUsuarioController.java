@@ -5,17 +5,15 @@ import java.util.Properties;
 import jakarta.mail.Address;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
-import jakarta.mail.MessagingException;
 import jakarta.mail.PasswordAuthentication;
 import jakarta.mail.Session;
 import jakarta.mail.Transport;
-import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import jakarta.mail.internet.MimeMessage;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 
 public class CadastroUsuarioController {
 
@@ -48,7 +46,7 @@ public class CadastroUsuarioController {
     private boolean enviarEmail(String email) {
         try {
 
-            String msg = "Cadastro quase concluído, para finalizar o cadastro, insira está senha: GUSTA_VIADINHO na primeira vez em que for efetuar o login.";
+            String msg = "Cadastro quase concluído, para finalizar o cadastro, insira está senha: ***** na primeira vez em que for efetuar o login.";
             String assunto = "Cadastro IFPR Emprestimos";
 
             String remetente = "ifpr.emprestimos@gmail.com";
@@ -63,8 +61,6 @@ public class CadastroUsuarioController {
             message.setContent(msg, "text/html");
             /** Método para enviar a mensagem criada */
             Transport.send(message);
-
-            System.err.println("Feito!!!");
             return true;
         } catch (Exception e) {
             e.printStackTrace();

@@ -44,15 +44,15 @@
             <Label text="Cadastrar Usuário" styleClass="title"/>
                 <VBox alignment="center">
                     <Label text="Email" styleClass="label-form" />
-                    <MFXTextField floatMode="DISABLED" prefWidth="300" fx:id="tfEmail" />
+                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfEmail" promptText="Digite seu email..."/>
                 </VBox>
                 <VBox alignment="center">
                     <Label text="Nome" styleClass="label-form"/>
-                    <MFXTextField floatMode="DISABLED" prefWidth="300" fx:id="tfNome" />
+                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfNome" promptText="Digite seu nome..."/>
                 </VBox>
                 <VBox alignment="center">
                     <Label text="Sobrenome" styleClass="label-form"/>
-                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfSobrenome" />
+                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfSobrenome" promptText="Digite seu sobrenome..." />
                 </VBox>
 
                 <MFXButton alignment="center" prefHeight="35" prefWidth="90" text="Cadastrar" styleClass="btn-cadastrar" onAction="#cadastrar"/>
