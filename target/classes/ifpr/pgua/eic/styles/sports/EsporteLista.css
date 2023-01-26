@@ -45,7 +45,7 @@
 
 /* Troca dos efeitos do campo de Text do MFX */
 .mfx-text-field:focus-within {
-  -fx-background-insets: 2;
+  /* -fx-background-insets: 2; */
   -fx-border-color: #329e43;
   -fx-border-width: 1.5;
   -fx-border-insets: -0.5;
@@ -63,6 +63,8 @@
 
 .form-search {
   -fx-alignment: center;
+  -fx-border-radius: 0;
+  -fx-background-radius: 0;
 }
 
 .form-btn-search {
@@ -70,9 +72,8 @@
   -fx-background-color: #329e43;
   -fx-text-fill: white;
   -fx-font-size: 16px;
-  -fx-background-radius: 8;
-  -fx-padding: 5 10 5 10;
-  -fx-border-radius: 8;
+  -fx-background-radius: 0 8 8 0;
+  -fx-border-radius: 0 0 0 8;
   -fx-cursor: hand;
 }
 
