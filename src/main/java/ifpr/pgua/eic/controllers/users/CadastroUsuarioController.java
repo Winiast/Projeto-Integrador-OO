@@ -1,5 +1,10 @@
 package ifpr.pgua.eic.controllers.users;
 
+import java.util.Properties;
+
+import com.google.protobuf.Message;
+import com.mysql.cj.Session;
+
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 
