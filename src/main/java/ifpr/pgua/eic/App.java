@@ -1,8 +1,8 @@
 package ifpr.pgua.eic;
 
 import ifpr.pgua.eic.controllers.auth.*;
-import ifpr.pgua.eic.controllers.esporte.EsporteCadastroController;
-import ifpr.pgua.eic.controllers.esporte.EsporteListaController;
+import ifpr.pgua.eic.controllers.sports.EsporteCadastroController;
+import ifpr.pgua.eic.controllers.sports.EsporteListaController;
 import ifpr.pgua.eic.utils.Navigator.BaseAppNavigator;
 import ifpr.pgua.eic.utils.Navigator.ScreenRegistryFXML;
 
@@ -10,7 +10,7 @@ public class App extends BaseAppNavigator {
 
         @Override
         public String getHome() {
-                return "LISTA_ESPORTE";
+                return "CADASTRO_ESPORTE";
         }
 
         @Override

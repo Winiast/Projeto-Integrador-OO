@@ -24,7 +24,7 @@
 
 <HBox prefHeight="720.0" prefWidth="1280.0" 
         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="3.0"
-        stylesheets="@../../styles/sports/EsporteLista.css" >
+        stylesheets="@../../styles/sports/EsporteLista.css" fx:controller="ifpr.pgua.eic.controllers.sports.EsporteListaController" >
          
     <VBox prefHeight="720.0" prefWidth="200.0" alignment="center" styleClass="container-menu" spacing="10.0">
         <children>
@@ -37,13 +37,13 @@
                 </ImageView>
             </VBox>
                 <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu" spacing="4.0">
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu" onAction="#usuarioLista"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu" onAction="#emprestimoLista"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu" onAction="#equipamentosLista"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu" onAction="#esporteLista"/>
                 </VBox>
             <VBox styleClass="button-sair" prefHeight="200">
-                    <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu"/>
+                    <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu" onAction="#sair"/>
             </VBox>
          </children>
     </VBox>
@@ -57,7 +57,7 @@
                <MFXTextField floatMode="BORDER" floatingText="Nome do Esporte"  prefWidth="400" prefHeight="50" styleClass="form-search" />
                <HBox prefWidth="600" spacing="200.0">
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new" onAction="#cadastrarEsporte"/>
                </HBox>
 
            </HBox>
