@@ -1,11 +1,13 @@
 package ifpr.pgua.eic.models.entity;
 
+import java.time.LocalDateTime;
+
 public class Esporte {
     private long id;
     private String nome;
     private String descricao;
-    private long criadoEm;
-    private long atualizadoEm;
+    private LocalDateTime criadoEm;
+    private LocalDateTime atualizadoEm;
     private boolean status;
 
     public Esporte(long id, String nome, String descricao, long criadoEm, long atualizadoEm, boolean status) {
@@ -43,19 +45,19 @@ public class Esporte {
         this.descricao = descricao;
     }
 
-    public long getCriadoEm() {
+    public LocalDateTime getCriadoEm() {
         return criadoEm;
     }
 
-    public void setCriadoEm(long criadoEm) {
+    public void setCriadoEm(LocalDateTime criadoEm) {
         this.criadoEm = criadoEm;
     }
 
-    public long getAtualizadoEm() {
+    public LocalDateTime getAtualizadoEm() {
         return atualizadoEm;
     }
 
-    public void setAtualizadoEm(long atualizadoEm) {
+    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
         this.atualizadoEm = atualizadoEm;
     }
 
