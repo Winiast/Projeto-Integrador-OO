@@ -1,6 +1,8 @@
 package ifpr.pgua.eic;
 
 import ifpr.pgua.eic.controllers.auth.*;
+import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
+import ifpr.pgua.eic.controllers.equips.ListaEquipamentosController;
 import ifpr.pgua.eic.controllers.esporte.EsporteCadastroController;
 import ifpr.pgua.eic.controllers.esporte.EsporteListaController;
 import ifpr.pgua.eic.utils.Navigator.BaseAppNavigator;
@@ -32,5 +34,11 @@ public class App extends BaseAppNavigator {
                 registraTela("ALTERAR_SENHA",
                                 new ScreenRegistryFXML(getClass(), "fxml/auth/AlterarSenha.fxml",
                                                 (o) -> new AlterarSenhaController()));
+                registraTela("CADASTRO_EQUIPAMENTO",
+                                new ScreenRegistryFXML(getClass(), "fxml/equipamento/CadastroEquipamento.fxml",
+                                                (o) -> new CadastroEquipamentosController()));
+                registraTela("LISTA_EQUIPAMENTO",
+                                new ScreenRegistryFXML(getClass(), "fxml/equipamento/ListaEquipamento.fxml",
+                                                (o) -> new ListaEquipamentosController()));
         }
 }
