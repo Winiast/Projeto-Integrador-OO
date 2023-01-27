@@ -1,3 +1,8 @@
+/* GERAL */
+.tela {
+    -fx-background-color: #e8e5e5;
+}
+
 /* LABELS */
 .title {
     -fx-font-size: 40px;
@@ -16,7 +21,11 @@
     -fx-text-fill: -mfx-text-he;
 }
 .mfx-text-field:floating .floating-text {
-    -fx-background-color: white;
+    -fx-background-color: linear-gradient(
+        to bottom,
+        #e8e5e5,
+        rgb(248, 248, 248)
+    );
 }
 .mfx-text-field:focus-within .floating-text {
     -fx-text-fill: #329e43;

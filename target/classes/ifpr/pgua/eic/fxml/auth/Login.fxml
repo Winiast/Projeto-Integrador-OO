@@ -14,7 +14,8 @@
         spacing="10.0" xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
         alignment="center" fx:controller="ifpr.pgua.eic.controllers.auth.LoginController"
-        stylesheets="@../../styles/auth/Login.css">
+        stylesheets="@../../styles/auth/Login.css"
+        styleClass="tela">
 
     <padding>
         <Insets topRightBottomLeft="10.0"/>
