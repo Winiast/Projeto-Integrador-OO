@@ -1,0 +1,86 @@
+/* Container da barra lateral */
+.container-menu {
+  -fx-background-color: #e8e5e5;
+  -fx-spacing: 40;
+}
+
+/* Container da Imagem */
+.logo-menu {
+  -fx-spacing: 300;
+  -fx-alignment: center;
+}
+
+/* Botão de Sair / Css único pra ele */
+.button-sair {
+  -fx-background-color: #cccccc;
+  -fx-spacing: 400;
+}
+
+/* Botão de sair */
+.button-sair .button-menu {
+  -fx-font-size: 16;
+}
+
+/* Botões do Menu / Container */
+.button-menu {
+  -fx-effect: dropshadow(three-pass-box, rgb(255, 255, 255), 2, 0, 0, 0);
+  -fx-color: #000000;
+  -fx-font-weight: bold;
+  -fx-font-size: 13;
+  -fx-font-family: "Arial";
+  -fx-background-color: #d1d1d1;
+}
+
+/* Titulo do formulário */
+.title-form {
+  -fx-font-size: 30;
+  -fx-font-weight: bold;
+  -fx-font-family: "Arial";
+  -fx-text-fill: #373737;
+  -fx-label-padding: 20 20 20 20;
+}
+
+/* Labels do formulario */
+.labels-form {
+  -fx-font-size: 16;
+  -fx-font-family: "Arial";
+  -fx-text-fill: #000000;
+  -fx-text-alignment: left;
+  -fx-alignment: center-left;
+  -fx-content-display: left;
+}
+
+/* Container em volta do formulario */
+.container-form {
+  -fx-alignment: center;
+  -fx-background-color: #dcdcdc;
+}
+
+/* Troca dos efeitos do campo de Text do MFX */
+.mfx-text-field:focus-within {
+  -fx-background-insets: 2;
+  -fx-border-color: #329e43;
+  -fx-border-width: 1.5;
+  -fx-border-insets: -0.5;
+}
+.mfx-text-field .floating-text {
+  -fx-font-family: "Open Sans Regular";
+  -fx-text-fill: -mfx-text-he;
+}
+.mfx-text-field:floating .floating-text {
+  -fx-background-color: linear-gradient(to bottom, #e8e5e5, rgb(248, 248, 248));
+}
+.mfx-text-field:focus-within .floating-text {
+  -fx-text-fill: #329e43;
+}
+
+/* Botão de cadastrar */
+.btn-submit-esporte {
+  -fx-background-color: #329e43;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-background-radius: 8;
+  -fx-padding: 10 20 10 20;
+  -fx-border-radius: 8;
+  -fx-cursor: hand;
+}
