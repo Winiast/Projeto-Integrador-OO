@@ -24,7 +24,7 @@ public class EsporteCadastroController {
 
     @FXML
     public void equipamentosLista() {
-        System.out.println("Lista de Equipamentos");
+        App.pushScreen("LISTA_EQUIPAMENTO");
     }
 
     @FXML
