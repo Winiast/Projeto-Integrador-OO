@@ -56,7 +56,7 @@
            <HBox prefWidth="1000" alignment="center" styleClass="container-search" >
                <MFXTextField floatMode="BORDER" floatingText="Nome do Esporte"  prefWidth="400" prefHeight="50" styleClass="form-search" />
                <HBox prefWidth="600" spacing="200.0">
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search" onAction="#buscarEsporte" />
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new" onAction="#cadastrarEsporte"/>
                </HBox>
 
