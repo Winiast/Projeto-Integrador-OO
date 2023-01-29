@@ -75,7 +75,7 @@
 }
 
 /* Botão de cadastrar */
-.btn-submit-esporte {
+.btn-submit {
   -fx-background-color: #329e43;
   -fx-text-fill: white;
   -fx-font-size: 14px;

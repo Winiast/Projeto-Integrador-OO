@@ -38,4 +38,9 @@ public class EsporteListaController {
         App.pushScreen("CADASTRO_ESPORTE");
     }
 
+    @FXML
+    public void buscarEsporte() {
+        System.out.println("Buscar Esporte");
+    }
+
 }
