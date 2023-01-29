@@ -15,4 +15,6 @@ public interface UsuarioDao {
     boolean excluir(Usuario usuario);
 
     List<Usuario> buscarPorNome(String nome);
+
+    List<Usuario> buscarTodos();
 }
