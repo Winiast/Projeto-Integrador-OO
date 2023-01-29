@@ -33,4 +33,19 @@ public class CadastroEquipamentosController {
         App.pushScreen("LOGIN");
     }
 
+    @FXML
+    public void cadastrar() {
+        System.out.println("Cadastrar Equipamento");
+    }
+
+    @FXML
+    public void estadoSelecionado() {
+        System.out.println("Estado Selecionado");
+    }
+
+    @FXML
+    public void esporteSelecionado() {
+        System.out.println("Esporte Selecionado");
+    }
+
 }
