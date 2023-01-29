@@ -11,6 +11,10 @@ public class UsuarioRepository {
         this.usuarioDao = usuarioDao;
     }
 
+    public Usuario autenticar(String email, String senha) {
+        return usuarioDao.autenticar(email, senha);
+    }
+
     public boolean cadastrar(Usuario usuario) {
         return usuarioDao.cadastrar(usuario);
     }
