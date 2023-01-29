@@ -2,31 +2,31 @@ package ifpr.pgua.eic.models.entity;
 
 import java.time.LocalDateTime;
 
-public class Equipamento {
+public class Usuario {
 
     private long id;
     private String nome;
-    private Esporte esporte;
-    private Integer quantidade;
-    private Estado estado;
+    private String sobrenome;
+    private String email;
+    private String senha;
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Equipamento(long id, String nome, Esporte esporte, Integer quantidade, Estado estado, long criadoEm,
-            long atualizadoEm, boolean status) {
+    public Usuario(long id, String nome, String sobrenome, String email, String senha, long criadoEm, long atualizadoEm,
+            boolean status) {
         this.id = id;
         this.nome = nome;
-        this.esporte = esporte;
-        this.quantidade = quantidade;
-        this.estado = estado;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.senha = senha;
     }
 
-    public Equipamento(String nome, Esporte esporte, Integer quantidade, Estado estado) {
+    public Usuario(String nome, String sobrenome, String email, String senha) {
         this.nome = nome;
-        this.esporte = esporte;
-        this.quantidade = quantidade;
-        this.estado = estado;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.senha = senha;
     }
 
     public long getId() {
@@ -45,28 +45,28 @@ public class Equipamento {
         this.nome = nome;
     }
 
-    public Esporte getEsporte() {
-        return esporte;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
-    public void setEsporte(Esporte esporte) {
-        this.esporte = esporte;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public String getEmail() {
+        return email;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public LocalDateTime getCriadoEm() {

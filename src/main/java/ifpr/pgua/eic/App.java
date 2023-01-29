@@ -13,7 +13,7 @@ public class App extends BaseAppNavigator {
 
         @Override
         public String getHome() {
-                return "CADASTRO_EQUIPAMENTO";
+                return "CADASTRO_ESPORTE";
         }
 
         @Override
