@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.models.daos;
 
+import java.util.List;
+
 import ifpr.pgua.eic.models.entity.Usuario;
 
 public interface UsuarioDao {
@@ -12,5 +14,5 @@ public interface UsuarioDao {
 
     boolean excluir(Usuario usuario);
 
-    Usuario buscarPorNome(String nome);
+    List<Usuario> buscarPorNome(String nome);
 }

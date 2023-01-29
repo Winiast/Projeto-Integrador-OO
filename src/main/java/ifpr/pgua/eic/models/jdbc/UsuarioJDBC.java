@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import ifpr.pgua.eic.models.FabricaConexoes;
 import ifpr.pgua.eic.models.daos.UsuarioDao;
@@ -16,6 +18,7 @@ public class UsuarioJDBC implements UsuarioDao {
     private static final String INSERT = "INSERT INTO pi_user (nome, sobrenome, email, senha, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "UPDATE pi_user SET nome = ?, sobrenome = ?, email = ?, senha = ?, atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String DELETE = "UPDATE pi_user SET atualizadoEm = ?, status = ? WHERE idUser = ?";
+    private static final String FIND_BY_NAME = "SELECT * FROM pi_user WHERE nome LIKE ?";
     private static final String AUTH = "SELECT * FROM pi_user WHERE email = ? AND senha = ?";
 
     private FabricaConexoes fabricaConexoes;
@@ -124,9 +127,30 @@ public class UsuarioJDBC implements UsuarioDao {
     }
 
     @Override
-    public Usuario buscarPorNome(String nome) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Usuario> buscarPorNome(String nome) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(FIND_BY_NAME);
+            statement.setString(1, nome + "%");
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Usuario> usuarios = new ArrayList<>();
+            while (resultSet.next()) {
+                Usuario usuario = buildObject(resultSet);
+                usuarios.add(usuario);
+            }
+
+            statement.close();
+            con.close();
+
+            return usuarios;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private Usuario buildObject(ResultSet resultSet) throws SQLException {

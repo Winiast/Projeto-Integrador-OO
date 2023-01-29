@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.models.repositories;
 
+import java.util.List;
+
 import ifpr.pgua.eic.models.daos.UsuarioDao;
 import ifpr.pgua.eic.models.entity.Usuario;
 
@@ -27,7 +29,7 @@ public class UsuarioRepository {
         return usuarioDao.excluir(usuario);
     }
 
-    public Usuario buscarPorNome(String nome) {
+    public List<Usuario> buscarPorNome(String nome) {
         return usuarioDao.buscarPorNome(nome);
     }
 }
