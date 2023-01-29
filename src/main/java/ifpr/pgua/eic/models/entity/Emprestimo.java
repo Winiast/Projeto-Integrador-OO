@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Emprestimo {
 
     private long id;
-    private LocalDateTime dataEmprestimo;
+    private LocalDateTime dataDevolucaoEmprestimo;
     private ArrayList<Equipamento> equipamento;
     private String nomeAluno;
     private String turma;
@@ -16,10 +16,11 @@ public class Emprestimo {
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Emprestimo(long id, LocalDateTime dataEmprestimo, ArrayList<Equipamento> equipamento, String nomeAluno,
-            String turma, String observacoes, Usuario usuario, long criadoEm, long atualizadoEm, boolean status) {
+    public Emprestimo(long id, LocalDateTime dataDevolucaoEmprestimo, ArrayList<Equipamento> equipamento,
+            String nomeAluno, String turma, String observacoes, Usuario usuario, long criadoEm, long atualizadoEm,
+            boolean status) {
         this.id = id;
-        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucaoEmprestimo = dataDevolucaoEmprestimo;
         this.equipamento = equipamento;
         this.nomeAluno = nomeAluno;
         this.turma = turma;
@@ -27,9 +28,8 @@ public class Emprestimo {
         this.usuario = usuario;
     }
 
-    public Emprestimo(LocalDateTime dataEmprestimo, ArrayList<Equipamento> equipamento, String nomeAluno, String turma,
-            String observacoes, Usuario usuario) {
-        this.dataEmprestimo = dataEmprestimo;
+    public Emprestimo(ArrayList<Equipamento> equipamento, String nomeAluno, String turma, String observacoes,
+            Usuario usuario) {
         this.equipamento = equipamento;
         this.nomeAluno = nomeAluno;
         this.turma = turma;
@@ -46,11 +46,11 @@ public class Emprestimo {
     }
 
     public LocalDateTime getDataEmprestimo() {
-        return dataEmprestimo;
+        return dataDevolucaoEmprestimo;
     }
 
-    public void setDataEmprestimo(LocalDateTime dataEmprestimo) {
-        this.dataEmprestimo = dataEmprestimo;
+    public void setDataEmprestimo(LocalDateTime dataDevolucaoEmprestimo) {
+        this.dataDevolucaoEmprestimo = dataDevolucaoEmprestimo;
     }
 
     public ArrayList<Equipamento> getEquipamento() {
