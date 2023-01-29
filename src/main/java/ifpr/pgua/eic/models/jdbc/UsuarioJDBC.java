@@ -15,6 +15,7 @@ public class UsuarioJDBC implements UsuarioDao {
 
     private static final String INSERT = "INSERT INTO pi_user (nome, sobrenome, email, senha, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "UPDATE pi_user SET nome = ?, sobrenome = ?, email = ?, senha = ?, atualizadoEm = ?, status = ? WHERE idUser = ?";
+    private static final String DELETE = "UPDATE pi_user SET atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String AUTH = "SELECT * FROM pi_user WHERE email = ? AND senha = ?";
 
     private FabricaConexoes fabricaConexoes;
@@ -102,8 +103,24 @@ public class UsuarioJDBC implements UsuarioDao {
 
     @Override
     public boolean excluir(Usuario usuario) {
-        // TODO Auto-generated method stub
-        return false;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(DELETE);
+            statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setBoolean(2, false);
+            statement.setLong(3, usuario.getId());
+
+            statement.execute();
+
+            statement.close();
+            con.close();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
