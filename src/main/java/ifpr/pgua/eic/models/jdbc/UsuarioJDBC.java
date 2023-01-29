@@ -14,6 +14,7 @@ import ifpr.pgua.eic.models.entity.Usuario;
 public class UsuarioJDBC implements UsuarioDao {
 
     private static final String INSERT = "INSERT INTO pi_user (nome, sobrenome, email, senha, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE = "UPDATE pi_user SET nome = ?, sobrenome = ?, email = ?, senha = ?, atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String AUTH = "SELECT * FROM pi_user WHERE email = ? AND senha = ?";
 
     private FabricaConexoes fabricaConexoes;
@@ -75,8 +76,28 @@ public class UsuarioJDBC implements UsuarioDao {
 
     @Override
     public boolean atualizar(Usuario usuario) {
-        // TODO Auto-generated method stub
-        return false;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(UPDATE);
+            statement.setString(1, usuario.getNome());
+            statement.setString(2, usuario.getSobrenome());
+            statement.setString(3, usuario.getEmail());
+            statement.setString(4, usuario.getSenha());
+            statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setBoolean(6, usuario.isStatus());
+            statement.setLong(7, usuario.getId());
+
+            statement.execute();
+
+            statement.close();
+            con.close();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

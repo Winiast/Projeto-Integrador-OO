@@ -22,6 +22,7 @@ public class Usuario {
         this.senha = senha;
         this.criadoEm = criadoEm;
         this.atualizadoEm = atualizadoEm;
+        this.status = status;
     }
 
     public Usuario(String nome, String sobrenome, String email, String senha) {
