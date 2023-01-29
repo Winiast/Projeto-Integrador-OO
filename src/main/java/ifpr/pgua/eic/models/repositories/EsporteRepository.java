@@ -24,11 +24,11 @@ public class EsporteRepository {
         return esporteDao.excluir(id);
     }
 
-    public Esporte buscaPorId(int id) {
-        return esporteDao.buscaPorId(id);
+    public List<Esporte> buscarPorNome(String nome) {
+        return esporteDao.buscarPorNome(nome);
     }
 
     public List<Esporte> lista() {
-        return esporteDao.lista();
+        return esporteDao.buscarTodos();
     }
 }

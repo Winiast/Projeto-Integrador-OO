@@ -1,6 +1,8 @@
 package ifpr.pgua.eic.models.jdbc;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.List;
 
 import ifpr.pgua.eic.models.FabricaConexoes;
@@ -8,6 +10,8 @@ import ifpr.pgua.eic.models.daos.EsporteDao;
 import ifpr.pgua.eic.models.entity.Esporte;
 
 public class EsporteJDBC implements EsporteDao {
+
+    private static final String INSERT = "INSERT INTO pi_esporte (nome, descricao, criadoEm, status) VALUES (?, ?, ?, ?);";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -17,8 +21,25 @@ public class EsporteJDBC implements EsporteDao {
 
     @Override
     public Boolean cadastrar(Esporte esporte) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(INSERT);
+            statement.setString(1, esporte.getNome());
+            statement.setString(2, esporte.getDescricao());
+            statement.setTimestamp(3, Timestamp.valueOf(esporte.getCriadoEm()));
+            statement.setBoolean(4, esporte.isStatus());
+
+            statement.execute();
+
+            statement.close();
+            con.close();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -40,7 +61,7 @@ public class EsporteJDBC implements EsporteDao {
     }
 
     @Override
-    public ArrayList<Esporte> buscarPorNome(String nome) {
+    public List<Esporte> buscarPorNome(String nome) {
         // TODO Auto-generated method stub
         return null;
     }
