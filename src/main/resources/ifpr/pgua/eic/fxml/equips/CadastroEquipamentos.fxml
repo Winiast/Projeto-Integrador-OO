@@ -48,7 +48,7 @@
     <VBox prefHeight="720.0" prefWidth="1280.0" alignment="center" spacing="20.0" styleClass="container-form">
         <children>
             <Label text="Cadastrar Equipamento" styleClass="title-form"  />
-            <MFXTextField floatMode="BORDER" floatingText="Nome do Equipamento"  prefWidth="400" prefHeight="35" />
+            <MFXTextField floatMode="BORDER" floatingText="Nome do Equipamento"  prefWidth="400" prefHeight="35" fx:id="tfNomeEquipamento"/>
             <MFXComboBox fx:id="estadoInput" prefHeight="35.0"
                     prefWidth="400.0" promptText="Selecione o estado atual" onAction="#estadoSelecionado">
                 
@@ -58,8 +58,8 @@
 >
 	        </MFXComboBox>
 
-            <MFXTextField  floatMode="BORDER" floatingText="Quantidade disponível" prefWidth="400" prefHeight="35" />
-            <MFXTextField  floatMode="BORDER" floatingText="Descrição" prefWidth="400" prefHeight="35" />
+            <MFXTextField  floatMode="BORDER" floatingText="Quantidade disponível" prefWidth="400" prefHeight="35" fx:id="tfQuantidade"/>
+            <MFXTextField  floatMode="BORDER" floatingText="Descrição" prefWidth="400" prefHeight="35" fx:id="tfDescricao"/>
             <MFXButton prefWidth="400.0" text="Cadastrar" styleClass="btn-submit" onAction="#cadastrar" />
         </children>
 

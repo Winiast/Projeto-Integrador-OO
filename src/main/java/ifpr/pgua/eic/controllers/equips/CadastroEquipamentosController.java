@@ -1,9 +1,19 @@
 package ifpr.pgua.eic.controllers.equips;
 
 import ifpr.pgua.eic.App;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 
 public class CadastroEquipamentosController {
+
+    @FXML
+    private MFXTextField tfNomeEquipamento;
+
+    @FXML
+    private MFXTextField tfDescricao;
+
+    @FXML
+    private MFXTextField tfQuantidade;
 
     public CadastroEquipamentosController() {
     }
