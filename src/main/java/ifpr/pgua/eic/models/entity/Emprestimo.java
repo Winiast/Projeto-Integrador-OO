@@ -1,35 +1,39 @@
 package ifpr.pgua.eic.models.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Emprestimo {
 
     private long id;
     private LocalDateTime dataEmprestimo;
-    private Equipamento equipamento;
+    private ArrayList<Equipamento> equipamento;
     private String nomeAluno;
     private String turma;
+    private String observacoes;
     private Usuario usuario;
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Emprestimo(long id, LocalDateTime dataEmprestimo, Equipamento equipamento, String nomeAluno, String turma,
-            Usuario usuario, long criadoEm, long atualizadoEm, boolean status) {
+    public Emprestimo(long id, LocalDateTime dataEmprestimo, ArrayList<Equipamento> equipamento, String nomeAluno,
+            String turma, String observacoes, Usuario usuario, long criadoEm, long atualizadoEm, boolean status) {
         this.id = id;
         this.dataEmprestimo = dataEmprestimo;
         this.equipamento = equipamento;
         this.nomeAluno = nomeAluno;
         this.turma = turma;
+        this.observacoes = observacoes;
         this.usuario = usuario;
     }
 
-    public Emprestimo(LocalDateTime dataEmprestimo, Equipamento equipamento, String nomeAluno, String turma,
-            Usuario usuario) {
+    public Emprestimo(LocalDateTime dataEmprestimo, ArrayList<Equipamento> equipamento, String nomeAluno, String turma,
+            String observacoes, Usuario usuario) {
         this.dataEmprestimo = dataEmprestimo;
         this.equipamento = equipamento;
         this.nomeAluno = nomeAluno;
         this.turma = turma;
+        this.observacoes = observacoes;
         this.usuario = usuario;
     }
 
@@ -49,11 +53,11 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public Equipamento getEquipamento() {
+    public ArrayList<Equipamento> getEquipamento() {
         return equipamento;
     }
 
-    public void setEquipamento(Equipamento equipamento) {
+    public void setEquipamento(ArrayList<Equipamento> equipamento) {
         this.equipamento = equipamento;
     }
 
@@ -71,6 +75,14 @@ public class Emprestimo {
 
     public void setTurma(String turma) {
         this.turma = turma;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 
     public Usuario getUsuario() {

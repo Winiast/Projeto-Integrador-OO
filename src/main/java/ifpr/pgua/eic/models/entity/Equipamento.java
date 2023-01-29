@@ -7,14 +7,26 @@ public class Equipamento {
     private long id;
     private String nome;
     private Esporte esporte;
+    private Integer quantidade;
+    private Estado estado;
     private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Equipamento(long id, String nome, Esporte esporte, long criadoEm, long atualizadoEm, boolean status) {
+    public Equipamento(long id, String nome, Esporte esporte, Integer quantidade, Estado estado, long criadoEm,
+            long atualizadoEm, boolean status) {
         this.id = id;
         this.nome = nome;
         this.esporte = esporte;
+        this.quantidade = quantidade;
+        this.estado = estado;
+    }
+
+    public Equipamento(String nome, Esporte esporte, Integer quantidade, Estado estado) {
+        this.nome = nome;
+        this.esporte = esporte;
+        this.quantidade = quantidade;
+        this.estado = estado;
     }
 
     public long getId() {
@@ -39,6 +51,22 @@ public class Equipamento {
 
     public void setEsporte(Esporte esporte) {
         this.esporte = esporte;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public LocalDateTime getCriadoEm() {
