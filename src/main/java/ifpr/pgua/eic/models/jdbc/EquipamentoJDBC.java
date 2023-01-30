@@ -13,6 +13,7 @@ import ifpr.pgua.eic.models.entity.Equipamento;
 public class EquipamentoJDBC implements EquipamentoDao {
 
     private static final String INSERT = "INSERT INTO pi_equipamento (nomeEquipamento, idEsporte, quantidade, estado, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE = "UPDATE pi_equipamento SET nomeEquipamento = ?, idEsporte = ?, quantidade = ?, estado = ?, atualizadoEm = ?, status = ? WHERE idEquipamento = ?";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -45,8 +46,26 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
     @Override
     public boolean atualizar(Equipamento equipamento) {
-        // TODO Auto-generated method stub
-        return false;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(UPDATE);
+
+            statement.setString(1, equipamento.getNome());
+            statement.setLong(2, equipamento.getEsporte().getId());
+            statement.setInt(3, equipamento.getQuantidade());
+            statement.setString(4, equipamento.getEstado().toString());
+            statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setBoolean(6, equipamento.isStatus());
+            statement.setLong(7, equipamento.getId());
+
+            statement.execute();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
