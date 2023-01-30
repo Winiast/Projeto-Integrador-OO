@@ -4,6 +4,7 @@ import ifpr.pgua.eic.controllers.auth.*;
 import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
 import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.controllers.equips.ListaEquipamentosController;
+import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.controllers.sports.EsporteCadastroController;
 import ifpr.pgua.eic.controllers.sports.EsporteListaController;
 import ifpr.pgua.eic.utils.Navigator.BaseAppNavigator;
@@ -13,7 +14,7 @@ public class App extends BaseAppNavigator {
 
         @Override
         public String getHome() {
-                return "CADASTRO_EQUIPAMENTO";
+                return "CADASTRA_EMPRESTIMO";
         }
 
         @Override
@@ -28,7 +29,9 @@ public class App extends BaseAppNavigator {
 
                 registraTela("LISTA_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/ListaEsporte.fxml",
                                 (o) -> new EsporteListaController()));
-
+                registraTela("CADASTRA_EMPRESTIMO",
+                                new ScreenRegistryFXML(getClass(), "fxml/loan/CadastroEmprestimo.fxml",
+                                                (o) -> new CadastroEmprestimoController()));
                 registraTela("LOGIN",
                                 new ScreenRegistryFXML(getClass(), "fxml/auth/Login.fxml",
                                                 (o) -> new LoginController()));
