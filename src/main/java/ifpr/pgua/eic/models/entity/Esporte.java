@@ -10,15 +10,21 @@ public class Esporte {
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Esporte(long id, String nome, String descricao, long criadoEm, long atualizadoEm, boolean status) {
+    public Esporte(long id, String nome, String descricao, LocalDateTime criadoEm, LocalDateTime atualizadoEm,
+            boolean status) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        this.criadoEm = criadoEm;
+        this.atualizadoEm = atualizadoEm;
+        this.status = status;
     }
 
     public Esporte(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
+        this.criadoEm = LocalDateTime.now();
+        this.status = true;
     }
 
     public long getId() {
