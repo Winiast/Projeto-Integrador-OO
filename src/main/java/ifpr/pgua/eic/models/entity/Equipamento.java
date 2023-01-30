@@ -13,13 +13,16 @@ public class Equipamento {
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Equipamento(long id, String nome, Esporte esporte, Integer quantidade, Estado estado, long criadoEm,
-            long atualizadoEm, boolean status) {
+    public Equipamento(long id, String nome, Esporte esporte, Integer quantidade, Estado estado, LocalDateTime criadoEm,
+            LocalDateTime atualizadoEm, boolean status) {
         this.id = id;
         this.nome = nome;
         this.esporte = esporte;
         this.quantidade = quantidade;
         this.estado = estado;
+        this.criadoEm = criadoEm;
+        this.atualizadoEm = atualizadoEm;
+        this.status = status;
     }
 
     public Equipamento(String nome, Esporte esporte, Integer quantidade, Estado estado) {
