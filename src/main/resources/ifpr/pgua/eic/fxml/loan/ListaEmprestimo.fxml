@@ -39,7 +39,7 @@
             </VBox>
                 <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu" spacing="4.0">
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu" onAction="#usuarioLista" />
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu" onAction="#emprestimoLista" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu-special" onAction="#emprestimoLista" />
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu" onAction="#equipamentosLista" />
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu" onAction="#esporteLista"/>
                 </VBox>

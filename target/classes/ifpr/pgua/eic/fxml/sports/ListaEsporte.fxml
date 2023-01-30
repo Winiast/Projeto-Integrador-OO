@@ -40,7 +40,7 @@
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu" onAction="#usuarioLista"/>
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu" onAction="#emprestimoLista"/>
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu" onAction="#equipamentosLista"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu" onAction="#esporteLista"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu-special" onAction="#esporteLista"/>
                 </VBox>
             <VBox styleClass="button-sair" prefHeight="200">
                     <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu" onAction="#sair"/>
