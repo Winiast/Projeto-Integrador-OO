@@ -15,7 +15,7 @@ public class App extends BaseAppNavigator {
 
         @Override
         public String getHome() {
-                return "LISTA_USUARIO";
+                return "CADASTRO_EMPRESTIMO";
         }
 
         @Override
@@ -26,18 +26,18 @@ public class App extends BaseAppNavigator {
         @Override
         public void registrarTelas() {
 
-                registraTela("CADASTRO_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/CadastroEsporte.fxml",
-                                (o) -> new EsporteCadastroController()));
-
-                registraTela("LISTA_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/ListaEsporte.fxml",
-                                (o) -> new EsporteListaController()));
-
                 registraTela("CADASTRO_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/CadastroEmprestimo.fxml",
                                                 (o) -> new CadastroEmprestimoController()));
                 registraTela("LISTA_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/ListaEmprestimo.fxml",
                                                 (o) -> new CadastroEmprestimoController()));
+
+                registraTela("CADASTRO_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/CadastroEsporte.fxml",
+                                (o) -> new EsporteCadastroController()));
+
+                registraTela("LISTA_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/ListaEsporte.fxml",
+                                (o) -> new EsporteListaController()));
 
                 registraTela("CADASTRO_USUARIO",
                                 new ScreenRegistryFXML(getClass(), "fxml/users/CadastroUsuario.fxml",
