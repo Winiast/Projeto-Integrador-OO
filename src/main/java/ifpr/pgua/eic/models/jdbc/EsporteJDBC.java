@@ -151,7 +151,7 @@ public class EsporteJDBC implements EsporteDao {
         String nome = resultSet.getString("nome");
         String descricao = resultSet.getString("descricao");
         LocalDateTime criadoEm = resultSet.getTimestamp("criadoEm").toLocalDateTime();
-        if (resultSet.getTimestamp("atualizadoEm").toLocalDateTime() == null) {
+        if (resultSet.getTimestamp("atualizadoEm") != null) {
             LocalDateTime alteradoEm = resultSet.getTimestamp("atualizadoEm").toLocalDateTime();
             boolean status = resultSet.getBoolean("status");
             return new Esporte(id, nome, descricao, criadoEm, alteradoEm, status);
