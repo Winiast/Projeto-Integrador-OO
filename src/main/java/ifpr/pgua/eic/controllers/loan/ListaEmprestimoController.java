@@ -1,16 +1,17 @@
-package ifpr.pgua.eic.controllers.sports;
+package ifpr.pgua.eic.controllers.loan;
 
 import ifpr.pgua.eic.App;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 
-public class EsporteCadastroController {
+public class ListaEmprestimoController {
+
+    public ListaEmprestimoController() {
+
+    }
 
     @FXML
-    private MFXTextField tfEsporte;
-
-    @FXML
-    private MFXTextField tfDescricao;
+    private MFXTextField tfBuscaEmprestimo;
 
     @FXML
     public void usuarioLista() {
@@ -37,11 +38,4 @@ public class EsporteCadastroController {
         App.pushScreen("LOGIN");
     }
 
-    @FXML
-    public void cadastrarEsporte() {
-        System.out.println("Cadastrando Esporte");
-    }
-
-    public EsporteCadastroController() {
-    }
 }
