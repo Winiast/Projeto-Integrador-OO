@@ -14,6 +14,7 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
     private static final String INSERT = "INSERT INTO pi_equipamento (nomeEquipamento, idEsporte, quantidade, estado, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "UPDATE pi_equipamento SET nomeEquipamento = ?, idEsporte = ?, quantidade = ?, estado = ?, atualizadoEm = ?, status = ? WHERE idEquipamento = ?";
+    private static final String DELETE = "UPDATE pi_equipamento SET status = false WHERE idEquipamento = ?";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -70,8 +71,20 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
     @Override
     public boolean excluir(long id) {
-        // TODO Auto-generated method stub
-        return false;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(DELETE);
+
+            statement.setLong(1, id);
+
+            statement.execute();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
