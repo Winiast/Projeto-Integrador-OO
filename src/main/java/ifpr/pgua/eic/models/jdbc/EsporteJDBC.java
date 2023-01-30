@@ -14,6 +14,7 @@ public class EsporteJDBC implements EsporteDao {
 
     private static final String INSERT = "INSERT INTO pi_esporte (nome, descricao, criadoEm, status) VALUES (?, ?, ?, ?);";
     private static final String UPDATE = "UPDATE pi_esporte SET nome = ?, descricao = ?, atualizadoEm = ?, status = ? WHERE idEsporte = ?;";
+    private static final String DELETE = "UPDATE pi_esporte SET status = ?, atualizadoEm = ? WHERE idEsporte = ?;";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -70,8 +71,24 @@ public class EsporteJDBC implements EsporteDao {
 
     @Override
     public Boolean excluir(long id) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(DELETE);
+            statement.setBoolean(1, false);
+            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setLong(3, id);
+
+            statement.execute();
+
+            statement.close();
+            con.close();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
