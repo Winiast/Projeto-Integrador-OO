@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import ifpr.pgua.eic.models.FabricaConexoes;
@@ -150,7 +151,7 @@ public class UsuarioJDBC implements UsuarioDao {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return Collections.emptyList();
         }
     }
 
@@ -176,7 +177,7 @@ public class UsuarioJDBC implements UsuarioDao {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return Collections.emptyList();
         }
     }
 
