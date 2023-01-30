@@ -25,7 +25,7 @@ public class CadastroEquipamentosController {
 
     @FXML
     public void emprestimoLista() {
-        System.out.println("Lista de Empréstimos");
+        App.pushScreen("LISTA_EMPRESTIMO");
     }
 
     @FXML
