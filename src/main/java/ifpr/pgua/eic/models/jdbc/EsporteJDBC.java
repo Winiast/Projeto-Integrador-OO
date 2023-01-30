@@ -1,6 +1,5 @@
 package ifpr.pgua.eic.models.jdbc;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +20,7 @@ public class EsporteJDBC implements EsporteDao {
     private static final String UPDATE = "UPDATE pi_esporte SET nome = ?, descricao = ?, atualizadoEm = ?, status = ? WHERE idEsporte = ?;";
     private static final String DELETE = "UPDATE pi_esporte SET status = ?, atualizadoEm = ? WHERE idEsporte = ?;";
     private static final String SELECT_ALL = "SELECT * FROM pi_esporte;";
+    private static final String SELECT_BY_NAME = "SELECT * FROM pi_esporte WHERE nome LIKE ?;";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -123,8 +123,27 @@ public class EsporteJDBC implements EsporteDao {
 
     @Override
     public List<Esporte> buscarPorNome(String nome) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_BY_NAME);
+            statement.setString(1, nome + "%");
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Esporte> esportes = new ArrayList<>();
+            while (resultSet.next()) {
+                esportes.add(buildObject(resultSet));
+            }
+
+            statement.close();
+            con.close();
+
+            return esportes;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
     }
 
     private Esporte buildObject(ResultSet resultSet) throws SQLException {
