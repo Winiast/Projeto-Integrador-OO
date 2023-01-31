@@ -2,12 +2,13 @@ package ifpr.pgua.eic.models.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Emprestimo {
 
     private long id;
     private LocalDateTime dataDevolucaoEmprestimo;
-    private ArrayList<Equipamento> equipamento;
+    private List<Equipamento> equipamento;
     private String nomeAluno;
     private String turma;
     private String observacoes;
@@ -28,7 +29,7 @@ public class Emprestimo {
         this.usuario = usuario;
     }
 
-    public Emprestimo(ArrayList<Equipamento> equipamento, String nomeAluno, String turma, String observacoes,
+    public Emprestimo(List<Equipamento> equipamento, String nomeAluno, String turma, String observacoes,
             Usuario usuario) {
         this.equipamento = equipamento;
         this.nomeAluno = nomeAluno;
@@ -53,11 +54,11 @@ public class Emprestimo {
         this.dataDevolucaoEmprestimo = dataDevolucaoEmprestimo;
     }
 
-    public ArrayList<Equipamento> getEquipamento() {
+    public List<Equipamento> getEquipamento() {
         return equipamento;
     }
 
-    public void setEquipamento(ArrayList<Equipamento> equipamento) {
+    public void setEquipamento(List<Equipamento> equipamento) {
         this.equipamento = equipamento;
     }
 
