@@ -22,6 +22,7 @@ public class EquipamentoJDBC implements EquipamentoDao {
     private static final String UPDATE = "UPDATE pi_equipamento SET nomeEquipamento = ?, idEsporte = ?, quantidade = ?, estado = ?, atualizadoEm = ?, status = ? WHERE idEquipamento = ?";
     private static final String DELETE = "UPDATE pi_equipamento SET status = false WHERE idEquipamento = ?";
     private static final String SELECT_ALL = "SELECT * FROM pi_equipamento";
+    private static final String SELECT_BY_NAME = "SELECT * FROM pi_equipamento WHERE nomeEquipamento LIKE ?";
 
     private FabricaConexoes fabricaConexoes;
     private EsporteDao esporteDao;
@@ -120,7 +121,24 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
     @Override
     public List<Equipamento> buscarPorNome(String nome) {
-        // TODO Auto-generated method stub
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_BY_NAME);
+
+            statement.setString(1, nome + "%");
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Equipamento> equipamentos = new ArrayList<>();
+            while (resultSet.next()) {
+                equipamentos.add(buildObject(resultSet));
+            }
+
+            return equipamentos;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
