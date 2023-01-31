@@ -2,6 +2,7 @@ package ifpr.pgua.eic;
 
 import ifpr.pgua.eic.controllers.auth.*;
 import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
+import ifpr.pgua.eic.controllers.users.ListaUsuarioController;
 import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.controllers.equips.ListaEquipamentosController;
 import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
@@ -14,7 +15,7 @@ public class App extends BaseAppNavigator {
 
         @Override
         public String getHome() {
-                return "LISTA_EMPRESTIMO";
+                return "CADASTRO_EMPRESTIMO";
         }
 
         @Override
@@ -25,12 +26,6 @@ public class App extends BaseAppNavigator {
         @Override
         public void registrarTelas() {
 
-                registraTela("CADASTRO_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/CadastroEsporte.fxml",
-                                (o) -> new EsporteCadastroController()));
-
-                registraTela("LISTA_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/ListaEsporte.fxml",
-                                (o) -> new EsporteListaController()));
-
                 registraTela("CADASTRO_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/CadastroEmprestimo.fxml",
                                                 (o) -> new CadastroEmprestimoController()));
@@ -38,10 +33,18 @@ public class App extends BaseAppNavigator {
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/ListaEmprestimo.fxml",
                                                 (o) -> new CadastroEmprestimoController()));
 
+                registraTela("CADASTRO_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/CadastroEsporte.fxml",
+                                (o) -> new EsporteCadastroController()));
+
+                registraTela("LISTA_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/ListaEsporte.fxml",
+                                (o) -> new EsporteListaController()));
+
                 registraTela("CADASTRO_USUARIO",
                                 new ScreenRegistryFXML(getClass(), "fxml/users/CadastroUsuario.fxml",
                                                 (o) -> new CadastroUsuarioController()));
-
+                registraTela("LISTA_USUARIO",
+                                new ScreenRegistryFXML(getClass(), "fxml/users/ListaUsuario.fxml",
+                                                (o) -> new ListaUsuarioController()));
                 registraTela("LOGIN",
                                 new ScreenRegistryFXML(getClass(), "fxml/auth/Login.fxml",
                                                 (o) -> new LoginController()));
