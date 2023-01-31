@@ -27,6 +27,8 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
     private static final String FINISH_EMPR = "UPDATE pi_emprestimo SET dataDevolucaoEmprestimo = ?, atualizadoEm = ? WHERE idEmprestimo = ?";
 
+    private static final String UPDATE = "UPDATE pi_emprestimo SET idUsuario = ?, nomeAluno = ?, turmaAluno = ?, observacao = ?, atualizadoEm = ? WHERE idEmprestimo = ?";
+
     private static final String SELECT = "SELECT * FROM pi_emprestimo";
     private static final String SELECT_EQUIPS = "SELECT * FROM pi_equip_emprestimo WHERE idEmprestimo = ?";
 
@@ -77,8 +79,28 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
     @Override
     public boolean atualizar(Emprestimo emprestimo) {
-        // TODO Auto-generated method stub
-        return false;
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(UPDATE);
+            statement.setLong(1, emprestimo.getUsuario().getId());
+            statement.setString(2, emprestimo.getNomeAluno());
+            statement.setString(3, emprestimo.getTurma());
+            statement.setString(4, emprestimo.getObservacoes());
+            statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setLong(6, emprestimo.getId());
+
+            statement.execute();
+
+            statement.close();
+            con.close();
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
