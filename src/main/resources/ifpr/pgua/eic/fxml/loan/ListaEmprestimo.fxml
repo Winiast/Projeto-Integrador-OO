@@ -57,8 +57,8 @@
            <HBox prefWidth="1000" alignment="center" styleClass="container-search" >
                <MFXTextField floatMode="BORDER" floatingText="Nome do Empréstimo"  prefWidth="400" prefHeight="50" styleClass="form-search" />
                <HBox prefWidth="600" spacing="200.0">
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search"  />
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search"  onAction="#buscarEmprestimo"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new" onAction="#cadastrarEmprestimo" />
                </HBox>
 
            </HBox>
@@ -67,14 +67,11 @@
  
             <tableColumns>
 
-               <MFXTableColumn prefWidth="50" text="Id" styleClass="form-tableView-Column" />
-               <MFXTableColumn prefWidth="100" text="Nome" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="100" text="Descrição" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Data de Criação" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Data de Atualização" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="50" text="Status" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="100" text="Editar" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="100" text="Excluir" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Nome Aluno" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Equipamento" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Turma" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Observações" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Quem Registrou" styleClass="form-tableView-Column"/>
             </tableColumns>
            </MFXTableView>
 

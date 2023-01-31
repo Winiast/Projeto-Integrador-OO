@@ -38,4 +38,13 @@ public class ListaEmprestimoController {
         App.pushScreen("LOGIN");
     }
 
+    @FXML
+    public void buscarEmprestimo() {
+        System.out.println("Buscando empréstimo");
+    }
+
+    @FXML
+    public void cadastrarEmprestimo() {
+        App.pushScreen("CADASTRO_EMPRESTIMO");
+    }
 }
