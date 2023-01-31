@@ -16,4 +16,5 @@ public interface EsporteDao {
 
     List<Esporte> buscarPorNome(String nome);
 
+    Esporte buscarPorId(long id);
 }

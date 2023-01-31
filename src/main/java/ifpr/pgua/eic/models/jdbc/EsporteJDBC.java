@@ -21,6 +21,7 @@ public class EsporteJDBC implements EsporteDao {
     private static final String DELETE = "UPDATE pi_esporte SET status = ?, atualizadoEm = ? WHERE idEsporte = ?;";
     private static final String SELECT_ALL = "SELECT * FROM pi_esporte;";
     private static final String SELECT_BY_NAME = "SELECT * FROM pi_esporte WHERE nome LIKE ?;";
+    private static final String SELECT_BY_ID = "SELECT * FROM pi_esporte WHERE idEsporte = ?;";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -146,12 +147,36 @@ public class EsporteJDBC implements EsporteDao {
         }
     }
 
+    @Override
+    public Esporte buscarPorId(long id) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_BY_ID);
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return buildObject(resultSet);
+            }
+
+            statement.close();
+            con.close();
+
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private Esporte buildObject(ResultSet resultSet) throws SQLException {
         long id = resultSet.getLong("idEsporte");
         String nome = resultSet.getString("nome");
         String descricao = resultSet.getString("descricao");
         LocalDateTime criadoEm = resultSet.getTimestamp("criadoEm").toLocalDateTime();
-        if (resultSet.getTimestamp("atualizadoEm").toLocalDateTime() == null) {
+        if (resultSet.getTimestamp("atualizadoEm") != null) {
             LocalDateTime alteradoEm = resultSet.getTimestamp("atualizadoEm").toLocalDateTime();
             boolean status = resultSet.getBoolean("status");
             return new Esporte(id, nome, descricao, criadoEm, alteradoEm, status);
