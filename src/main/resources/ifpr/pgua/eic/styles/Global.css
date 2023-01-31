@@ -48,34 +48,21 @@
   -fx-text-fill: white;
 }
 
-/* Titulo do formulário */
-.title-form {
+.container-form {
+  -fx-background-color: #e8e5e5;
+}
+
+.form-title {
   -fx-font-size: 30;
   -fx-font-weight: bold;
   -fx-font-family: "Arial";
   -fx-text-fill: #373737;
-  -fx-label-padding: 20 20 20 20;
-}
-
-/* Labels do formulario */
-.labels-form {
-  -fx-font-size: 16;
-  -fx-font-family: "Arial";
-  -fx-text-fill: #000000;
-  -fx-text-alignment: left;
-  -fx-alignment: center-left;
-  -fx-content-display: left;
-}
-
-/* Container em volta do formulario */
-.container-form {
-  -fx-alignment: center;
-  -fx-background-color: #dcdcdc;
+  -fx-label-padding: 60 60 60 60;
 }
 
 /* Troca dos efeitos do campo de Text do MFX */
 .mfx-text-field:focus-within {
-  -fx-background-insets: 2;
+  /* -fx-background-insets: 2; */
   -fx-border-color: #329e43;
   -fx-border-width: 1.5;
   -fx-border-insets: -0.5;
@@ -85,24 +72,39 @@
   -fx-text-fill: -mfx-text-he;
 }
 .mfx-text-field:floating .floating-text {
-  -fx-background-color: linear-gradient(to bottom, #e8e5e5, rgb(248, 248, 248));
+  -fx-background-color: white;
 }
 .mfx-text-field:focus-within .floating-text {
   -fx-text-fill: #329e43;
 }
 
-/* Botão de cadastrar */
-.btn-submit {
+.form-search {
+  -fx-alignment: center;
+  -fx-border-radius: 0;
+  -fx-background-radius: 0;
+}
+
+.form-btn-search {
+  -fx-alignment: center;
   -fx-background-color: #329e43;
   -fx-text-fill: white;
-  -fx-font-size: 14px;
+  -fx-font-size: 16px;
+  -fx-background-radius: 0 8 8 0;
+  -fx-border-radius: 0 0 0 8;
+  -fx-cursor: hand;
+}
+
+.form-btn-new {
+  -fx-alignment: center;
+  -fx-background-color: #329e43;
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
   -fx-background-radius: 8;
   -fx-padding: 10 20 10 20;
   -fx-border-radius: 8;
   -fx-cursor: hand;
 }
 
-.btn-submit:hover {
-  -fx-background-color: #1b9b2e;
-  -fx-text-fill: white;
+.form-tableView-Column {
+  -fx-border-color: #42ce4bc3;
 }
