@@ -3,8 +3,10 @@ package ifpr.pgua.eic.models.jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import ifpr.pgua.eic.models.FabricaConexoes;
@@ -12,6 +14,7 @@ import ifpr.pgua.eic.models.daos.EmprestimoDao;
 import ifpr.pgua.eic.models.daos.EquipamentoDao;
 import ifpr.pgua.eic.models.daos.UsuarioDao;
 import ifpr.pgua.eic.models.entity.Emprestimo;
+import ifpr.pgua.eic.models.entity.Equipamento;
 
 public class EmprestimoJDBC implements EmprestimoDao {
 
@@ -21,6 +24,9 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
     private static final String INSERT = "INSERT INTO pi_emprestimo (idUsuario, nomeAluno, turmaAluno, observacao, criadoEm) VALUES (?, ?, ?, ?, ?)";
     private static final String INSERT_EQUIPS = "INSERT INTO pi_equip_emprestimo (idEquipamento, idEmprestimo) VALUES (?, ?)";
+
+    private static final String SELECT = "SELECT * FROM pi_emprestimo";
+    private static final String SELECT_EQUIPS = "SELECT * FROM pi_equip_emprestimo WHERE idEmprestimo = ?";
 
 
     public EmprestimoJDBC(FabricaConexoes fabricaConexoes, EquipamentoDao equipamentoDao, UsuarioDao usuarioDao) {
@@ -80,9 +86,72 @@ public class EmprestimoJDBC implements EmprestimoDao {
     }
 
     @Override
-    public List<EmprestimoDao> buscarTodos() {
-        // TODO Auto-generated method stub
+    public List<Emprestimo> buscarTodos() {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT);
+            
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Emprestimo> emprestimos = new ArrayList<>();
+            while(resultSet.next()) {
+                emprestimos.add(buildObject(resultSet));
+            }
+
+            statement.close();
+            con.close();
+
+            return emprestimos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private List<Equipamento> buscarEquipamentos (long id) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_EQUIPS);
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Equipamento> equipamentos = new ArrayList<>();
+            while (resultSet.next()) {
+                equipamentos.add(equipamentoDao.buscarPorId(resultSet.getLong("idEquipamento")));
+            }
+
+            statement.close();
+            con.close();
+
+            return equipamentos;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return null;
+    } 
+
+    private Emprestimo buildObject(ResultSet resultSet) throws SQLException{
+        long id = resultSet.getInt("idEmprestimo");
+        long idUsuario = resultSet.getInt("idUsuario");
+        String nomeAluno = resultSet.getString("nomeAluno");
+        String turma = resultSet.getString("turmaAluno");
+        String observacoes = resultSet.getString("observacao");
+        LocalDateTime criadoEm = resultSet.getTimestamp("criadoEm").toLocalDateTime();
+        
+        LocalDateTime dataDevolucao = null;
+        LocalDateTime atualizadoEm = null;
+        if(resultSet.getTimestamp("dataDevolucaoEmprestimo") != null) {
+            dataDevolucao = resultSet.getTimestamp("dataDevolucaoEmprestimo").toLocalDateTime();
+        } 
+        if (resultSet.getTimestamp("atualizadoEm") != null) {
+            atualizadoEm = resultSet.getTimestamp("atualizadoEm").toLocalDateTime();
+        }
+
+        return new Emprestimo(id, dataDevolucao, buscarEquipamentos(id), nomeAluno, turma, observacoes, usuarioDao.buscarPorId(idUsuario), criadoEm, atualizadoEm);
     }
     
 }

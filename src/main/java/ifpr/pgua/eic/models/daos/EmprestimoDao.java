@@ -12,5 +12,5 @@ public interface EmprestimoDao {
 
     boolean excluir(int id);
 
-    List<EmprestimoDao> buscarTodos();
+    List<Emprestimo> buscarTodos();
 }
