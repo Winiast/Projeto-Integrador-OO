@@ -25,6 +25,8 @@ public class EmprestimoJDBC implements EmprestimoDao {
     private static final String INSERT = "INSERT INTO pi_emprestimo (idUsuario, nomeAluno, turmaAluno, observacao, criadoEm) VALUES (?, ?, ?, ?, ?)";
     private static final String INSERT_EQUIPS = "INSERT INTO pi_equip_emprestimo (idEquipamento, idEmprestimo) VALUES (?, ?)";
 
+    private static final String FINISH_EMPR = "UPDATE pi_emprestimo SET dataDevolucaoEmprestimo = ?, atualizadoEm = ? WHERE idEmprestimo = ?";
+
     private static final String SELECT = "SELECT * FROM pi_emprestimo";
     private static final String SELECT_EQUIPS = "SELECT * FROM pi_equip_emprestimo WHERE idEmprestimo = ?";
 
@@ -80,9 +82,26 @@ public class EmprestimoJDBC implements EmprestimoDao {
     }
 
     @Override
-    public boolean excluir(int id) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean finalizarEmprestimo(int id) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(FINISH_EMPR);
+            statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setInt(3, id);
+
+
+            statement.execute();
+
+            statement.close();
+            con.close();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

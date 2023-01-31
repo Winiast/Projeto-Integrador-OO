@@ -10,7 +10,7 @@ public interface EmprestimoDao {
 
     boolean atualizar(Emprestimo emprestimo);
 
-    boolean excluir(int id);
+    boolean finalizarEmprestimo(int id);
 
     List<Emprestimo> buscarTodos();
 }
