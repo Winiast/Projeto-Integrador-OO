@@ -2,6 +2,7 @@ package ifpr.pgua.eic.controllers.users;
 
 import java.util.Properties;
 
+import ifpr.pgua.eic.App;
 import jakarta.mail.Address;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
@@ -30,7 +31,32 @@ public class CadastroUsuarioController {
     }
 
     @FXML
-    private void cadastrar() {
+    public void usuarioLista() {
+        System.out.println("Lista de Usuários");
+    }
+
+    @FXML
+    public void emprestimoLista() {
+        App.pushScreen("LISTA_EMPRESTIMO");
+    }
+
+    @FXML
+    public void equipamentosLista() {
+        App.pushScreen("LISTA_EQUIPAMENTO");
+    }
+
+    @FXML
+    public void esporteLista() {
+        App.pushScreen("LISTA_ESPORTE");
+    }
+
+    @FXML
+    public void sair() {
+        App.pushScreen("LOGIN");
+    }
+
+    @FXML
+    private void cadastrarUsuario() {
 
         String email = tfEmail.getText();
         String nome = tfNome.getText();

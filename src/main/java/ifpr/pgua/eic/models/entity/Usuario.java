@@ -13,13 +13,16 @@ public class Usuario {
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Usuario(long id, String nome, String sobrenome, String email, String senha, long criadoEm, long atualizadoEm,
-            boolean status) {
+    public Usuario(long id, String nome, String sobrenome, String email, String senha, LocalDateTime criadoEm,
+            LocalDateTime atualizadoEm, boolean status) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
         this.senha = senha;
+        this.criadoEm = criadoEm;
+        this.atualizadoEm = atualizadoEm;
+        this.status = status;
     }
 
     public Usuario(String nome, String sobrenome, String email, String senha) {
@@ -27,6 +30,7 @@ public class Usuario {
         this.sobrenome = sobrenome;
         this.email = email;
         this.senha = senha;
+        this.criadoEm = LocalDateTime.now();
     }
 
     public long getId() {

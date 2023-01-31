@@ -12,8 +12,9 @@ public interface EsporteDao {
 
     Boolean excluir(long id);
 
-    List<Esporte> lista();
+    List<Esporte> buscarTodos();
 
-    Esporte buscaPorId(int id);
+    List<Esporte> buscarPorNome(String nome);
 
+    Esporte buscarPorId(long id);
 }

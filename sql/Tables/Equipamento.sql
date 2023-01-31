@@ -1,5 +1,5 @@
 CREATE TABLE pi_equipamento (
-    idEquipamento int NOT NULL,
+    idEquipamento int NOT NULL AUTO_INCREMENT,
     nomeEquipamento varchar(50) NOT NULL,
     idEsporte int NOT NULL,
     quantidade int NOT NULL,

@@ -22,9 +22,10 @@
 
 
 
+
 <HBox prefHeight="720.0" prefWidth="1280.0" 
         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="3.0"
-        stylesheets="@../../styles/equips/EquipamentosLista.css" fx:controller="ifpr.pgua.eic.controllers.equips.ListaEquipamentosController">
+        stylesheets="@../../styles/loan/EmprestimoLista.css" fx:controller="ifpr.pgua.eic.controllers.loan.ListaEmprestimoController">
          
     <VBox prefHeight="720.0" prefWidth="200.0" alignment="center" styleClass="container-menu" spacing="10.0">
         <children>
@@ -38,8 +39,8 @@
             </VBox>
                 <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu" spacing="4.0">
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu" onAction="#usuarioLista" />
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu" onAction="#emprestimoLista" />
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu-special" onAction="#equipamentosLista" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu-special" onAction="#emprestimoLista" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu" onAction="#equipamentosLista" />
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu" onAction="#esporteLista"/>
                 </VBox>
             <VBox styleClass="button-sair" prefHeight="200">
@@ -52,12 +53,12 @@
     
     <VBox prefHeight="720.0" prefWidth="1280.0" alignment="center" spacing="20.0" styleClass="container-form">
         <children>
-           <Label text="Lista de Equipamentos" styleClass="form-title" />
+           <Label text="Lista de Emprestimos" styleClass="form-title" />
            <HBox prefWidth="1000" alignment="center" styleClass="container-search" >
-               <MFXTextField floatMode="BORDER" floatingText="Nome do Equipamento"  prefWidth="400" prefHeight="50" styleClass="form-search" fx:id="tfBuscaEquipamento"/>
+               <MFXTextField floatMode="BORDER" floatingText="Nome do Empréstimo"  prefWidth="400" prefHeight="50" styleClass="form-search" />
                <HBox prefWidth="600" spacing="200.0">
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search" onAction="#buscarEquipamento" />
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new" onAction="#cadastrarEquipamento"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search"  />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new" />
                </HBox>
 
            </HBox>
@@ -66,11 +67,14 @@
  
             <tableColumns>
 
+               <MFXTableColumn prefWidth="50" text="Id" styleClass="form-tableView-Column" />
                <MFXTableColumn prefWidth="100" text="Nome" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="100" text="Esporte" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Quantidade" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Estado" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="100" text="Descrição" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Data de Criação" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Data de Atualização" styleClass="form-tableView-Column"/>
                <MFXTableColumn prefWidth="50" text="Status" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="100" text="Editar" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="100" text="Excluir" styleClass="form-tableView-Column"/>
             </tableColumns>
            </MFXTableView>
 

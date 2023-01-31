@@ -18,45 +18,39 @@
       fx:controller="ifpr.pgua.eic.controllers.users.CadastroUsuarioController"
       >
 
-    <VBox prefHeight="720.0" prefWidth="200.0" spacing="10.0" alignment="center" styleClass="container-menu">
+    <VBox prefHeight="720.0" prefWidth="200.0" alignment="center" styleClass="container-menu" spacing="10.0">
         <children>
-            <VBox prefHeight="400.0" prefWidth="200.0" styleClass="logo-menu">
+
+            <VBox prefHeight="400.0" prefWidth="200.0" styleClass="logo-menu" spacing="10.0">
                 <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="image-menu">
                     <image>
                         <Image url="@../../images/Logo-IFPR.png" />
                     </image>
                 </ImageView>
             </VBox>
-                <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu">
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu"/>
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu"/>
+                <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu" spacing="4.0">
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu" onAction="#usuarioLista" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu" onAction="#emprestimoLista" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu" onAction="#equipamentosLista" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu" onAction="#esporteLista"/>
                 </VBox>
             <VBox styleClass="button-sair" prefHeight="200">
-                    <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu"/>
+                    <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu" onAction="#sair" />
             </VBox>
          </children>
     </VBox>
 
-    <VBox prefHeight="720" prefWidth="1080" alignment="center" styleClass="container-principal">
-        <children>
-            <Label text="Cadastrar Usuário" styleClass="title"/>
-                <VBox alignment="center">
-                    <Label text="Email" styleClass="label-form" />
-                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfEmail" promptText="Digite seu email..."/>
-                </VBox>
-                <VBox alignment="center">
-                    <Label text="Nome" styleClass="label-form"/>
-                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfNome" promptText="Digite seu nome..."/>
-                </VBox>
-                <VBox alignment="center">
-                    <Label text="Sobrenome" styleClass="label-form"/>
-                    <MFXTextField floatMode="DISABLED" prefWidth="300" prefHeight="35" fx:id="tfSobrenome" promptText="Digite seu sobrenome..." />
-                </VBox>
 
-                <MFXButton alignment="center" prefHeight="35" prefWidth="90" text="Cadastrar" styleClass="btn-cadastrar" onAction="#cadastrar"/>
+        <VBox prefHeight="720.0" prefWidth="1280.0" alignment="center" spacing="20.0" styleClass="container-form">
+        <children>
+            <Label text="Cadastrar Usuario" styleClass="title-form"  />
+            <MFXTextField  floatMode="BORDER" floatingText="Nome" prefWidth="400" prefHeight="35" fx:id="tfNome"/>
+            <MFXTextField  floatMode="BORDER" floatingText="Sobrenome" prefWidth="400" prefHeight="35" fx:id="tfSobrenome"/>
+            <MFXTextField floatMode="BORDER" floatingText="Email a ser cadastrado"  prefWidth="400" prefHeight="35" fx:id="tfEmail"/>
+            <MFXButton prefWidth="400.0" text="Cadastrar" styleClass="btn-submit" onAction="#cadastrarUsuario" />
         </children>
+
+        
     </VBox>
 
 </HBox>
