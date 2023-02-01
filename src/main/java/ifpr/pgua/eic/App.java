@@ -3,6 +3,10 @@ package ifpr.pgua.eic;
 import ifpr.pgua.eic.controllers.auth.*;
 import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
 import ifpr.pgua.eic.controllers.users.ListaUsuarioController;
+import ifpr.pgua.eic.models.FabricaConexoes;
+import ifpr.pgua.eic.models.daos.UsuarioDao;
+import ifpr.pgua.eic.models.jdbc.UsuarioJDBC;
+import ifpr.pgua.eic.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.controllers.equips.ListaEquipamentosController;
 import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
@@ -14,14 +18,24 @@ import ifpr.pgua.eic.utils.Navigator.ScreenRegistryFXML;
 
 public class App extends BaseAppNavigator {
 
+        private FabricaConexoes fabricaConexoes = FabricaConexoes.getInstance(); 
+        private UsuarioRepository usuarioRepository;
+        private UsuarioDao usuarioDao;
+
+        @Override
+        public void init() throws Exception {
+            usuarioDao = new UsuarioJDBC(fabricaConexoes);
+            usuarioRepository = new UsuarioRepository(usuarioDao);
+        }
+
         @Override
         public String getHome() {
-                return "CADASTRO_EMPRESTIMO";
+            return "LOGIN";
         }
 
         @Override
         public String getAppTitle() {
-                return "IFPR EMPRÉSTIMOS";
+            return "IFPR EMPRÉSTIMOS";
         }
 
         @Override
@@ -48,7 +62,7 @@ public class App extends BaseAppNavigator {
                                                 (o) -> new ListaUsuarioController()));
                 registraTela("LOGIN",
                                 new ScreenRegistryFXML(getClass(), "fxml/auth/Login.fxml",
-                                                (o) -> new LoginController()));
+                                                (o) -> new LoginController(usuarioRepository)));
 
                 registraTela("ALTERAR_SENHA",
                                 new ScreenRegistryFXML(getClass(), "fxml/auth/AlterarSenha.fxml",
