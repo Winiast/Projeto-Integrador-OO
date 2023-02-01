@@ -17,4 +17,6 @@ public interface UsuarioDao {
     List<Usuario> buscarPorNome(String nome);
 
     List<Usuario> buscarTodos();
+
+    Usuario buscarPorId(long id);
 }

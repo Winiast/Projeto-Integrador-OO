@@ -15,4 +15,6 @@ public interface EquipamentoDao {
     List<Equipamento> buscarTodos();
 
     List<Equipamento> buscarPorNome(String nome);
+
+    Equipamento buscarPorId(long id);
 }

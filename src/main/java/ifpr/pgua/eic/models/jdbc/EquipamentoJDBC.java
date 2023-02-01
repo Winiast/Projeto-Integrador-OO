@@ -23,6 +23,7 @@ public class EquipamentoJDBC implements EquipamentoDao {
     private static final String DELETE = "UPDATE pi_equipamento SET status = false WHERE idEquipamento = ?";
     private static final String SELECT_ALL = "SELECT * FROM pi_equipamento";
     private static final String SELECT_BY_NAME = "SELECT * FROM pi_equipamento WHERE nomeEquipamento LIKE ?";
+    private static final String SELECT_BY_ID = "SELECT * FROM pi_equipamento WHERE idEquipamento = ?";
 
     private FabricaConexoes fabricaConexoes;
     private EsporteDao esporteDao;
@@ -140,6 +141,29 @@ public class EquipamentoJDBC implements EquipamentoDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public Equipamento buscarPorId(long id) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_BY_ID);
+
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return buildObject(resultSet);
+            }
+
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     private Equipamento buildObject(ResultSet resultSet) throws SQLException {

@@ -30,6 +30,16 @@ public class ListaUsuarioController {
     }
 
     @FXML
+    public void cadastrar() {
+        App.pushScreen("CADASTRO_USUARIO");
+    }
+
+    @FXML
+    public void buscarUsuario() {
+        System.out.println("Buscar");
+    }
+
+    @FXML
     public void sair() {
         App.pushScreen("LOGIN");
     }

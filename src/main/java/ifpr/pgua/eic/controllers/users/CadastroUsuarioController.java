@@ -32,7 +32,7 @@ public class CadastroUsuarioController {
 
     @FXML
     public void usuarioLista() {
-        System.out.println("Lista de Usuários");
+        App.pushScreen("LISTA_USUARIO");
     }
 
     @FXML
