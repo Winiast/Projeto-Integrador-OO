@@ -15,7 +15,7 @@ public class ListaEmprestimoController {
 
     @FXML
     public void usuarioLista() {
-        System.out.println("Lista de Usuários");
+        App.pushScreen("LISTA_USUARIO");
     }
 
     @FXML
@@ -36,6 +36,16 @@ public class ListaEmprestimoController {
     @FXML
     public void sair() {
         App.pushScreen("LOGIN");
+    }
+
+    @FXML
+    public void buscarEsporte() {
+        System.out.println("Buscando empréstimo");
+    }
+
+    @FXML
+    public void cadastrarEsporte() {
+        App.pushScreen("CADASTRO_ESPORTE");
     }
 
 }
