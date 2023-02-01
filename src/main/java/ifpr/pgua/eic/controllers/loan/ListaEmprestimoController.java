@@ -39,13 +39,12 @@ public class ListaEmprestimoController {
     }
 
     @FXML
-    public void buscarEsporte() {
+    public void buscarEmprestimo() {
         System.out.println("Buscando empréstimo");
     }
 
     @FXML
-    public void cadastrarEsporte() {
-        App.pushScreen("CADASTRO_ESPORTE");
+    public void cadastrarEmprestimo() {
+        App.pushScreen("CADASTRO_EMPRESTIMO");
     }
-
 }

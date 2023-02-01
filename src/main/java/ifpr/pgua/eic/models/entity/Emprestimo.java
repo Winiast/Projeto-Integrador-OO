@@ -17,7 +17,8 @@ public class Emprestimo {
     private boolean status;
 
     public Emprestimo(long id, LocalDateTime dataDevolucaoEmprestimo, List<Equipamento> equipamento,
-            String nomeAluno, String turma, String observacoes, Usuario usuario, LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
+            String nomeAluno, String turma, String observacoes, Usuario usuario, LocalDateTime criadoEm,
+            LocalDateTime atualizadoEm) {
         this.id = id;
         this.dataDevolucaoEmprestimo = dataDevolucaoEmprestimo;
         this.equipamento = equipamento;
