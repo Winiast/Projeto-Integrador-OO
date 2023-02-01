@@ -66,14 +66,11 @@
  
             <tableColumns>
 
-               <MFXTableColumn prefWidth="50" text="Id" styleClass="form-tableView-Column" />
-               <MFXTableColumn prefWidth="100" text="Nome" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="100" text="Descrição" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Data de Criação" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Data de Atualização" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="50" text="Status" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="100" text="Editar" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="100" text="Excluir" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Nome" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Esporte" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Quantidade" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Estado" styleClass="form-tableView-Column"/>
+               <MFXTableColumn prefWidth="200" text="Status" styleClass="form-tableView-Column"/>
             </tableColumns>
            </MFXTableView>
 
