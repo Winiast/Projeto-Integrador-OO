@@ -42,7 +42,6 @@ public class LoginController {
                 App.pushScreen("LISTA_EMPRESTIMO");
             }
         }
-
     }
 
 }

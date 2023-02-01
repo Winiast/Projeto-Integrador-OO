@@ -1,5 +1,6 @@
 package ifpr.pgua.eic.models.repositories;
 
+import java.security.MessageDigest;
 import java.util.List;
 
 import ifpr.pgua.eic.models.daos.UsuarioDao;
@@ -14,10 +15,12 @@ public class UsuarioRepository {
     }
 
     public Usuario autenticar(String email, String senha) {
-        return usuarioDao.autenticar(email, senha);
+        return usuarioDao.autenticar(email, gerarHash(senha));
     }
 
     public boolean cadastrar(Usuario usuario) {
+        usuario.setSenha(gerarHash(usuario.getSenha()));
+
         return usuarioDao.cadastrar(usuario);
     }
 
@@ -31,5 +34,22 @@ public class UsuarioRepository {
 
     public List<Usuario> buscarPorNome(String nome) {
         return usuarioDao.buscarPorNome(nome);
+    }
+
+    private String gerarHash(String senha) {
+        try {
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-1");
+            byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) {
+                hexString.append(String.format("%02X", 0xFF & b));
+            }
+
+            return hexString.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
