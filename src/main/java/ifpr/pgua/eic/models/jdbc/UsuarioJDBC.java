@@ -21,6 +21,7 @@ public class UsuarioJDBC implements UsuarioDao {
     private static final String DELETE = "UPDATE pi_user SET atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String FIND_BY_NAME = "SELECT * FROM pi_user WHERE nome LIKE ?";
     private static final String FIND_ALL = "SELECT * FROM pi_user";
+    private static final String FIND_BY_ID = "SELECT * FROM pi_user WHERE idUser = ?";
     private static final String AUTH = "SELECT * FROM pi_user WHERE email = ? AND senha = ?";
 
     private FabricaConexoes fabricaConexoes;
@@ -178,6 +179,32 @@ public class UsuarioJDBC implements UsuarioDao {
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public Usuario buscarPorId(long id) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(FIND_BY_ID);
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Usuario usuario = buildObject(resultSet);
+                return usuario;
+            }
+
+            statement.close();
+            con.close();
+
+            return null;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

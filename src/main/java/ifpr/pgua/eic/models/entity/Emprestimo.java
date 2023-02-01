@@ -1,13 +1,13 @@
 package ifpr.pgua.eic.models.entity;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Emprestimo {
 
     private long id;
     private LocalDateTime dataDevolucaoEmprestimo;
-    private ArrayList<Equipamento> equipamento;
+    private List<Equipamento> equipamento;
     private String nomeAluno;
     private String turma;
     private String observacoes;
@@ -16,9 +16,8 @@ public class Emprestimo {
     private LocalDateTime atualizadoEm;
     private boolean status;
 
-    public Emprestimo(long id, LocalDateTime dataDevolucaoEmprestimo, ArrayList<Equipamento> equipamento,
-            String nomeAluno, String turma, String observacoes, Usuario usuario, long criadoEm, long atualizadoEm,
-            boolean status) {
+    public Emprestimo(long id, LocalDateTime dataDevolucaoEmprestimo, List<Equipamento> equipamento,
+            String nomeAluno, String turma, String observacoes, Usuario usuario, LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
         this.id = id;
         this.dataDevolucaoEmprestimo = dataDevolucaoEmprestimo;
         this.equipamento = equipamento;
@@ -26,9 +25,11 @@ public class Emprestimo {
         this.turma = turma;
         this.observacoes = observacoes;
         this.usuario = usuario;
+        this.criadoEm = criadoEm;
+        this.atualizadoEm = atualizadoEm;
     }
 
-    public Emprestimo(ArrayList<Equipamento> equipamento, String nomeAluno, String turma, String observacoes,
+    public Emprestimo(List<Equipamento> equipamento, String nomeAluno, String turma, String observacoes,
             Usuario usuario) {
         this.equipamento = equipamento;
         this.nomeAluno = nomeAluno;
@@ -53,11 +54,11 @@ public class Emprestimo {
         this.dataDevolucaoEmprestimo = dataDevolucaoEmprestimo;
     }
 
-    public ArrayList<Equipamento> getEquipamento() {
+    public List<Equipamento> getEquipamento() {
         return equipamento;
     }
 
-    public void setEquipamento(ArrayList<Equipamento> equipamento) {
+    public void setEquipamento(List<Equipamento> equipamento) {
         this.equipamento = equipamento;
     }
 
