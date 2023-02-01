@@ -28,13 +28,11 @@ public class LoginController {
     @FXML
     public void autenticar() {
 
-        boolean erro = false;
-
         String email = tfUsuario.getText();
         String senha = tfSenha.getText();
 
         if(email.isBlank() || senha.isBlank()){
-            erro = true;
+            return;
         } else {
             Usuario usuario = usuarioRepository.autenticar(email, senha);
     

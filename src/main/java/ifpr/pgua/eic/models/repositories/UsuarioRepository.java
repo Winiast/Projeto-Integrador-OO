@@ -1,10 +1,20 @@
 package ifpr.pgua.eic.models.repositories;
 
-import java.security.MessageDigest;
 import java.util.List;
+import java.util.Properties;
 
 import ifpr.pgua.eic.models.daos.UsuarioDao;
 import ifpr.pgua.eic.models.entity.Usuario;
+import ifpr.pgua.eic.utils.Utils;
+
+import jakarta.mail.Address;
+import jakarta.mail.Authenticator;
+import jakarta.mail.Message;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
 public class UsuarioRepository {
 
@@ -15,13 +25,17 @@ public class UsuarioRepository {
     }
 
     public Usuario autenticar(String email, String senha) {
-        return usuarioDao.autenticar(email, gerarHash(senha));
+        return usuarioDao.autenticar(email, Utils.gerarHash(senha));
     }
 
-    public boolean cadastrar(Usuario usuario) {
-        usuario.setSenha(gerarHash(usuario.getSenha()));
+    public boolean cadastrar(String nome, String sobrenome, String email) {
+        String senha = Utils.gerarSenha(8);
 
-        return usuarioDao.cadastrar(usuario);
+        if(!enviarEmail(email, senha)){
+            return false;
+        } else {
+            return usuarioDao.cadastrar(new Usuario(nome, sobrenome, email, Utils.gerarHash(senha)));
+        }
     }
 
     public boolean atualizar(Usuario usuario) {
@@ -36,20 +50,50 @@ public class UsuarioRepository {
         return usuarioDao.buscarPorNome(nome);
     }
 
-    private String gerarHash(String senha) {
+
+    private boolean enviarEmail(String email, String senha) {
         try {
-            MessageDigest algorithm = MessageDigest.getInstance("SHA-1");
-            byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
 
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : messageDigest) {
-                hexString.append(String.format("%02X", 0xFF & b));
-            }
+            String msg = "Cadastro quase concluído, para finalizar o cadastro, insira está senha: " + senha + " na primeira vez em que for efetuar o login.";
+            String assunto = "Cadastro IFPR Emprestimos";
 
-            return hexString.toString();
+            String remetente = "ifpr.emprestimos@gmail.com";
+            Message message = new MimeMessage(criarSessionMail());
+            message.setFrom(new InternetAddress(remetente)); // Remetente
+
+            Address[] toUser = InternetAddress // Destinatário(s)
+                    .parse(email.trim().toLowerCase());
+
+            message.setRecipients(Message.RecipientType.TO, toUser);
+            message.setSubject(assunto);// Assunto
+            message.setContent(msg, "text/html");
+            /** Método para enviar a mensagem criada */
+            Transport.send(message);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
+    }
+
+    private Session criarSessionMail() {
+        Properties props = new Properties();
+
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", 465);
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", true);
+        props.put("mail.smtp.port", 465);
+
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("ifpr.emprestimos@gmail.com", "shmbgbhpwmcfnquf");
+            }
+        });
+
+        session.setDebug(true);
+
+        return session;
     }
 }
