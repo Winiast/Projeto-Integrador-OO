@@ -12,6 +12,7 @@ import ifpr.pgua.eic.models.jdbc.EquipamentoJDBC;
 import ifpr.pgua.eic.models.jdbc.EsporteJDBC;
 import ifpr.pgua.eic.models.jdbc.UsuarioJDBC;
 import ifpr.pgua.eic.models.repositories.EquipamentoRepository;
+import ifpr.pgua.eic.models.repositories.EsporteRepository;
 import ifpr.pgua.eic.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.controllers.equips.ListaEquipamentosController;
@@ -32,6 +33,7 @@ public class App extends BaseAppNavigator {
         private EquipamentoRepository equipamentoRepository;
         private EquipamentoDao equipamentoDao;
         private EsporteDao esporteDao;
+        private EsporteRepository esporteRepository;
 
         @Override
         public void init() throws Exception {
@@ -40,6 +42,7 @@ public class App extends BaseAppNavigator {
                 equipamentoDao = new EquipamentoJDBC(fabricaConexoes, esporteDao);
                 equipamentoRepository = new EquipamentoRepository(equipamentoDao);
                 esporteDao = new EsporteJDBC(fabricaConexoes);
+                esporteRepository = new EsporteRepository(esporteDao);
 
         }
 
@@ -85,7 +88,8 @@ public class App extends BaseAppNavigator {
 
                 registraTela("CADASTRO_EQUIPAMENTO",
                                 new ScreenRegistryFXML(getClass(), "fxml/equips/CadastroEquipamentos.fxml",
-                                                (o) -> new CadastroEquipamentosController(equipamentoRepository)));
+                                                (o) -> new CadastroEquipamentosController(equipamentoRepository,
+                                                                esporteRepository)));
 
                 registraTela("LISTA_EQUIPAMENTO",
                                 new ScreenRegistryFXML(getClass(), "fxml/equips/ListaEquipamentos.fxml",
