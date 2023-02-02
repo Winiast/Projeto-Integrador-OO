@@ -59,7 +59,6 @@
 	        </MFXComboBox>
 
             <MFXTextField  floatMode="BORDER" floatingText="Quantidade disponível" prefWidth="400" prefHeight="35" fx:id="tfQuantidade"/>
-            <MFXTextField  floatMode="BORDER" floatingText="Descrição" prefWidth="400" prefHeight="35" fx:id="tfDescricao"/>
             <MFXButton prefWidth="400.0" text="Cadastrar" styleClass="btn-submit" onAction="#cadastrar" />
         </children>
 
