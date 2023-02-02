@@ -62,18 +62,8 @@
 
            </HBox>
 
-            <MFXTableView prefWidth="1000" prefHeight="400" styleClass="form-tableView">
- 
-            <tableColumns>
-                    <MFXTableColumn prefWidth="200" text="Nome" />
-                    <MFXTableColumn prefWidth="200" text="Sobrenome" />
-                    <MFXTableColumn prefWidth="200" text="Email" />
-                    <MFXTableColumn prefWidth="200" text="Data de Criação" />
-                    <MFXTableColumn prefWidth="200" text="Ações" />
-            </tableColumns>
-           </MFXTableView>
+            <MFXTableView maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000" prefHeight="400" styleClass="form-tableView" fx:id="tbUsuarios"/>
 
-           
         </children>
 
         
