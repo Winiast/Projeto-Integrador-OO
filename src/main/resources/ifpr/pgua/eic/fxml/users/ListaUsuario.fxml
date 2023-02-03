@@ -61,12 +61,15 @@
                </HBox>
 
            </HBox>
-
-            <MFXTableView maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000" prefHeight="400" styleClass="form-tableView" fx:id="tbUsuarios"/>
-
+            <TableView maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000" prefHeight="400" fx:id="tbUsuarios" >
+                <columns>
+                    <TableColumn fx:id="tbcNome" prefWidth="200" text="Nome" />
+                    <TableColumn fx:id="tbcSobrenome" prefWidth="300" text="Sobrenome" />
+                    <TableColumn fx:id="tbcEmail" prefWidth="349" text="E-mail" />
+                    <TableColumn fx:id="tbcEditar" prefWidth="149" text="Editar" />
+                </columns>
+            </TableView>
         </children>
-
-        
     </VBox>
 
 

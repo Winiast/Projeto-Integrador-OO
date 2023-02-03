@@ -2,19 +2,27 @@ package ifpr.pgua.eic.controllers.users.viewmodel;
 
 import ifpr.pgua.eic.models.entity.Usuario;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class UsuarioRow {
 
     String nome;
     String sobrenome;
     String email;
-    Button btnEditar = new Button("Editar");
+    Button btnEditar;
 
-    public UsuarioRow(Usuario usuario, Button btnEditar) {
+    public UsuarioRow(Usuario usuario) {
         this.nome = usuario.getNome();
         this.sobrenome = usuario.getSobrenome();
         this.email = usuario.getEmail();
-        this.btnEditar = btnEditar;
+
+        Image image = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
+        ImageView imageView = new ImageView(image);
+
+        this.btnEditar = new Button("", imageView);
+        this.btnEditar.setPrefSize(25, 25);
+        this.btnEditar.setStyle("-fx-background-color: #0085FF;");
     }
 
     public String getNome() {
@@ -41,12 +49,12 @@ public class UsuarioRow {
         this.email = email;
     }
 
-    public String getBtnEditar() {
-        return btnEditar.getText();
+    public Button getBtnEditar() {
+        return btnEditar;
     }
 
     public void setBtnEditar(Button btnEditar) {
         this.btnEditar = btnEditar;
     }
-    
+
 }
