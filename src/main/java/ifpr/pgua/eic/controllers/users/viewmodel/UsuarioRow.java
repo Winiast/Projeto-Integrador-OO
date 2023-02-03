@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.controllers.users.viewmodel;
 
+import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
 import ifpr.pgua.eic.models.entity.Usuario;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
@@ -24,6 +26,10 @@ public class UsuarioRow {
         this.btnEditar = new MFXButton("", imageView);
         this.btnEditar.setPrefSize(25, 25);
         this.btnEditar.setStyle("-fx-background-color: #0085FF;");
+        this.btnEditar.setOnAction(event -> { 
+            CadastroUsuarioController.usuario = usuario;
+            App.pushScreen("CADASTRO_USUARIO");
+        });
     }
 
     public String getNome() {

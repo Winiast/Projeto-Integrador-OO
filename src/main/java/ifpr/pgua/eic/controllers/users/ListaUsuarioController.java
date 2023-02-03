@@ -61,6 +61,7 @@ public class ListaUsuarioController implements Initializable {
 
     @FXML
     public void cadastrar() {
+        CadastroUsuarioController.usuario = null;
         App.pushScreen("CADASTRO_USUARIO");
     }
 
