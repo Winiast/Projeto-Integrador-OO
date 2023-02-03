@@ -38,7 +38,7 @@
         <dependency>
             <groupId>io.github.palexdev</groupId>
             <artifactId>materialfx</artifactId>
-            <version>11.13.5</version>
+            <version>11.13.9</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/jakarta.mail/jakarta.mail-api -->

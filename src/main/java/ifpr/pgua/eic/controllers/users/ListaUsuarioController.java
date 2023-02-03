@@ -1,12 +1,42 @@
 package ifpr.pgua.eic.controllers.users;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioRow;
+import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioVM;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class ListaUsuarioController {
+public class ListaUsuarioController implements Initializable {
 
-    public ListaUsuarioController() {
+    // @FXML
+    // private MFXTableView<UsuarioRow> tbUsuarios;
 
+    @FXML
+    private TableView<UsuarioRow> tbUsuarios;
+
+    @FXML
+    private TableColumn<UsuarioRow, String> tbcNome;
+
+    @FXML
+    private TableColumn<UsuarioRow, String> tbcSobrenome;
+
+    @FXML
+    private TableColumn<UsuarioRow, String> tbcEmail;
+
+    @FXML
+    private TableColumn<UsuarioRow, Button> tbcEditar;
+
+    private UsuarioVM usuarioVM;
+
+    public ListaUsuarioController(UsuarioVM usuarioVM) {
+        this.usuarioVM = usuarioVM;
     }
 
     @FXML
@@ -44,4 +74,16 @@ public class ListaUsuarioController {
         App.pushScreen("LOGIN");
     }
 
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+
+        tbcNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tbcSobrenome.setCellValueFactory(new PropertyValueFactory<>("sobrenome"));
+        tbcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
+
+        usuarioVM.getUsuarios().forEach(usuario -> {
+            tbUsuarios.getItems().add(new UsuarioRow(usuario));
+        });
+    }
 }
