@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.controllers.users.viewmodel;
 
 import ifpr.pgua.eic.models.entity.Usuario;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,7 +21,7 @@ public class UsuarioRow {
         Image image = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
         ImageView imageView = new ImageView(image);
 
-        this.btnEditar = new Button("", imageView);
+        this.btnEditar = new MFXButton("", imageView);
         this.btnEditar.setPrefSize(25, 25);
         this.btnEditar.setStyle("-fx-background-color: #0085FF;");
     }

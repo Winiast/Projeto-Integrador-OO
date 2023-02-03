@@ -33,7 +33,7 @@ public class App extends BaseAppNavigator {
 
     @Override
     public String getHome() {
-        return "LISTA_EMPRESTIMO";
+        return "LOGIN";
     }
 
     @Override

@@ -133,8 +133,17 @@
     -fx-text-fill: #3a3a3a;
 }
 
+.table-row-cell .table-cell {
+    -fx-font-size: 15;
+}
+
 .table-row-cell:selected {
     -fx-background-color: #d9d9d9;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
+    -fx-text-fill: black;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: black;
 }
