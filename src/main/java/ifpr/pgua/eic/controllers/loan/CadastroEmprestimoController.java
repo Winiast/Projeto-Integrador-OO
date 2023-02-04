@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.controllers.loan;
 
 import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.models.repositories.EmprestimoRepository;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXListView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -8,7 +9,10 @@ import javafx.fxml.FXML;
 
 public class CadastroEmprestimoController {
 
-    public CadastroEmprestimoController() {
+    private EmprestimoRepository emprestimoRepository;
+
+    public CadastroEmprestimoController(EmprestimoRepository emprestimoRepository) {
+        this.emprestimoRepository = emprestimoRepository;
     }
 
     @FXML
@@ -64,5 +68,10 @@ public class CadastroEmprestimoController {
     @FXML
     public void equipamentoSelecionado() {
         System.out.println("Equipamento Selecionado");
+    }
+
+    @FXML
+    public void adicionar() {
+        System.out.println("Adicionado");
     }
 }
