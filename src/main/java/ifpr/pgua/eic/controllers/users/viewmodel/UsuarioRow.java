@@ -66,4 +66,11 @@ public class UsuarioRow {
         this.btnEditar = btnEditar;
     }
 
+    public Button getBtnExcluir() {
+        return btnExcluir;
+    }
+
+    public void setBtnExcluir(Button btnExcluir) {
+        this.btnExcluir = btnExcluir;
+    }
 }
