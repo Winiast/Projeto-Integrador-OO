@@ -11,12 +11,14 @@ import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import ifpr.pgua.eic.utils.Utils;
 
 public class CadastroEquipamentosController implements Initializable {
 
     private EquipamentoRepository equipamentoRepository;
     private EsporteRepository esporteRepository;
+    private Utils exibe;
 
     @FXML
     private MFXTextField tfNomeEquipamento;
@@ -70,18 +72,13 @@ public class CadastroEquipamentosController implements Initializable {
         Estado estado = estadoInput.getValue();
 
         equipamentoRepository.cadastrar(nome, esporte, quantidade, estado);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
         tfNomeEquipamento.clear();
         esporteInput.clear();
         tfQuantidade.clear();
         estadoInput.clear();
 
-        alert.setTitle("Cadastro de Equipamentos");
-        alert.setHeaderText("Cadastro de Equipamentos");
-        alert.setContentText("Equipamento cadastrado com sucesso!");
-        alert.showAndWait();
-
+        exibe.exibeAlert(AlertType.CONFIRMATION, "Equipamento cadastrado com sucesso!").showAndWait();
     }
 
     @Override
