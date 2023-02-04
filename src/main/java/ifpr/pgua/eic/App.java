@@ -81,15 +81,8 @@ public class App extends BaseAppNavigator {
         registraTela("LISTA_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/ListaEsporte.fxml",
                 (o) -> new EsporteListaController()));
 
-        registraTela("CADASTRO_USUARIO",
-                new ScreenRegistryFXML(getClass(), "fxml/users/CadastroUsuario.fxml",
-                        (o) -> new CadastroUsuarioController(usuarioRepository)));
-        registraTela("LISTA_USUARIO",
-                new ScreenRegistryFXML(getClass(), "fxml/users/ListaUsuario.fxml",
-                        (o) -> new ListaUsuarioController(new UsuarioVM(usuarioRepository))));
-        registraTela("LOGIN",
-                new ScreenRegistryFXML(getClass(), "fxml/auth/Login.fxml",
-                        (o) -> new LoginController(usuarioRepository)));
+        registraTela("CADASTRO_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/spots/CadastroEsporte.fxml",
+                (o) -> new EsporteCadastroController()));
 
         registraTela("ALTERAR_SENHA",
                 new ScreenRegistryFXML(getClass(), "fxml/auth/AlterarSenha.fxml",

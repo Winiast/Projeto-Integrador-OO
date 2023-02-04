@@ -16,7 +16,7 @@ public class UsuarioRow {
     Button btnEditar;
     Button btnExcluir;
 
-    public UsuarioRow(Usuario usuario) {
+    public UsuarioRow(Usuario usuario, UsuarioVM usuarioVM) {
         this.nome = usuario.getNome();
         this.sobrenome = usuario.getSobrenome();
         this.email = usuario.getEmail();
@@ -27,18 +27,20 @@ public class UsuarioRow {
         Image imageDelete = new Image(getClass().getResourceAsStream("../../../images/trash.png"));
         ImageView imageViewDelete = new ImageView(imageDelete);
 
-        this.btnEditar = new MFXButton("", imageViewEdit);
-        this.btnEditar.setPrefSize(25, 25);
-        this.btnEditar.setStyle("-fx-background-color: #0085FF;");
-        this.btnEditar.setOnAction(event -> {
+        btnEditar = new MFXButton("", imageViewEdit);
+        btnEditar.setPrefSize(25, 25);
+        btnEditar.setStyle("-fx-background-color: #0085FF;");
+        btnEditar.setOnAction(event -> {
             CadastroUsuarioController.usuario = usuario;
             App.pushScreen("CADASTRO_USUARIO");
         });
 
-        this.btnExcluir = new MFXButton("", imageViewDelete);
-        this.btnExcluir.setPrefSize(25, 25);
-        this.btnExcluir.setStyle("-fx-background-color: #red;");
-
+        btnExcluir = new MFXButton("", imageViewDelete);
+        btnExcluir.setPrefSize(25, 25);
+        btnExcluir.setStyle("-fx-background-color: red;");
+        btnExcluir.setOnAction(event -> {
+            usuarioVM.deletarUsuario(usuario);
+        });
     }
 
     public String getNome() {
