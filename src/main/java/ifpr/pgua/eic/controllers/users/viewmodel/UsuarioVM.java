@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class UsuarioVM {
-    
+
     private StringProperty nome = new SimpleStringProperty();
     private StringProperty sobrenome = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
@@ -24,8 +24,12 @@ public class UsuarioVM {
     }
 
     private void carregarLista() {
-        // usuarios.clear();
+        usuarios.clear();
         usuarios.addAll(usuarioRepository.buscarTodos());
+    }
+
+    public boolean deletarUsuario(Usuario usuario) {
+        return usuarioRepository.excluir(usuario);
     }
 
     public StringProperty getNome() {

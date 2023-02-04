@@ -6,17 +6,17 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioRow;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioVM;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class ListaUsuarioController implements Initializable {
-
-    // @FXML
-    // private MFXTableView<UsuarioRow> tbUsuarios;
 
     @FXML
     private TableView<UsuarioRow> tbUsuarios;
@@ -32,6 +32,9 @@ public class ListaUsuarioController implements Initializable {
 
     @FXML
     private TableColumn<UsuarioRow, Button> tbcEditar;
+
+    @FXML
+    private TableColumn<UsuarioRow, Button> tbcExcluir;
 
     private UsuarioVM usuarioVM;
 
@@ -61,6 +64,7 @@ public class ListaUsuarioController implements Initializable {
 
     @FXML
     public void cadastrar() {
+        CadastroUsuarioController.usuario = null;
         App.pushScreen("CADASTRO_USUARIO");
     }
 
@@ -81,9 +85,10 @@ public class ListaUsuarioController implements Initializable {
         tbcSobrenome.setCellValueFactory(new PropertyValueFactory<>("sobrenome"));
         tbcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
+        tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
         usuarioVM.getUsuarios().forEach(usuario -> {
-            tbUsuarios.getItems().add(new UsuarioRow(usuario));
+            tbUsuarios.getItems().add(new UsuarioRow(usuario, usuarioVM));
         });
     }
 }

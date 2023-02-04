@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.controllers.users.viewmodel;
 
+import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
 import ifpr.pgua.eic.models.entity.Usuario;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
@@ -12,18 +14,33 @@ public class UsuarioRow {
     String sobrenome;
     String email;
     Button btnEditar;
+    Button btnExcluir;
 
-    public UsuarioRow(Usuario usuario) {
+    public UsuarioRow(Usuario usuario, UsuarioVM usuarioVM) {
         this.nome = usuario.getNome();
         this.sobrenome = usuario.getSobrenome();
         this.email = usuario.getEmail();
 
-        Image image = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
-        ImageView imageView = new ImageView(image);
+        Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
+        ImageView imageViewEdit = new ImageView(imageEdit);
 
-        this.btnEditar = new MFXButton("", imageView);
-        this.btnEditar.setPrefSize(25, 25);
-        this.btnEditar.setStyle("-fx-background-color: #0085FF;");
+        Image imageDelete = new Image(getClass().getResourceAsStream("../../../images/trash.png"));
+        ImageView imageViewDelete = new ImageView(imageDelete);
+
+        btnEditar = new MFXButton("", imageViewEdit);
+        btnEditar.setPrefSize(25, 25);
+        btnEditar.setStyle("-fx-background-color: #0085FF;");
+        btnEditar.setOnAction(event -> {
+            CadastroUsuarioController.usuario = usuario;
+            App.pushScreen("CADASTRO_USUARIO");
+        });
+
+        btnExcluir = new MFXButton("", imageViewDelete);
+        btnExcluir.setPrefSize(25, 25);
+        btnExcluir.setStyle("-fx-background-color: red;");
+        btnExcluir.setOnAction(event -> {
+            usuarioVM.deletarUsuario(usuario);
+        });
     }
 
     public String getNome() {
@@ -58,4 +75,11 @@ public class UsuarioRow {
         this.btnEditar = btnEditar;
     }
 
+    public Button getBtnExcluir() {
+        return btnExcluir;
+    }
+
+    public void setBtnExcluir(Button btnExcluir) {
+        this.btnExcluir = btnExcluir;
+    }
 }
