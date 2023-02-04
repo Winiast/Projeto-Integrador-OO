@@ -1,21 +1,41 @@
 package ifpr.pgua.eic.controllers.equips;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.models.entity.Esporte;
+import ifpr.pgua.eic.models.entity.Estado;
+import ifpr.pgua.eic.models.repositories.EquipamentoRepository;
+import ifpr.pgua.eic.models.repositories.EsporteRepository;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
+import ifpr.pgua.eic.utils.Utils;
 
-public class CadastroEquipamentosController {
+public class CadastroEquipamentosController implements Initializable {
+
+    private EquipamentoRepository equipamentoRepository;
+    private EsporteRepository esporteRepository;
+    private Utils exibe;
 
     @FXML
     private MFXTextField tfNomeEquipamento;
 
     @FXML
-    private MFXTextField tfDescricao;
-
-    @FXML
     private MFXTextField tfQuantidade;
 
-    public CadastroEquipamentosController() {
+    @FXML
+    private MFXComboBox<Estado> estadoInput;
+
+    @FXML
+    private MFXComboBox<Esporte> esporteInput;
+
+    public CadastroEquipamentosController(EquipamentoRepository equipamentoRepository,
+            EsporteRepository esporteRepository) {
+        this.equipamentoRepository = equipamentoRepository;
+        this.esporteRepository = esporteRepository;
     }
 
     @FXML
@@ -45,17 +65,28 @@ public class CadastroEquipamentosController {
 
     @FXML
     public void cadastrar() {
-        System.out.println("Cadastrar Equipamento");
+
+        String nome = tfNomeEquipamento.getText();
+        Esporte esporte = esporteInput.getValue();
+        Integer quantidade = Integer.valueOf(tfQuantidade.getText());
+        Estado estado = estadoInput.getValue();
+
+        equipamentoRepository.cadastrar(nome, esporte, quantidade, estado);
+
+        tfNomeEquipamento.clear();
+        esporteInput.clear();
+        tfQuantidade.clear();
+        estadoInput.clear();
+
+        exibe.exibeAlert(AlertType.CONFIRMATION, "Equipamento cadastrado com sucesso!").showAndWait();
     }
 
-    @FXML
-    public void estadoSelecionado() {
-        System.out.println("Estado Selecionado");
-    }
-
-    @FXML
-    public void esporteSelecionado() {
-        System.out.println("Esporte Selecionado");
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        estadoInput.getItems().clear();
+        esporteInput.getItems().clear();
+        estadoInput.getItems().addAll(Estado.values());
+        esporteInput.getItems().addAll(esporteRepository.lista());
     }
 
 }

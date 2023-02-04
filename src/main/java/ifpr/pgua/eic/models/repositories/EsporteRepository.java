@@ -28,6 +28,10 @@ public class EsporteRepository {
         return esporteDao.buscarPorNome(nome);
     }
 
+    public Esporte buscarPorId(long id) {
+        return esporteDao.buscarPorId(id);
+    }
+
     public List<Esporte> lista() {
         return esporteDao.buscarTodos();
     }
