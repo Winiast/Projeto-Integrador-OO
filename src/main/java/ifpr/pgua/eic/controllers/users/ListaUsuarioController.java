@@ -33,6 +33,9 @@ public class ListaUsuarioController implements Initializable {
     @FXML
     private TableColumn<UsuarioRow, Button> tbcEditar;
 
+    @FXML
+    private TableColumn<UsuarioRow, Button> tbcExcluir;
+
     private UsuarioVM usuarioVM;
 
     public ListaUsuarioController(UsuarioVM usuarioVM) {
@@ -81,6 +84,7 @@ public class ListaUsuarioController implements Initializable {
         tbcSobrenome.setCellValueFactory(new PropertyValueFactory<>("sobrenome"));
         tbcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
+        tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
         usuarioVM.getUsuarios().forEach(usuario -> {
             tbUsuarios.getItems().add(new UsuarioRow(usuario));

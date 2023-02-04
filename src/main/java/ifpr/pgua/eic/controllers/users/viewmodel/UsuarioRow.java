@@ -12,18 +12,26 @@ public class UsuarioRow {
     String sobrenome;
     String email;
     Button btnEditar;
+    Button btnExcluir;
 
     public UsuarioRow(Usuario usuario) {
         this.nome = usuario.getNome();
         this.sobrenome = usuario.getSobrenome();
         this.email = usuario.getEmail();
 
-        Image image = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
-        ImageView imageView = new ImageView(image);
+        Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
+        ImageView imageViewEdit = new ImageView(imageEdit);
 
-        this.btnEditar = new MFXButton("", imageView);
+        Image imageDelete = new Image(getClass().getResourceAsStream("../../../images/trash.png"));
+        ImageView imageViewDelete = new ImageView(imageDelete);
+
+        this.btnEditar = new MFXButton("", imageViewEdit);
         this.btnEditar.setPrefSize(25, 25);
         this.btnEditar.setStyle("-fx-background-color: #0085FF;");
+
+        this.btnExcluir = new MFXButton("", imageViewDelete);
+        this.btnExcluir.setPrefSize(25, 25);
+        this.btnExcluir.setStyle("-fx-background-color: red;");
     }
 
     public String getNome() {
