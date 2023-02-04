@@ -3,6 +3,7 @@ package ifpr.pgua.eic;
 import ifpr.pgua.eic.controllers.auth.*;
 import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
 import ifpr.pgua.eic.controllers.users.ListaUsuarioController;
+import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioVM;
 import ifpr.pgua.eic.models.FabricaConexoes;
 import ifpr.pgua.eic.models.daos.EquipamentoDao;
 import ifpr.pgua.eic.models.daos.EsporteDao;
@@ -48,7 +49,7 @@ public class App extends BaseAppNavigator {
 
         @Override
         public String getHome() {
-                return "CADASTRO_EQUIPAMENTO";
+                return "LOGIN";
         }
 
         @Override
@@ -77,7 +78,7 @@ public class App extends BaseAppNavigator {
                                                 (o) -> new CadastroUsuarioController(usuarioRepository)));
                 registraTela("LISTA_USUARIO",
                                 new ScreenRegistryFXML(getClass(), "fxml/users/ListaUsuario.fxml",
-                                                (o) -> new ListaUsuarioController()));
+                                                (o) -> new ListaUsuarioController(new UsuarioVM(usuarioRepository))));
                 registraTela("LOGIN",
                                 new ScreenRegistryFXML(getClass(), "fxml/auth/Login.fxml",
                                                 (o) -> new LoginController(usuarioRepository)));
