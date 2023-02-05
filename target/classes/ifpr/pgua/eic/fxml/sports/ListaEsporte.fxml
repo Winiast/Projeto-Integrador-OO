@@ -24,7 +24,7 @@
 
 <HBox prefHeight="720.0" prefWidth="1280.0" 
         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="3.0"
-        stylesheets="@../../styles/sports/EsporteLista.css" fx:controller="ifpr.pgua.eic.controllers.sports.EsporteListaController" >
+        stylesheets="@../../styles/Global.css, @../../styles/sports/EsporteLista.css" fx:controller="ifpr.pgua.eic.controllers.sports.EsporteListaController" >
          
     <VBox prefHeight="720.0" prefWidth="200.0" alignment="center" styleClass="container-menu" spacing="10.0">
         <children>
@@ -62,21 +62,15 @@
 
            </HBox>
 
-            <MFXTableView prefWidth="1000" prefHeight="400" styleClass="form-tableView">
- 
-            <tableColumns>
-
-               <MFXTableColumn prefWidth="333" text="Nome" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="333" text="Descrição" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="333" text="Status" styleClass="form-tableView-Column"/>
-       
-            </tableColumns>
-           </MFXTableView>
-
-           
+            <TableView maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000" prefHeight="400" fx:id="tbEsportes" >
+                <columns>
+                    <TableColumn fx:id="tbcNome" prefWidth="400" text="Nome" />
+                    <TableColumn fx:id="tbcDescricao" prefWidth="450" text="Descrição" />
+                    <TableColumn fx:id="tbcEditar" prefWidth="74.5" text="Editar" />
+                    <TableColumn fx:id="tbcExcluir" prefWidth="74.5" text="Excluir" />
+                </columns>
+            </TableView>
         </children>
-
-        
     </VBox>
 
 

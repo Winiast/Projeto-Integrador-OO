@@ -24,6 +24,7 @@ import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.controllers.loan.ListaEmprestimoController;
 import ifpr.pgua.eic.controllers.sports.EsporteCadastroController;
 import ifpr.pgua.eic.controllers.sports.EsporteListaController;
+import ifpr.pgua.eic.controllers.sports.viewmodel.EsporteVM;
 import ifpr.pgua.eic.utils.Navigator.BaseAppNavigator;
 import ifpr.pgua.eic.utils.Navigator.ScreenRegistryFXML;
 
@@ -86,7 +87,7 @@ public class App extends BaseAppNavigator {
                                                 (o) -> new LoginController(usuarioRepository)));
 
                 registraTela("LISTA_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/sports/ListaEsporte.fxml",
-                                (o) -> new EsporteListaController()));
+                                (o) -> new EsporteListaController(new EsporteVM(esporteRepository))));
 
                 registraTela("CADASTRO_ESPORTE", new ScreenRegistryFXML(getClass(), "fxml/spots/CadastroEsporte.fxml",
                                 (o) -> new EsporteCadastroController()));
