@@ -1,25 +1,39 @@
 package ifpr.pgua.eic.controllers.loan;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.models.entity.Emprestimo;
+import ifpr.pgua.eic.models.entity.Equipamento;
 import ifpr.pgua.eic.models.repositories.EmprestimoRepository;
+import ifpr.pgua.eic.models.repositories.EquipamentoRepository;
+import ifpr.pgua.eic.utils.Utils;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXListView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 
-public class CadastroEmprestimoController {
+public class CadastroEmprestimoController implements Initializable {
 
     private EmprestimoRepository emprestimoRepository;
+    private EquipamentoRepository equipamentoRepository;
+    private Utils alert;
 
-    public CadastroEmprestimoController(EmprestimoRepository emprestimoRepository) {
+    public CadastroEmprestimoController(EmprestimoRepository emprestimoRepository,
+            EquipamentoRepository equipamentoRepository) {
         this.emprestimoRepository = emprestimoRepository;
+        this.equipamentoRepository = equipamentoRepository;
     }
 
     @FXML
     private MFXTextField tfNomeAluno;
 
     @FXML
-    private MFXComboBox turmaInput;
+    private MFXTextField turmaInput;
 
     @FXML
     private MFXComboBox equipamentoInput;
@@ -57,21 +71,31 @@ public class CadastroEmprestimoController {
 
     @FXML
     public void cadastrar() {
-        System.out.println("Cadastrando Empréstimo");
-    }
 
-    @FXML
-    public void turmaSelecionada() {
-        System.out.println("Turma Selecionada");
-    }
+        List<Equipamento> equipamentos = equipamentosSelecionados.getItems();
+        String nomeAluno = tfNomeAluno.getText();
+        String turma = turmaInput.getText();
+        String observacoes = tfObservacao.getText();
 
-    @FXML
-    public void equipamentoSelecionado() {
-        System.out.println("Equipamento Selecionado");
+        emprestimoRepository.cadastrar(new Emprestimo(equipamentos, nomeAluno, turma, observacoes, App.usuarioLogado));
+
+        equipamentosSelecionados.getItems().clear();
+        tfNomeAluno.clear();
+        turmaInput.clear();
+        tfObservacao.clear();
+
+        alert.exibeAlert(AlertType.CONFIRMATION, "Emprestimo cadastrado com sucesso!").showAndWait();
     }
 
     @FXML
     public void adicionar() {
-        System.out.println("Adicionado");
+        equipamentosSelecionados.getItems().add(equipamentoInput.getValue());
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        List<Equipamento> listaDeEquipamentos = equipamentoRepository.listarTodos();
+        equipamentoInput.getItems().addAll(listaDeEquipamentos);
+
     }
 }

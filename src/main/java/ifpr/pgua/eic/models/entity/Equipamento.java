@@ -96,4 +96,9 @@ public class Equipamento {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
 }

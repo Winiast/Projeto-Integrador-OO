@@ -70,7 +70,8 @@ public class App extends BaseAppNavigator {
 
                 registraTela("CADASTRO_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/CadastroEmprestimo.fxml",
-                                                (o) -> new CadastroEmprestimoController(emprestimoRepository)));
+                                                (o) -> new CadastroEmprestimoController(emprestimoRepository,
+                                                                equipamentoRepository)));
                 registraTela("LISTA_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/ListaEmprestimo.fxml",
                                                 (o) -> new ListaEmprestimoController()));
