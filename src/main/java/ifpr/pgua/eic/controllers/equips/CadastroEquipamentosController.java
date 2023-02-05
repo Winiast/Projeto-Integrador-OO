@@ -86,7 +86,7 @@ public class CadastroEquipamentosController implements Initializable {
         estadoInput.getItems().clear();
         esporteInput.getItems().clear();
         estadoInput.getItems().addAll(Estado.values());
-        esporteInput.getItems().addAll(esporteRepository.lista());
+        esporteInput.getItems().addAll(esporteRepository.buscarTodos());
     }
 
 }

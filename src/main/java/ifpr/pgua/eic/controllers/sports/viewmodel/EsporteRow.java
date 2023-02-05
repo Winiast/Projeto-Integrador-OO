@@ -1,25 +1,21 @@
-package ifpr.pgua.eic.controllers.users.viewmodel;
+package ifpr.pgua.eic.controllers.sports.viewmodel;
 
-import ifpr.pgua.eic.App;
-import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
-import ifpr.pgua.eic.models.entity.Usuario;
+import ifpr.pgua.eic.models.entity.Esporte;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class UsuarioRow {
+public class EsporteRow {
 
     private String nome;
-    private String sobrenome;
-    private String email;
+    private String descricao;
     private Button btnEditar;
     private Button btnExcluir;
 
-    public UsuarioRow(Usuario usuario, UsuarioVM usuarioVM) {
-        this.nome = usuario.getNome();
-        this.sobrenome = usuario.getSobrenome();
-        this.email = usuario.getEmail();
+    public EsporteRow(Esporte esporte) {
+        this.nome = esporte.getNome();
+        this.descricao = esporte.getDescricao();
 
         Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
         ImageView imageViewEdit = new ImageView(imageEdit);
@@ -30,17 +26,10 @@ public class UsuarioRow {
         btnEditar = new MFXButton("", imageViewEdit);
         btnEditar.setPrefSize(25, 25);
         btnEditar.setStyle("-fx-background-color: #0085FF;");
-        btnEditar.setOnAction(event -> {
-            CadastroUsuarioController.usuario = usuario;
-            App.pushScreen("CADASTRO_USUARIO");
-        });
 
         btnExcluir = new MFXButton("", imageViewDelete);
         btnExcluir.setPrefSize(25, 25);
         btnExcluir.setStyle("-fx-background-color: red;");
-        btnExcluir.setOnAction(event -> {
-            usuarioVM.deletarUsuario(usuario);
-        });
     }
 
     public String getNome() {
@@ -51,20 +40,12 @@ public class UsuarioRow {
         this.nome = nome;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Button getBtnEditar() {
@@ -82,4 +63,5 @@ public class UsuarioRow {
     public void setBtnExcluir(Button btnExcluir) {
         this.btnExcluir = btnExcluir;
     }
+
 }

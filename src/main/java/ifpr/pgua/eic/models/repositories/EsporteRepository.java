@@ -32,7 +32,7 @@ public class EsporteRepository {
         return esporteDao.buscarPorId(id);
     }
 
-    public List<Esporte> lista() {
+    public List<Esporte> buscarTodos() {
         return esporteDao.buscarTodos();
     }
 }
