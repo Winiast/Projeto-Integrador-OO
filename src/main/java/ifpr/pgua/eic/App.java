@@ -20,6 +20,7 @@ import ifpr.pgua.eic.models.repositories.EsporteRepository;
 import ifpr.pgua.eic.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.controllers.equips.ListaEquipamentosController;
+import ifpr.pgua.eic.controllers.equips.viewmodel.EquipamentoVM;
 import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.controllers.loan.ListaEmprestimoController;
 import ifpr.pgua.eic.controllers.sports.EsporteCadastroController;
@@ -106,7 +107,7 @@ public class App extends BaseAppNavigator {
 
                 registraTela("LISTA_EQUIPAMENTO",
                                 new ScreenRegistryFXML(getClass(), "fxml/equips/ListaEquipamentos.fxml",
-                                                (o) -> new ListaEquipamentosController()));
+                                                (o) -> new ListaEquipamentosController(new EquipamentoVM(equipamentoRepository))));
 
         }
 }

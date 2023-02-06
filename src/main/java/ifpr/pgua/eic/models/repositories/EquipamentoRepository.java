@@ -27,7 +27,7 @@ public class EquipamentoRepository {
         return equipamentoDao.excluir(equipamento.getId());
     }
 
-    public List<Equipamento> listarTodos() {
+    public List<Equipamento> buscarTodos() {
         return equipamentoDao.buscarTodos();
     }
 
