@@ -36,10 +36,10 @@ public class CadastroEmprestimoController implements Initializable {
     private MFXTextField turmaInput;
 
     @FXML
-    private MFXComboBox equipamentoInput;
+    private MFXComboBox<Equipamento> equipamentoInput;
 
     @FXML
-    private MFXListView equipamentosSelecionados;
+    private MFXListView<Equipamento> equipamentosSelecionados;
 
     @FXML
     private MFXTextField tfObservacao;
@@ -83,6 +83,7 @@ public class CadastroEmprestimoController implements Initializable {
         tfNomeAluno.clear();
         turmaInput.clear();
         tfObservacao.clear();
+        equipamentoInput.clear();
 
         alert.exibeAlert(AlertType.CONFIRMATION, "Emprestimo cadastrado com sucesso!").showAndWait();
     }
@@ -94,8 +95,10 @@ public class CadastroEmprestimoController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        List<Equipamento> listaDeEquipamentos = equipamentoRepository.listarTodos();
-        equipamentoInput.getItems().addAll(listaDeEquipamentos);
+        equipamentoInput.getItems().clear();
 
+        // equipamentoInput.getItems().addAll(equipamentoRepository.listarTodos());
+
+        // Erro na hora de adicionar o equipamento a comboBox, o que pode ser?
     }
 }

@@ -100,5 +100,4 @@ public class Equipamento {
     public String toString() {
         return nome;
     }
-
 }
