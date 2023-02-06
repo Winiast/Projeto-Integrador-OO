@@ -98,9 +98,7 @@ public class CadastroEmprestimoController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         equipamentoInput.getItems().clear();
-        equipamentoInput.getItems().add("raquete");
-
-        // equipamentoInput.getItems().addAll(equipamentoRepository.listarTodos());
+        equipamentoInput.getItems().addAll(equipamentoRepository.listarTodos());
 
     }
 
