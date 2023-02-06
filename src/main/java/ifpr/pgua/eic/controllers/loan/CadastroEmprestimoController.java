@@ -36,10 +36,10 @@ public class CadastroEmprestimoController implements Initializable {
     private MFXTextField turmaInput;
 
     @FXML
-    private MFXComboBox<Equipamento> equipamentoInput;
+    private MFXComboBox equipamentoInput;
 
     @FXML
-    private MFXListView<Equipamento> equipamentosSelecionados;
+    private MFXListView equipamentosSelecionados;
 
     @FXML
     private MFXTextField tfObservacao;
@@ -77,15 +77,17 @@ public class CadastroEmprestimoController implements Initializable {
         String turma = turmaInput.getText();
         String observacoes = tfObservacao.getText();
 
-        emprestimoRepository.cadastrar(new Emprestimo(equipamentos, nomeAluno, turma, observacoes, App.usuarioLogado));
+        if (verifyFields()) {
+            alert.exibeAlert(AlertType.ERROR, "Preencha todos os campos!").showAndWait();
+            return;
+        } else {
+            emprestimoRepository
+                    .cadastrar(new Emprestimo(equipamentos, nomeAluno, turma, observacoes, App.usuarioLogado));
+            limparCampos();
+            alert.exibeAlert(AlertType.CONFIRMATION, "Emprestimo cadastrado com sucesso!").showAndWait();
+            App.pushScreen("LISTA_EMPRESTIMO");
+        }
 
-        equipamentosSelecionados.getItems().clear();
-        tfNomeAluno.clear();
-        turmaInput.clear();
-        tfObservacao.clear();
-        equipamentoInput.clear();
-
-        alert.exibeAlert(AlertType.CONFIRMATION, "Emprestimo cadastrado com sucesso!").showAndWait();
     }
 
     @FXML
@@ -96,9 +98,42 @@ public class CadastroEmprestimoController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         equipamentoInput.getItems().clear();
+        equipamentoInput.getItems().add("raquete");
 
         // equipamentoInput.getItems().addAll(equipamentoRepository.listarTodos());
 
-        // Erro na hora de adicionar o equipamento a comboBox, o que pode ser?
+    }
+
+    private void limparCampos() {
+        tfNomeAluno.clear();
+        turmaInput.clear();
+        tfObservacao.clear();
+        equipamentoInput.clear();
+        equipamentosSelecionados.getItems().clear();
+
+    }
+
+    private boolean verifyFields() {
+        if (tfNomeAluno.getText().isEmpty()) {
+            tfNomeAluno.styleProperty().set("-fx-border-color: red");
+        } else {
+            tfNomeAluno.styleProperty().set("-fx-border-color: #329e43");
+        }
+
+        if (turmaInput.getText().isEmpty()) {
+            turmaInput.styleProperty().set("-fx-border-color: red");
+        } else {
+            turmaInput.styleProperty().set("-fx-border-color: #329e43");
+        }
+
+        if (equipamentosSelecionados.getItems().isEmpty()) {
+            equipamentoInput.styleProperty().set("-fx-border-color: red");
+        } else {
+            equipamentoInput.styleProperty().set("-fx-border-color: #329e43");
+        }
+
+        return tfNomeAluno.getText().isEmpty() || turmaInput.getText().isEmpty()
+                || equipamentosSelecionados.getItems().isEmpty();
+
     }
 }
