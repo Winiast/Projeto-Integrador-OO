@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.FabricaConexoes;
 import ifpr.pgua.eic.models.daos.EsporteDao;
 import ifpr.pgua.eic.models.entity.Esporte;
@@ -34,6 +35,9 @@ public class EsporteJDBC implements EsporteDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(INSERT);
             statement.setString(1, esporte.getNome());
             statement.setString(2, esporte.getDescricao());
@@ -44,6 +48,8 @@ public class EsporteJDBC implements EsporteDao {
 
             statement.close();
             con.close();
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -57,6 +63,9 @@ public class EsporteJDBC implements EsporteDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(UPDATE);
             statement.setString(1, esporte.getNome());
             statement.setString(2, esporte.getDescricao());
@@ -68,6 +77,8 @@ public class EsporteJDBC implements EsporteDao {
 
             statement.close();
             con.close();
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -80,6 +91,10 @@ public class EsporteJDBC implements EsporteDao {
     public Boolean excluir(long id) {
         try {
             Connection con = fabricaConexoes.getConnection();
+            
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
 
             PreparedStatement statement = con.prepareStatement(DELETE);
             statement.setBoolean(1, false);
@@ -90,6 +105,8 @@ public class EsporteJDBC implements EsporteDao {
 
             statement.close();
             con.close();
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -102,6 +119,8 @@ public class EsporteJDBC implements EsporteDao {
     public List<Esporte> buscarTodos() {
         try {
             Connection con = fabricaConexoes.getConnection();
+            App.conexoes++;
+            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT_ALL);
 
@@ -112,8 +131,11 @@ public class EsporteJDBC implements EsporteDao {
                 esportes.add(buildObject(resultSet));
             }
 
+            resultSet.close();
             statement.close();
             con.close();
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return esportes;
         } catch (Exception e) {
@@ -126,6 +148,8 @@ public class EsporteJDBC implements EsporteDao {
     public List<Esporte> buscarPorNome(String nome) {
         try {
             Connection con = fabricaConexoes.getConnection();
+            App.conexoes++;
+            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT_BY_NAME);
             statement.setString(1, nome + "%");
@@ -137,8 +161,11 @@ public class EsporteJDBC implements EsporteDao {
                 esportes.add(buildObject(resultSet));
             }
 
+            resultSet.close();
             statement.close();
             con.close();
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return esportes;
         } catch (Exception e) {
@@ -151,20 +178,27 @@ public class EsporteJDBC implements EsporteDao {
     public Esporte buscarPorId(long id) {
         try {
             Connection con = fabricaConexoes.getConnection();
+            App.conexoes++;
+            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT_BY_ID);
             statement.setLong(1, id);
 
             ResultSet resultSet = statement.executeQuery();
 
+            Esporte esporte = new Esporte();
             if (resultSet.next()) {
-                return buildObject(resultSet);
+                esporte = buildObject(resultSet);
             }
 
+            resultSet.close();
             statement.close();
             con.close();
 
-            return null;
+            App.conexoes--;
+            System.out.println(App.conexoes);
+
+            return esporte;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -22,6 +22,7 @@ import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.controllers.equips.ListaEquipamentosController;
 import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.controllers.loan.ListaEmprestimoController;
+import ifpr.pgua.eic.controllers.loan.viewmodel.EmprestimoVM;
 import ifpr.pgua.eic.controllers.sports.EsporteCadastroController;
 import ifpr.pgua.eic.controllers.sports.EsporteListaController;
 import ifpr.pgua.eic.controllers.sports.viewmodel.EsporteVM;
@@ -29,6 +30,8 @@ import ifpr.pgua.eic.utils.Navigator.BaseAppNavigator;
 import ifpr.pgua.eic.utils.Navigator.ScreenRegistryFXML;
 
 public class App extends BaseAppNavigator {
+
+        public static int conexoes = 0;
 
         public static Usuario usuarioLogado;
         private FabricaConexoes fabricaConexoes = FabricaConexoes.getInstance();
@@ -76,7 +79,7 @@ public class App extends BaseAppNavigator {
                                                                 equipamentoRepository)));
                 registraTela("LISTA_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/ListaEmprestimo.fxml",
-                                                (o) -> new ListaEmprestimoController()));
+                                                (o) -> new ListaEmprestimoController(new EmprestimoVM(emprestimoRepository))));
 
                 registraTela("CADASTRO_USUARIO",
                                 new ScreenRegistryFXML(getClass(), "fxml/users/CadastroUsuario.fxml",

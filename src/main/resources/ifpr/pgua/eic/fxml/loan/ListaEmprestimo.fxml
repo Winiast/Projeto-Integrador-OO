@@ -24,7 +24,7 @@
 
 <HBox prefHeight="720.0" prefWidth="1280.0" 
         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="3.0"
-        stylesheets="@../../styles/sports/EsporteLista.css" fx:controller="ifpr.pgua.eic.controllers.loan.ListaEmprestimoController" >
+        stylesheets="@../../styles/Global.css, @../../styles/sports/EsporteLista.css" fx:controller="ifpr.pgua.eic.controllers.loan.ListaEmprestimoController" >
          
     <VBox prefHeight="720.0" prefWidth="200.0" alignment="center" styleClass="container-menu" spacing="10.0">
         <children>
@@ -62,23 +62,18 @@
 
            </HBox>
 
-            <MFXTableView prefWidth="1000" prefHeight="400" styleClass="form-tableView">
- 
-            <tableColumns>
-
-               <MFXTableColumn prefWidth="200" text="Nome Aluno" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Equipamento" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Turma" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Observações" styleClass="form-tableView-Column"/>
-               <MFXTableColumn prefWidth="200" text="Quem Registrou" styleClass="form-tableView-Column"/>
-            </tableColumns>
-           </MFXTableView>
-
-           
+            <TableView maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000" prefHeight="400" fx:id="tbEmprestimo" >
+                <columns>
+                    <TableColumn fx:id="tbcNomeAluno" prefWidth="170" text="Nome do Aluno" />
+                    <TableColumn fx:id="tbcTurma" prefWidth="120" text="Turma" />
+                    <TableColumn fx:id="tbcEquipamentos" prefWidth="200" text="Equipamentos" />
+                    <TableColumn fx:id="tbcObservacoes" prefWidth="170" text="Observações" />
+                    <TableColumn fx:id="tbcDia" prefWidth="100" text="Dia" />
+                    <TableColumn fx:id="tbcHorario" prefWidth="100" text="Horário" />
+                    <TableColumn fx:id="tbcEditar" prefWidth="74.5" text="Editar" />
+                    <TableColumn fx:id="tbcExcluir" prefWidth="74.5" text="Excluir" />
+                </columns>
+            </TableView>
         </children>
-
-        
     </VBox>
-
-
 </HBox>
