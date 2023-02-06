@@ -31,8 +31,8 @@ public class EquipamentoRepository {
         return equipamentoDao.buscarTodos();
     }
 
-    public List<Equipamento> buscarEquipamento(Equipamento equipamento) {
-        return equipamentoDao.buscarPorNome(equipamento.getNome());
+    public List<Equipamento> buscarEquipamento(String nome) {
+        return equipamentoDao.buscarPorNome(nome);
     }
 
 }

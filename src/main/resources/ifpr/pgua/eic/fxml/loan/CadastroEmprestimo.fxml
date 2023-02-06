@@ -51,14 +51,17 @@
         <children>
             <Label text="Cadastrar Empréstimo" styleClass="title-form"  />
             <MFXTextField floatMode="BORDER" floatingText="Nome do aluno"  prefWidth="400" prefHeight="35" fx:id="tfNomeAluno"/>
-            <MFXComboBox fx:id="turmaInput" prefHeight="35.0"
-                    prefWidth="400.0" promptText="Selecione a sua turma" onAction="#turmaSelecionada">
+            
                 
-	        </MFXComboBox>
-            <MFXComboBox fx:id="equipamentoInput" prefHeight="35.0"
-                prefWidth="400.0" promptText="Selecione os equipamentos" onAction="#equipamentoSelecionado"
+            <MFXTextField floatMode="BORDER" floatingText="Turma Ex: Tads21"  prefWidth="400" prefHeight="35" fx:id="turmaInput"/>
+            <HBox alignment="center" >
+                <MFXComboBox fx:id="equipamentoInput" prefHeight="35.0"
+                prefWidth="350.0" promptText="Selecione os equipamentos" 
 >
 	        </MFXComboBox>
+            <MFXButton prefWidth="50" text="+" styleClass="btn-submit" onAction="#adicionar" prefHeight="35.0" />
+            </HBox>
+            
             <MFXListView fx:id="equipamentosSelecionados" prefHeight="100.0" prefWidth="400.0" />
         
             <MFXTextField  floatMode="BORDER" floatingText="Observação" prefWidth="400" prefHeight="35" fx:id="tfObservacao"/>

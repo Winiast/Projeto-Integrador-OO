@@ -5,13 +5,16 @@ import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
 import ifpr.pgua.eic.controllers.users.ListaUsuarioController;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioVM;
 import ifpr.pgua.eic.models.FabricaConexoes;
+import ifpr.pgua.eic.models.daos.EmprestimoDao;
 import ifpr.pgua.eic.models.daos.EquipamentoDao;
 import ifpr.pgua.eic.models.daos.EsporteDao;
 import ifpr.pgua.eic.models.daos.UsuarioDao;
 import ifpr.pgua.eic.models.entity.Usuario;
+import ifpr.pgua.eic.models.jdbc.EmprestimoJDBC;
 import ifpr.pgua.eic.models.jdbc.EquipamentoJDBC;
 import ifpr.pgua.eic.models.jdbc.EsporteJDBC;
 import ifpr.pgua.eic.models.jdbc.UsuarioJDBC;
+import ifpr.pgua.eic.models.repositories.EmprestimoRepository;
 import ifpr.pgua.eic.models.repositories.EquipamentoRepository;
 import ifpr.pgua.eic.models.repositories.EsporteRepository;
 import ifpr.pgua.eic.models.repositories.UsuarioRepository;
@@ -36,6 +39,8 @@ public class App extends BaseAppNavigator {
         private EquipamentoDao equipamentoDao;
         private EsporteDao esporteDao;
         private EsporteRepository esporteRepository;
+        private EmprestimoRepository emprestimoRepository;
+        private EmprestimoDao emprestimoDao;
 
         @Override
         public void init() throws Exception {
@@ -45,6 +50,8 @@ public class App extends BaseAppNavigator {
                 equipamentoRepository = new EquipamentoRepository(equipamentoDao);
                 esporteDao = new EsporteJDBC(fabricaConexoes);
                 esporteRepository = new EsporteRepository(esporteDao);
+                emprestimoDao = new EmprestimoJDBC(fabricaConexoes, equipamentoDao, usuarioDao);
+                emprestimoRepository = new EmprestimoRepository(emprestimoDao);
 
         }
 
@@ -63,7 +70,8 @@ public class App extends BaseAppNavigator {
 
                 registraTela("CADASTRO_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/CadastroEmprestimo.fxml",
-                                                (o) -> new CadastroEmprestimoController()));
+                                                (o) -> new CadastroEmprestimoController(emprestimoRepository,
+                                                                equipamentoRepository)));
                 registraTela("LISTA_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/ListaEmprestimo.fxml",
                                                 (o) -> new ListaEmprestimoController()));

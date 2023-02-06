@@ -18,7 +18,7 @@ public class CadastroEquipamentosController implements Initializable {
 
     private EquipamentoRepository equipamentoRepository;
     private EsporteRepository esporteRepository;
-    private Utils exibe;
+    private Utils alert;
 
     @FXML
     private MFXTextField tfNomeEquipamento;
@@ -78,7 +78,7 @@ public class CadastroEquipamentosController implements Initializable {
         tfQuantidade.clear();
         estadoInput.clear();
 
-        exibe.exibeAlert(AlertType.CONFIRMATION, "Equipamento cadastrado com sucesso!").showAndWait();
+        alert.exibeAlert(AlertType.CONFIRMATION, "Equipamento cadastrado com sucesso!").showAndWait();
     }
 
     @Override

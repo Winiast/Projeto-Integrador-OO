@@ -32,7 +32,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
     private static final String SELECT = "SELECT * FROM pi_emprestimo";
     private static final String SELECT_EQUIPS = "SELECT * FROM pi_equip_emprestimo WHERE idEmprestimo = ?";
 
-
     public EmprestimoJDBC(FabricaConexoes fabricaConexoes, EquipamentoDao equipamentoDao, UsuarioDao usuarioDao) {
         this.fabricaConexoes = fabricaConexoes;
         this.equipamentoDao = equipamentoDao;
@@ -49,13 +48,13 @@ public class EmprestimoJDBC implements EmprestimoDao {
             statement.setString(2, emprestimo.getNomeAluno());
             statement.setString(3, emprestimo.getTurma());
             statement.setString(4, emprestimo.getObservacoes());
-            statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));  
+            statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
 
             statement.execute();
 
             ResultSet keys = statement.getGeneratedKeys();
 
-            if(keys.next()){
+            if (keys.next()) {
                 emprestimo.setId(keys.getInt(1));
             }
 
@@ -113,7 +112,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
             statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
             statement.setInt(3, id);
 
-
             statement.execute();
 
             statement.close();
@@ -132,11 +130,11 @@ public class EmprestimoJDBC implements EmprestimoDao {
             Connection con = fabricaConexoes.getConnection();
 
             PreparedStatement statement = con.prepareStatement(SELECT);
-            
+
             ResultSet resultSet = statement.executeQuery();
 
             List<Emprestimo> emprestimos = new ArrayList<>();
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 emprestimos.add(buildObject(resultSet));
             }
 
@@ -150,7 +148,7 @@ public class EmprestimoJDBC implements EmprestimoDao {
         }
     }
 
-    private List<Equipamento> buscarEquipamentos (long id) {
+    private List<Equipamento> buscarEquipamentos(long id) {
         try {
             Connection con = fabricaConexoes.getConnection();
 
@@ -173,26 +171,27 @@ public class EmprestimoJDBC implements EmprestimoDao {
         }
 
         return null;
-    } 
+    }
 
-    private Emprestimo buildObject(ResultSet resultSet) throws SQLException{
+    private Emprestimo buildObject(ResultSet resultSet) throws SQLException {
         long id = resultSet.getInt("idEmprestimo");
         long idUsuario = resultSet.getInt("idUsuario");
         String nomeAluno = resultSet.getString("nomeAluno");
         String turma = resultSet.getString("turmaAluno");
         String observacoes = resultSet.getString("observacao");
         LocalDateTime criadoEm = resultSet.getTimestamp("criadoEm").toLocalDateTime();
-        
+
         LocalDateTime dataDevolucao = null;
         LocalDateTime atualizadoEm = null;
-        if(resultSet.getTimestamp("dataDevolucaoEmprestimo") != null) {
+        if (resultSet.getTimestamp("dataDevolucaoEmprestimo") != null) {
             dataDevolucao = resultSet.getTimestamp("dataDevolucaoEmprestimo").toLocalDateTime();
-        } 
+        }
         if (resultSet.getTimestamp("atualizadoEm") != null) {
             atualizadoEm = resultSet.getTimestamp("atualizadoEm").toLocalDateTime();
         }
 
-        return new Emprestimo(id, dataDevolucao, buscarEquipamentos(id), nomeAluno, turma, observacoes, usuarioDao.buscarPorId(idUsuario), criadoEm, atualizadoEm);
+        return new Emprestimo(id, dataDevolucao, buscarEquipamentos(id), nomeAluno, turma, observacoes,
+                usuarioDao.buscarPorId(idUsuario), criadoEm, atualizadoEm);
     }
-    
+
 }
