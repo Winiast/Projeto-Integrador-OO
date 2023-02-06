@@ -49,6 +49,9 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
             statement.execute();
 
+            statement.close();
+            con.close();
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,6 +76,9 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
             statement.execute();
 
+            statement.close();
+            con.close();
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,6 +96,9 @@ public class EquipamentoJDBC implements EquipamentoDao {
             statement.setLong(1, id);
 
             statement.execute();
+
+            statement.close();
+            con.close();
 
             return true;
         } catch (Exception e) {
@@ -111,6 +120,9 @@ public class EquipamentoJDBC implements EquipamentoDao {
             while (resultSet.next()) {
                 equipamentos.add(buildObject(resultSet));
             }
+
+            statement.close();
+            con.close();
 
             return equipamentos;
         } catch (Exception e) {
@@ -136,6 +148,9 @@ public class EquipamentoJDBC implements EquipamentoDao {
                 equipamentos.add(buildObject(resultSet));
             }
 
+            statement.close();
+            con.close();
+
             return equipamentos;
         } catch (Exception e) {
             e.printStackTrace();
@@ -157,6 +172,9 @@ public class EquipamentoJDBC implements EquipamentoDao {
             if (resultSet.next()) {
                 return buildObject(resultSet);
             }
+
+            statement.close();
+            con.close();
 
             return null;
         } catch (Exception e) {

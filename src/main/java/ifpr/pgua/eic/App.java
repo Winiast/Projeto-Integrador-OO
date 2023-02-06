@@ -46,15 +46,15 @@ public class App extends BaseAppNavigator {
         public void init() throws Exception {
                 usuarioDao = new UsuarioJDBC(fabricaConexoes);
                 usuarioRepository = new UsuarioRepository(usuarioDao);
+
                 esporteDao = new EsporteJDBC(fabricaConexoes);
                 esporteRepository = new EsporteRepository(esporteDao);
+
                 equipamentoDao = new EquipamentoJDBC(fabricaConexoes, esporteDao);
                 equipamentoRepository = new EquipamentoRepository(equipamentoDao);
+
                 emprestimoDao = new EmprestimoJDBC(fabricaConexoes, equipamentoDao, usuarioDao);
                 emprestimoRepository = new EmprestimoRepository(emprestimoDao);
-
-                System.out.println(equipamentoRepository.listarTodos());
-
         }
 
         @Override
