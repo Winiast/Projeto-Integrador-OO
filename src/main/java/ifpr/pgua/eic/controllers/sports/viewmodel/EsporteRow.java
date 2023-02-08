@@ -15,7 +15,7 @@ public class EsporteRow {
     private Button btnEditar;
     private Button btnExcluir;
 
-    public EsporteRow(Esporte esporte) {
+    public EsporteRow(Esporte esporte, EsporteVM esporteVM) {
         this.nome = esporte.getNome();
         this.descricao = esporte.getDescricao();
 
@@ -36,6 +36,9 @@ public class EsporteRow {
         btnExcluir = new MFXButton("", imageViewDelete);
         btnExcluir.setPrefSize(25, 25);
         btnExcluir.setStyle("-fx-background-color: red;");
+        btnExcluir.setOnAction(event -> {
+            esporteVM.excluirEsporte(esporte);
+        });
     }
 
     public String getNome() {
