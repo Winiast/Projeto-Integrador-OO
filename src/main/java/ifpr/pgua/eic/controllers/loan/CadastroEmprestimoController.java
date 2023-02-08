@@ -36,10 +36,10 @@ public class CadastroEmprestimoController implements Initializable {
     private MFXTextField turmaInput;
 
     @FXML
-    private MFXComboBox equipamentoInput;
+    private MFXComboBox<Equipamento> equipamentoInput;
 
     @FXML
-    private MFXListView equipamentosSelecionados;
+    private MFXListView<Equipamento> equipamentosSelecionados;
 
     @FXML
     private MFXTextField tfObservacao;
@@ -93,12 +93,13 @@ public class CadastroEmprestimoController implements Initializable {
     @FXML
     public void adicionar() {
         equipamentosSelecionados.getItems().add(equipamentoInput.getValue());
+        equipamentoInput.getItems().remove(equipamentoInput.getValue());
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         equipamentoInput.getItems().clear();
-        equipamentoInput.getItems().addAll(equipamentoRepository.listarTodos());
+        equipamentoInput.getItems().addAll(equipamentoRepository.buscarTodos());
 
     }
 
@@ -126,8 +127,11 @@ public class CadastroEmprestimoController implements Initializable {
 
         if (equipamentosSelecionados.getItems().isEmpty()) {
             equipamentoInput.styleProperty().set("-fx-border-color: red");
+            equipamentosSelecionados.styleProperty().set("-fx-border-color: red");
         } else {
             equipamentoInput.styleProperty().set("-fx-border-color: #329e43");
+            equipamentosSelecionados.styleProperty().set("-fx-border-color: #329e43");
+
         }
 
         return tfNomeAluno.getText().isEmpty() || turmaInput.getText().isEmpty()
