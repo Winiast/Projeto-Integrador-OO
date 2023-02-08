@@ -50,14 +50,19 @@ public class EsporteCadastroController {
 
     @FXML
     public void cadastrarEsporte() {
-        String nomeEsporte = tfEsporte.getText();
-        String descricao = tfDescricao.getText();
 
-        if(esporteRepository.cadastrar(new Esporte(nomeEsporte, descricao))) {
-            Utils.exibeAlert(AlertType.CONFIRMATION, "Esporte cadastrado com sucesso!!").showAndWait();
-            App.popScreen();
+        if(tfEsporte.getText().isBlank() || tfDescricao.getText().isBlank()) {
+            Utils.exibeAlert(AlertType.ERROR, "Preencha os campos corretamente").showAndWait();    
         } else {
-            Utils.exibeAlert(AlertType.ERROR, "Erro ao cadastrar esporte!!");
+            String nomeEsporte = tfEsporte.getText();
+            String descricao = tfDescricao.getText();
+            
+            if(esporteRepository.cadastrar(new Esporte(nomeEsporte, descricao))) {
+                Utils.exibeAlert(AlertType.CONFIRMATION, "Esporte cadastrado com sucesso!!").showAndWait();
+                App.popScreen();
+            } else {
+                Utils.exibeAlert(AlertType.ERROR, "Erro ao cadastrar esporte!!");
+            }
         }
     }
 
