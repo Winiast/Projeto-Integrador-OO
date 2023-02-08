@@ -27,6 +27,9 @@ public class Esporte {
         this.status = true;
     }
 
+    public Esporte() {
+    }
+
     public long getId() {
         return id;
     }

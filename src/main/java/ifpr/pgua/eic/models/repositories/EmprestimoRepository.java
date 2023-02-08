@@ -25,7 +25,7 @@ public class EmprestimoRepository {
         return emprestimoDao.finalizarEmprestimo(id);
     }
 
-    public List<Emprestimo> listarTodos() {
+    public List<Emprestimo> buscarTodos() {
         return emprestimoDao.buscarTodos();
     }
 

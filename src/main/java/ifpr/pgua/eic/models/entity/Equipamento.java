@@ -32,6 +32,9 @@ public class Equipamento {
         this.estado = estado;
     }
 
+    public Equipamento() {
+    }
+
     public long getId() {
         return id;
     }

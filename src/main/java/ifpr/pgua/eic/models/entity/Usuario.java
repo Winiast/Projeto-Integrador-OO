@@ -33,6 +33,9 @@ public class Usuario {
         this.criadoEm = LocalDateTime.now();
     }
 
+    public Usuario() {
+    }
+
     public long getId() {
         return id;
     }

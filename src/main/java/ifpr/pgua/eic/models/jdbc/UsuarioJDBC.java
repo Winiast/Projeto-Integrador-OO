@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.FabricaConexoes;
 import ifpr.pgua.eic.models.daos.UsuarioDao;
 import ifpr.pgua.eic.models.entity.Usuario;
@@ -34,6 +35,9 @@ public class UsuarioJDBC implements UsuarioDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(INSERT);
             statement.setString(1, usuario.getNome());
             statement.setString(2, usuario.getSobrenome());
@@ -46,6 +50,10 @@ public class UsuarioJDBC implements UsuarioDao {
 
             statement.close();
             con.close();
+            System.out.println(App.conexoes);
+
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -59,21 +67,28 @@ public class UsuarioJDBC implements UsuarioDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(AUTH);
             statement.setString(1, email);
             statement.setString(2, senha);
 
             ResultSet resultSet = statement.executeQuery();
 
+            Usuario usuario = new Usuario();
             if (resultSet.next()) {
-                Usuario usuario = buildObject(resultSet);
-                return usuario;
+                usuario = buildObject(resultSet);
             }
 
+            resultSet.close();
             statement.close();
             con.close();
 
-            return null;
+            App.conexoes--;
+            System.out.println(App.conexoes);
+
+            return usuario;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,6 +100,9 @@ public class UsuarioJDBC implements UsuarioDao {
     public boolean atualizar(Usuario usuario) {
         try {
             Connection con = fabricaConexoes.getConnection();
+
+            App.conexoes++;
+            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(UPDATE);
             statement.setString(1, usuario.getNome());
@@ -100,6 +118,9 @@ public class UsuarioJDBC implements UsuarioDao {
             statement.close();
             con.close();
 
+            App.conexoes--;
+            System.out.println(App.conexoes);
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,6 +133,9 @@ public class UsuarioJDBC implements UsuarioDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(DELETE);
             statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
             statement.setBoolean(2, false);
@@ -121,6 +145,9 @@ public class UsuarioJDBC implements UsuarioDao {
 
             statement.close();
             con.close();
+
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -134,6 +161,9 @@ public class UsuarioJDBC implements UsuarioDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(FIND_BY_NAME);
             statement.setString(1, nome + "%");
 
@@ -145,8 +175,12 @@ public class UsuarioJDBC implements UsuarioDao {
                 usuarios.add(usuario);
             }
 
+            resultSet.close();
             statement.close();
             con.close();
+
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return usuarios;
 
@@ -161,6 +195,9 @@ public class UsuarioJDBC implements UsuarioDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(FIND_ALL);
 
             ResultSet resultSet = statement.executeQuery();
@@ -171,8 +208,12 @@ public class UsuarioJDBC implements UsuarioDao {
                 usuarios.add(usuario);
             }
 
+            resultSet.close();
             statement.close();
             con.close();
+
+            App.conexoes--;
+            System.out.println(App.conexoes);
 
             return usuarios;
 
@@ -187,20 +228,27 @@ public class UsuarioJDBC implements UsuarioDao {
         try {
             Connection con = fabricaConexoes.getConnection();
 
+            App.conexoes++;
+            System.out.println(App.conexoes);
+
             PreparedStatement statement = con.prepareStatement(FIND_BY_ID);
             statement.setLong(1, id);
 
             ResultSet resultSet = statement.executeQuery();
 
+            Usuario usuario = new Usuario();
             if (resultSet.next()) {
-                Usuario usuario = buildObject(resultSet);
-                return usuario;
+                usuario = buildObject(resultSet);
             }
 
+            resultSet.close();
             statement.close();
             con.close();
 
-            return null;
+            App.conexoes--;
+            System.out.println(App.conexoes);
+
+            return usuario;
 
         } catch (Exception e) {
             e.printStackTrace();
