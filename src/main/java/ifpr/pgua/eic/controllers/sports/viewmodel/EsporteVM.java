@@ -26,6 +26,10 @@ public class EsporteVM {
         esportes.addAll(esporteRepository.buscarTodos());
     }
 
+    public boolean excluirEsporte(Esporte esporte) {
+        return esporteRepository.excluir(esporte.getId());
+    }
+
     public SimpleStringProperty getNome() {
         return nome;
     }

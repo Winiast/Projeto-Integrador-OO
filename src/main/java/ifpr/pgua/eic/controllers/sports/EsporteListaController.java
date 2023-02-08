@@ -81,7 +81,7 @@ public class EsporteListaController implements Initializable {
         tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
         esporteVM.getEsportes().forEach(esporte -> {
-            tbEsportes.getItems().add(new EsporteRow(esporte));
+            tbEsportes.getItems().add(new EsporteRow(esporte, esporteVM));
         });
 
     }

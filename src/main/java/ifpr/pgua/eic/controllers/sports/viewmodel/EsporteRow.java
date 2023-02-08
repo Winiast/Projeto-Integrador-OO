@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.controllers.sports.viewmodel;
 
+import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.controllers.sports.EsporteCadastroController;
 import ifpr.pgua.eic.models.entity.Esporte;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
@@ -13,7 +15,7 @@ public class EsporteRow {
     private Button btnEditar;
     private Button btnExcluir;
 
-    public EsporteRow(Esporte esporte) {
+    public EsporteRow(Esporte esporte, EsporteVM esporteVM) {
         this.nome = esporte.getNome();
         this.descricao = esporte.getDescricao();
 
@@ -26,10 +28,17 @@ public class EsporteRow {
         btnEditar = new MFXButton("", imageViewEdit);
         btnEditar.setPrefSize(25, 25);
         btnEditar.setStyle("-fx-background-color: #0085FF;");
+        btnEditar.setOnAction(event -> {
+            EsporteCadastroController.esporte = esporte;
+            App.pushScreen("CADASTRO_ESPORTE");
+        });
 
         btnExcluir = new MFXButton("", imageViewDelete);
         btnExcluir.setPrefSize(25, 25);
         btnExcluir.setStyle("-fx-background-color: red;");
+        btnExcluir.setOnAction(event -> {
+            esporteVM.excluirEsporte(esporte);
+        });
     }
 
     public String getNome() {
