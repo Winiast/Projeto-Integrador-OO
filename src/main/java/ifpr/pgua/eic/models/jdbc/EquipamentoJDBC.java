@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.FabricaConexoes;
 import ifpr.pgua.eic.models.daos.EquipamentoDao;
 import ifpr.pgua.eic.models.daos.EsporteDao;
@@ -38,8 +37,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
     public boolean cadastrar(Equipamento equipamento) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(INSERT);
 
@@ -54,8 +51,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -68,9 +63,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
     public boolean atualizar(Equipamento equipamento) {
         try {
             Connection con = fabricaConexoes.getConnection();
-
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(UPDATE);
 
@@ -86,8 +78,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -100,8 +90,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
     public boolean excluir(long id) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(DELETE);
 
@@ -111,8 +99,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
 
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -125,8 +111,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
     public List<Equipamento> buscarTodos() {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT_ALL);
 
@@ -141,9 +125,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
             statement.close();
             con.close();
 
-            App.conexoes--;
-            System.out.println(App.conexoes);
-
             return equipamentos;
         } catch (Exception e) {
             e.printStackTrace();
@@ -156,8 +137,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
     public List<Equipamento> buscarPorNome(String nome) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT_BY_NAME);
 
@@ -173,8 +152,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
             resultSet.close();
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return equipamentos;
         } catch (Exception e) {
@@ -187,8 +164,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
     public Equipamento buscarPorId(long id) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT_BY_ID);
 
@@ -204,9 +179,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
             resultSet.close();
             statement.close();
             con.close();
-
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return equipamento;
         } catch (Exception e) {
