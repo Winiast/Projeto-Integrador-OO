@@ -65,7 +65,7 @@
             <TableView maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000" prefHeight="400" fx:id="tbEsportes" >
                 <columns>
                     <TableColumn fx:id="tbcNome" prefWidth="400" text="Nome" />
-                    <TableColumn fx:id="tbcDescricao" prefWidth="450" text="Descrição" />
+                    <TableColumn fx:id="tbcDescricao" prefWidth="448" text="Descrição" />
                     <TableColumn fx:id="tbcEditar" prefWidth="74.5" text="Editar" />
                     <TableColumn fx:id="tbcExcluir" prefWidth="74.5" text="Excluir" />
                 </columns>

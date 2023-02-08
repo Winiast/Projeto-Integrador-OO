@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.FabricaConexoes;
 import ifpr.pgua.eic.models.daos.EmprestimoDao;
 import ifpr.pgua.eic.models.daos.EquipamentoDao;
@@ -43,8 +42,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
     public boolean cadastrar(Emprestimo emprestimo) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setLong(1, emprestimo.getUsuario().getId());
@@ -70,9 +67,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
-
 
             return true;
 
@@ -86,8 +80,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
     public boolean atualizar(Emprestimo emprestimo) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(UPDATE);
             statement.setLong(1, emprestimo.getUsuario().getId());
@@ -101,8 +93,7 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
+
             return true;
 
         } catch (Exception e) {
@@ -115,8 +106,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
     public boolean finalizarEmprestimo(int id) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(FINISH_EMPR);
             statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
@@ -127,8 +116,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return true;
         } catch (Exception e) {
@@ -141,8 +128,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
     public List<Emprestimo> buscarTodos() {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT);
 
@@ -156,8 +141,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
             resultSet.close();
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return emprestimos;
         } catch (Exception e) {
@@ -169,8 +152,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
     private List<Equipamento> buscarEquipamentos(long id) {
         try {
             Connection con = fabricaConexoes.getConnection();
-            App.conexoes++;
-            System.out.println(App.conexoes);
 
             PreparedStatement statement = con.prepareStatement(SELECT_EQUIPS);
             statement.setLong(1, id);
@@ -185,8 +166,6 @@ public class EmprestimoJDBC implements EmprestimoDao {
             resultSet.close();
             statement.close();
             con.close();
-            App.conexoes--;
-            System.out.println(App.conexoes);
 
             return equipamentos;
         } catch (Exception e) {
