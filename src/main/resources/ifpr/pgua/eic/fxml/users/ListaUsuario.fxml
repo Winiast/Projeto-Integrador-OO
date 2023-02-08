@@ -65,7 +65,7 @@
                 <columns>
                     <TableColumn fx:id="tbcNome" prefWidth="200" text="Nome" />
                     <TableColumn fx:id="tbcSobrenome" prefWidth="300" text="Sobrenome" />
-                    <TableColumn fx:id="tbcEmail" prefWidth="349" text="E-mail" />
+                    <TableColumn fx:id="tbcEmail" prefWidth="348" text="E-mail" />
                     <TableColumn fx:id="tbcEditar" prefWidth="74.5" text="Editar" />
                     <TableColumn fx:id="tbcExcluir" prefWidth="74.5" text="Excluir" />
                 </columns>
