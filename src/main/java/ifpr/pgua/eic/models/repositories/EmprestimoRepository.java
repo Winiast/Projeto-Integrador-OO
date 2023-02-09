@@ -21,7 +21,7 @@ public class EmprestimoRepository {
         return emprestimoDao.atualizar(emprestimo);
     }
 
-    public boolean finalizarEmprestimo(int id) {
+    public boolean finalizarEmprestimo(long id) {
         return emprestimoDao.finalizarEmprestimo(id);
     }
 

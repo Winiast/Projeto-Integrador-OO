@@ -31,12 +31,13 @@ public class LoginController {
         String email = tfUsuario.getText();
         String senha = tfSenha.getText();
 
-        if(email.isBlank() || senha.isBlank()){
+        if (email.isBlank() || senha.isBlank()) {
             return;
         } else {
             Usuario usuario = usuarioRepository.autenticar(email, senha);
-    
-            if(usuario != null){
+
+            if (usuario != null) {
+                App.usuarioLogado = usuario;
                 App.pushScreen("LISTA_EMPRESTIMO");
             }
         }

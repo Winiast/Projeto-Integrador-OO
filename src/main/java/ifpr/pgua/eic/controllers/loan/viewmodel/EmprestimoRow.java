@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.models.entity.Emprestimo;
 import ifpr.pgua.eic.models.entity.Equipamento;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -12,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class EmprestimoRow {
-    
+
     private String nomeAluno;
     private String turma;
     private List<Equipamento> equipamento;
@@ -20,9 +22,9 @@ public class EmprestimoRow {
     private LocalDate diaEmprestimo;
     private LocalTime horarioEmprestimo;
     private Button btnEditar;
-    private Button btnExcluir;
+    private Button btnCheck;
 
-    public EmprestimoRow(Emprestimo emprestimo)   {
+    public EmprestimoRow(Emprestimo emprestimo, EmprestimoVM emprestimoVM) {
         this.nomeAluno = emprestimo.getNomeAluno();
         this.turma = emprestimo.getTurma();
         this.equipamento = emprestimo.getEquipamento();
@@ -33,16 +35,24 @@ public class EmprestimoRow {
         Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
         ImageView imageViewEdit = new ImageView(imageEdit);
 
-        Image imageDelete = new Image(getClass().getResourceAsStream("../../../images/trash.png"));
-        ImageView imageViewDelete = new ImageView(imageDelete);
+        Image imageCheck = new Image(getClass().getResourceAsStream("../../../images/check.png"));
+        ImageView imageViewCheck = new ImageView(imageCheck);
 
         btnEditar = new MFXButton("", imageViewEdit);
         btnEditar.setPrefSize(25, 25);
         btnEditar.setStyle("-fx-background-color: #0085FF;");
+        btnEditar.setOnAction(event -> {
+            CadastroEmprestimoController.emprestimo = emprestimo;
+            App.pushScreen("CADASTRO_EMPRESTIMO");
+        });
 
-        btnExcluir = new MFXButton("", imageViewDelete);
-        btnExcluir.setPrefSize(25, 25);
-        btnExcluir.setStyle("-fx-background-color: red;");
+        btnCheck = new MFXButton("", imageViewCheck);
+        btnCheck.setPrefSize(25, 25);
+        btnCheck.setStyle("-fx-background-color: #5CD959;");
+        btnCheck.setOnAction(event -> {
+            emprestimoVM.finalizarEmprestimo(emprestimo);
+            ;
+        });
     }
 
     public String getNomeAluno() {
@@ -73,7 +83,7 @@ public class EmprestimoRow {
         return btnEditar;
     }
 
-    public Button getBtnExcluir() {
-        return btnExcluir;
+    public Button getBtnCheck() {
+        return btnCheck;
     }
 }

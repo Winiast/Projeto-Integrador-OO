@@ -14,7 +14,7 @@ public class EmprestimoVM {
     private SimpleStringProperty turma = new SimpleStringProperty();
     private SimpleListProperty<Equipamento> equipamentos = new SimpleListProperty<>();
     private SimpleStringProperty observacoes = new SimpleStringProperty();
-    private SimpleStringProperty diaEmprestimo = new SimpleStringProperty();  
+    private SimpleStringProperty diaEmprestimo = new SimpleStringProperty();
     private SimpleStringProperty horarioEmprestimo = new SimpleStringProperty();
 
     private ObservableList<Emprestimo> emprestimos = FXCollections.observableArrayList();
@@ -30,6 +30,11 @@ public class EmprestimoVM {
     public void carregarLista() {
         emprestimos.clear();
         emprestimos.addAll(emprestimoRepository.buscarTodos());
+    }
+
+    public void finalizarEmprestimo(Emprestimo emprestimo) {
+        emprestimoRepository.finalizarEmprestimo(emprestimo.getId());
+        carregarLista();
     }
 
     public SimpleStringProperty getNomeAluno() {

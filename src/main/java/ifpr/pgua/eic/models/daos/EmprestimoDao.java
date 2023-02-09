@@ -5,12 +5,12 @@ import java.util.List;
 import ifpr.pgua.eic.models.entity.Emprestimo;
 
 public interface EmprestimoDao {
-    
+
     boolean cadastrar(Emprestimo emprestimo);
 
     boolean atualizar(Emprestimo emprestimo);
 
-    boolean finalizarEmprestimo(int id);
+    boolean finalizarEmprestimo(long id);
 
     List<Emprestimo> buscarTodos();
 }

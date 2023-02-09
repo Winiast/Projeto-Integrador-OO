@@ -70,8 +70,8 @@
                     <TableColumn fx:id="tbcObservacoes" prefWidth="170" text="Observações" />
                     <TableColumn fx:id="tbcDia" prefWidth="100" text="Dia" />
                     <TableColumn fx:id="tbcHorario" prefWidth="100" text="Horário" />
+                    <TableColumn fx:id="tbcFinalizar" prefWidth="69" text="Finalizar" />
                     <TableColumn fx:id="tbcEditar" prefWidth="69" text="Editar" />
-                    <TableColumn fx:id="tbcExcluir" prefWidth="69" text="Excluir" />
                 </columns>
             </TableView>
         </children>
