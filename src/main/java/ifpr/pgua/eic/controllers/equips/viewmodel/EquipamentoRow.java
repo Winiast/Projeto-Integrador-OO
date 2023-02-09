@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.controllers.equips.viewmodel;
 
+import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.models.entity.Equipamento;
 import ifpr.pgua.eic.models.entity.Estado;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -8,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class EquipamentoRow {
-    
+
     private String nome;
     private String esporte;
     private int quantidade;
@@ -21,7 +23,7 @@ public class EquipamentoRow {
         this.esporte = equipamento.getEsporte().getNome();
         this.quantidade = equipamento.getQuantidade();
         this.estado = equipamento.getEstado();
-        
+
         Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
         ImageView imageViewEdit = new ImageView(imageEdit);
 
@@ -31,6 +33,10 @@ public class EquipamentoRow {
         btnEditar = new MFXButton("", imageViewEdit);
         btnEditar.setPrefSize(25, 25);
         btnEditar.setStyle("-fx-background-color: #0085FF;");
+        btnEditar.setOnAction(event -> {
+            CadastroEquipamentosController.equipamento = equipamento;
+            App.pushScreen("CADASTRO_EQUIPAMENTO");
+        });
 
         btnExcluir = new MFXButton("", imageViewDelete);
         btnExcluir.setPrefSize(25, 25);
@@ -85,5 +91,4 @@ public class EquipamentoRow {
         this.btnExcluir = btnExcluir;
     }
 
-    
 }

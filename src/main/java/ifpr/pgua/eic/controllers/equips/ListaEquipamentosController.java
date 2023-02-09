@@ -79,6 +79,7 @@ public class ListaEquipamentosController implements Initializable {
 
     @FXML
     public void cadastrarEquipamento() {
+        CadastroEquipamentosController.equipamento = null;
         App.pushScreen("CADASTRO_EQUIPAMENTO");
     }
 
@@ -90,7 +91,7 @@ public class ListaEquipamentosController implements Initializable {
         tbcEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
         tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
         tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
-        
+
         equipamentoVM.getEquipamentos().forEach(equipamento -> {
             tbEquipamento.getItems().add(new EquipamentoRow(equipamento));
         });
