@@ -8,6 +8,7 @@ import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.loan.viewmodel.EmprestimoRow;
 import ifpr.pgua.eic.controllers.loan.viewmodel.EmprestimoVM;
 import ifpr.pgua.eic.models.entity.Emprestimo;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -87,7 +88,7 @@ public class ListaEmprestimoController implements Initializable {
     @FXML
     public void cadastrarEmprestimo() {
         CadastroEmprestimoController.emprestimo = null;
-        App.pushScreen("CADASTRO_EMPRESTIMO");
+        App.changeScreenRegion("CADASTRO_EMPRESTIMO", BorderPaneRegion.CENTER);
     }
 
     @Override

@@ -7,6 +7,7 @@ import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.sports.viewmodel.EsporteRow;
 import ifpr.pgua.eic.controllers.sports.viewmodel.EsporteVM;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioRow;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -65,7 +66,7 @@ public class EsporteListaController implements Initializable {
     @FXML
     public void cadastrarEsporte() {
         EsporteCadastroController.esporte = null;
-        App.pushScreen("CADASTRO_ESPORTE");
+        App.changeScreenRegion("CADASTRO_ESPORTE", BorderPaneRegion.CENTER);
     }
 
     @FXML
