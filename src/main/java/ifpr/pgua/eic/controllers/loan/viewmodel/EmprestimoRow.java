@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import ifpr.pgua.eic.App;
+import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.models.entity.Emprestimo;
 import ifpr.pgua.eic.models.entity.Equipamento;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -12,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class EmprestimoRow {
-    
+
     private String nomeAluno;
     private String turma;
     private List<Equipamento> equipamento;
@@ -22,7 +24,7 @@ public class EmprestimoRow {
     private Button btnEditar;
     private Button btnExcluir;
 
-    public EmprestimoRow(Emprestimo emprestimo)   {
+    public EmprestimoRow(Emprestimo emprestimo, EmprestimoVM emprestimoVM) {
         this.nomeAluno = emprestimo.getNomeAluno();
         this.turma = emprestimo.getTurma();
         this.equipamento = emprestimo.getEquipamento();
@@ -39,6 +41,10 @@ public class EmprestimoRow {
         btnEditar = new MFXButton("", imageViewEdit);
         btnEditar.setPrefSize(25, 25);
         btnEditar.setStyle("-fx-background-color: #0085FF;");
+        btnEditar.setOnAction(event -> {
+            CadastroEmprestimoController.emprestimo = emprestimo;
+            App.pushScreen("CADASTRO_EMPRESTIMO");
+        });
 
         btnExcluir = new MFXButton("", imageViewDelete);
         btnExcluir.setPrefSize(25, 25);

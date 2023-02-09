@@ -103,14 +103,14 @@ public class EmprestimoJDBC implements EmprestimoDao {
     }
 
     @Override
-    public boolean finalizarEmprestimo(int id) {
+    public boolean finalizarEmprestimo(long id) {
         try {
             Connection con = fabricaConexoes.getConnection();
 
             PreparedStatement statement = con.prepareStatement(FINISH_EMPR);
             statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
             statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
-            statement.setInt(3, id);
+            statement.setLong(3, id);
 
             statement.execute();
 

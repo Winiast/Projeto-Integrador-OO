@@ -10,24 +10,21 @@ import ifpr.pgua.eic.models.entity.Equipamento;
 import ifpr.pgua.eic.models.repositories.EmprestimoRepository;
 import ifpr.pgua.eic.models.repositories.EquipamentoRepository;
 import ifpr.pgua.eic.utils.Utils;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXListView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 
 public class CadastroEmprestimoController implements Initializable {
 
-    private EmprestimoRepository emprestimoRepository;
-    private EquipamentoRepository equipamentoRepository;
-    private Utils alert;
+    public static Emprestimo emprestimo;
 
-    public CadastroEmprestimoController(EmprestimoRepository emprestimoRepository,
-            EquipamentoRepository equipamentoRepository) {
-        this.emprestimoRepository = emprestimoRepository;
-        this.equipamentoRepository = equipamentoRepository;
-    }
+    @FXML
+    private Label lbTitle;
 
     @FXML
     private MFXTextField tfNomeAluno;
@@ -39,10 +36,23 @@ public class CadastroEmprestimoController implements Initializable {
     private MFXComboBox<Equipamento> equipamentoInput;
 
     @FXML
+    private MFXButton btnAdicionar;
+
+    @FXML
     private MFXListView<Equipamento> equipamentosSelecionados;
 
     @FXML
     private MFXTextField tfObservacao;
+
+    private EmprestimoRepository emprestimoRepository;
+
+    private EquipamentoRepository equipamentoRepository;
+
+    public CadastroEmprestimoController(EmprestimoRepository emprestimoRepository,
+            EquipamentoRepository equipamentoRepository) {
+        this.emprestimoRepository = emprestimoRepository;
+        this.equipamentoRepository = equipamentoRepository;
+    }
 
     @FXML
     public void usuarioLista() {
@@ -72,22 +82,39 @@ public class CadastroEmprestimoController implements Initializable {
     @FXML
     public void cadastrar() {
 
-        List<Equipamento> equipamentos = equipamentosSelecionados.getItems();
-        String nomeAluno = tfNomeAluno.getText();
-        String turma = turmaInput.getText();
-        String observacoes = tfObservacao.getText();
-
         if (verifyFields()) {
-            alert.exibeAlert(AlertType.ERROR, "Preencha todos os campos!").showAndWait();
+            Utils.exibeAlert(AlertType.ERROR, "Preencha todos os campos!").showAndWait();
             return;
         } else {
-            emprestimoRepository
-                    .cadastrar(new Emprestimo(equipamentos, nomeAluno, turma, observacoes, App.usuarioLogado));
-            limparCampos();
-            alert.exibeAlert(AlertType.CONFIRMATION, "Emprestimo cadastrado com sucesso!").showAndWait();
-            App.pushScreen("LISTA_EMPRESTIMO");
-        }
+            List<Equipamento> equipamentos = equipamentosSelecionados.getItems();
+            String nomeAluno = tfNomeAluno.getText();
+            String turma = turmaInput.getText();
+            String observacoes = tfObservacao.getText();
 
+            if (emprestimo == null) {
+                if (emprestimoRepository
+                        .cadastrar(new Emprestimo(equipamentos, nomeAluno, turma, observacoes, App.usuarioLogado))) {
+                    Utils.exibeAlert(AlertType.INFORMATION, "Emprestimo cadastrado com sucesso!").showAndWait();
+                    App.popScreen();
+                } else {
+                    Utils.exibeAlert(AlertType.ERROR, "Erro ao cadastrar emprestimo!").showAndWait();
+                }
+            } else {
+                emprestimo.setEquipamento(equipamentos);
+                emprestimo.setNomeAluno(nomeAluno);
+                emprestimo.setTurma(turma);
+                emprestimo.setObservacoes(observacoes);
+                emprestimo.setUsuario(App.usuarioLogado);
+
+                if (emprestimoRepository.atualizar(emprestimo)) {
+                    Utils.exibeAlert(AlertType.CONFIRMATION, "Emprestimo atualizado com sucesso!").showAndWait();
+                    App.popScreen();
+                } else {
+                    Utils.exibeAlert(AlertType.ERROR, "Erro ao atualizar emprestimo!").showAndWait();
+                    return;
+                }
+            }
+        }
     }
 
     @FXML
@@ -101,6 +128,20 @@ public class CadastroEmprestimoController implements Initializable {
         equipamentoInput.getItems().clear();
         equipamentoInput.getItems().addAll(equipamentoRepository.buscarTodos());
 
+        if (emprestimo != null) {
+            lbTitle.setText("Atualizar emprestimo");
+            tfNomeAluno.setText(emprestimo.getNomeAluno());
+            turmaInput.setText(emprestimo.getTurma());
+            tfObservacao.setText(emprestimo.getObservacoes());
+            equipamentosSelecionados.getItems().addAll(emprestimo.getEquipamento());
+
+            equipamentoInput.setDisable(true);
+            btnAdicionar.setDisable(true);
+            equipamentosSelecionados.setDisable(true);
+        } else {
+            lbTitle.setText("Cadastrar emprestimo");
+            limparCampos();
+        }
     }
 
     private void limparCampos() {
@@ -109,7 +150,6 @@ public class CadastroEmprestimoController implements Initializable {
         tfObservacao.clear();
         equipamentoInput.clear();
         equipamentosSelecionados.getItems().clear();
-
     }
 
     private boolean verifyFields() {

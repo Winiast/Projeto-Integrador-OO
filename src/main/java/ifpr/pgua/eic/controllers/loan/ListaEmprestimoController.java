@@ -86,6 +86,7 @@ public class ListaEmprestimoController implements Initializable {
 
     @FXML
     public void cadastrarEmprestimo() {
+        CadastroEmprestimoController.emprestimo = null;
         App.pushScreen("CADASTRO_EMPRESTIMO");
     }
 
@@ -101,8 +102,8 @@ public class ListaEmprestimoController implements Initializable {
         tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
         emprestimoVM.getEmprestimos().forEach(emprestimo -> {
-            tbEmprestimo.getItems().add(new EmprestimoRow(emprestimo));
+            tbEmprestimo.getItems().add(new EmprestimoRow(emprestimo, emprestimoVM));
         });
-        
+
     }
 }
