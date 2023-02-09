@@ -64,6 +64,7 @@ public class EsporteListaController implements Initializable {
 
     @FXML
     public void cadastrarEsporte() {
+        EsporteCadastroController.esporte = null;
         App.pushScreen("CADASTRO_ESPORTE");
     }
 
