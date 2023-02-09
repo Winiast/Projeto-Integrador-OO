@@ -23,7 +23,7 @@ public class EsporteVM {
 
     private void carregarLista() {
         esportes.clear();
-        esportes.addAll(esporteRepository.buscarTodos());
+        esportes.addAll(esporteRepository.buscarAtivos());
     }
 
     public boolean excluirEsporte(Esporte esporte) {
