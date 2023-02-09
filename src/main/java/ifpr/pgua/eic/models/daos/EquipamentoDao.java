@@ -12,6 +12,8 @@ public interface EquipamentoDao {
 
     boolean excluir(long id);
 
+    List<Equipamento> buscarAtivos();
+
     List<Equipamento> buscarTodos();
 
     List<Equipamento> buscarPorNome(String nome);
