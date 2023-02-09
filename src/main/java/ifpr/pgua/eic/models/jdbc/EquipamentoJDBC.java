@@ -21,6 +21,7 @@ public class EquipamentoJDBC implements EquipamentoDao {
     private static final String INSERT = "INSERT INTO pi_equipamento (nomeEquipamento, idEsporte, quantidade, estado, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "UPDATE pi_equipamento SET nomeEquipamento = ?, idEsporte = ?, quantidade = ?, estado = ?, atualizadoEm = ?, status = ? WHERE idEquipamento = ?";
     private static final String DELETE = "UPDATE pi_equipamento SET status = false WHERE idEquipamento = ?";
+    private static final String SELECT_ACTIVE = "SELECT * FROM pi_equipamento WHERE status = true";
     private static final String SELECT_ALL = "SELECT * FROM pi_equipamento";
     private static final String SELECT_BY_NAME = "SELECT * FROM pi_equipamento WHERE nomeEquipamento LIKE ?";
     private static final String SELECT_BY_ID = "SELECT * FROM pi_equipamento WHERE idEquipamento = ?";
@@ -105,6 +106,32 @@ public class EquipamentoJDBC implements EquipamentoDao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public List<Equipamento> buscarAtivos() {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_ACTIVE);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Equipamento> equipamentos = new ArrayList<>();
+            while (resultSet.next()) {
+                equipamentos.add(buildObject(resultSet));
+            }
+
+            resultSet.close();
+            statement.close();
+            con.close();
+
+            return equipamentos;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     @Override

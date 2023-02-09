@@ -19,6 +19,7 @@ public class EsporteJDBC implements EsporteDao {
     private static final String INSERT = "INSERT INTO pi_esporte (nome, descricao, criadoEm, status) VALUES (?, ?, ?, ?);";
     private static final String UPDATE = "UPDATE pi_esporte SET nome = ?, descricao = ?, atualizadoEm = ?, status = ? WHERE idEsporte = ?;";
     private static final String DELETE = "UPDATE pi_esporte SET status = ?, atualizadoEm = ? WHERE idEsporte = ?;";
+    private static final String SELECT_ACTIVE = "SELECT * FROM pi_esporte WHERE status = true;";
     private static final String SELECT_ALL = "SELECT * FROM pi_esporte;";
     private static final String SELECT_BY_NAME = "SELECT * FROM pi_esporte WHERE nome LIKE ?;";
     private static final String SELECT_BY_ID = "SELECT * FROM pi_esporte WHERE idEsporte = ?;";
@@ -95,6 +96,31 @@ public class EsporteJDBC implements EsporteDao {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    @Override
+    public List<Esporte> buscarAtivos() {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_ACTIVE);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Esporte> esportes = new ArrayList<>();
+            while (resultSet.next()) {
+                esportes.add(buildObject(resultSet));
+            }
+
+            resultSet.close();
+            statement.close();
+            con.close();
+
+            return esportes;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
         }
     }
 

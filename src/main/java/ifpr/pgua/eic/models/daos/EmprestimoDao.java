@@ -12,5 +12,7 @@ public interface EmprestimoDao {
 
     boolean finalizarEmprestimo(long id);
 
+    List<Emprestimo> buscarAtivos();
+
     List<Emprestimo> buscarTodos();
 }
