@@ -29,7 +29,8 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
     private static final String UPDATE = "UPDATE pi_emprestimo SET idUsuario = ?, nomeAluno = ?, turmaAluno = ?, observacao = ?, atualizadoEm = ? WHERE idEmprestimo = ?";
 
-    private static final String SELECT = "SELECT * FROM pi_emprestimo WHERE dataDevolucaoEmprestimo is NULL";
+    private static final String SELECT_ACTIVE = "SELECT * FROM pi_emprestimo WHERE dataDevolucaoEmprestimo is NULL;";
+    private static final String SELECT = "SELECT * FROM pi_emprestimo;";
     private static final String SELECT_EQUIPS = "SELECT * FROM pi_equip_emprestimo WHERE idEmprestimo = ?";
 
     public EmprestimoJDBC(FabricaConexoes fabricaConexoes, EquipamentoDao equipamentoDao, UsuarioDao usuarioDao) {
@@ -121,6 +122,31 @@ public class EmprestimoJDBC implements EmprestimoDao {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    @Override
+    public List<Emprestimo> buscarAtivos() {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(SELECT_ACTIVE);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Emprestimo> emprestimos = new ArrayList<>();
+            while (resultSet.next()) {
+                emprestimos.add(buildObject(resultSet));
+            }
+
+            resultSet.close();
+            statement.close();
+            con.close();
+
+            return emprestimos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

@@ -26,7 +26,7 @@ public class EquipamentoVM {
 
     public void carregarLista() {
         equipamentos.clear();
-        equipamentos.addAll(equipamentoRepository.buscarTodos());
+        equipamentos.addAll(equipamentoRepository.buscarAtivos());
     }
 
     public void excluir(Equipamento equipamento) {

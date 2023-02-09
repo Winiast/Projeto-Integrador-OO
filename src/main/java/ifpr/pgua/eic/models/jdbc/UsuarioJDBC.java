@@ -21,6 +21,7 @@ public class UsuarioJDBC implements UsuarioDao {
     private static final String DELETE = "UPDATE pi_user SET atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String FIND_BY_NAME = "SELECT * FROM pi_user WHERE nome LIKE ?";
     private static final String FIND_ALL = "SELECT * FROM pi_user";
+    private static final String FIND_ACTIVE = "SELECT * FROM pi_user WHERE status = true";
     private static final String FIND_BY_ID = "SELECT * FROM pi_user WHERE idUser = ?";
     private static final String AUTH = "SELECT * FROM pi_user WHERE email = ? AND senha = ?";
 
@@ -130,6 +131,8 @@ public class UsuarioJDBC implements UsuarioDao {
         }
     }
 
+
+
     @Override
     public List<Usuario> buscarPorNome(String nome) {
         try {
@@ -137,6 +140,33 @@ public class UsuarioJDBC implements UsuarioDao {
 
             PreparedStatement statement = con.prepareStatement(FIND_BY_NAME);
             statement.setString(1, nome + "%");
+
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Usuario> usuarios = new ArrayList<>();
+            while (resultSet.next()) {
+                Usuario usuario = buildObject(resultSet);
+                usuarios.add(usuario);
+            }
+
+            resultSet.close();
+            statement.close();
+            con.close();
+
+            return usuarios;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public List<Usuario> buscarAtivos() {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+
+            PreparedStatement statement = con.prepareStatement(FIND_ACTIVE);
 
             ResultSet resultSet = statement.executeQuery();
 
