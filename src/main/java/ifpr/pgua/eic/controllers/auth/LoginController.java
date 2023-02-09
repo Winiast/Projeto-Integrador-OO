@@ -38,7 +38,7 @@ public class LoginController {
 
             if (usuario != null) {
                 App.usuarioLogado = usuario;
-                App.pushScreen("LISTA_EMPRESTIMO");
+                App.pushScreen("MENU");
             }
         }
     }

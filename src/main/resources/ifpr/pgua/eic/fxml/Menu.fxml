@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml" 
+      prefHeight="720" prefWidth="200"
+        stylesheets="@../styles/Global.css">
+
+    
+    <left>
+        <VBox prefHeight="720.0" prefWidth="200.0" alignment="center" styleClass="container-menu" spacing="10.0">
+            <VBox prefHeight="400.0" prefWidth="200.0" styleClass="logo-menu" spacing="10.0">
+                <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="image-menu">
+                    <image>
+                        <Image url="@../images/Logo-IFPR.png" />
+                    </image>
+                </ImageView>
+            </VBox>
+            <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu" spacing="4.0">
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu-special"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu" />
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu"/>
+                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu" />
+            </VBox>
+            <VBox styleClass="button-sair" prefHeight="200">
+                    <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu" />
+            </VBox>
+        </VBox>
+    </left>
+</BorderPane>
