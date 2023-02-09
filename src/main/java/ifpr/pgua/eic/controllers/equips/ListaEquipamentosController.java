@@ -93,7 +93,7 @@ public class ListaEquipamentosController implements Initializable {
         tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
         equipamentoVM.getEquipamentos().forEach(equipamento -> {
-            tbEquipamento.getItems().add(new EquipamentoRow(equipamento));
+            tbEquipamento.getItems().add(new EquipamentoRow(equipamento, equipamentoVM));
         });
     }
 

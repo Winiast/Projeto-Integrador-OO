@@ -18,7 +18,7 @@ public class EquipamentoRow {
     private Button btnEditar;
     private Button btnExcluir;
 
-    public EquipamentoRow(Equipamento equipamento) {
+    public EquipamentoRow(Equipamento equipamento, EquipamentoVM equipamentoVM) {
         this.nome = equipamento.getNome();
         this.esporte = equipamento.getEsporte().getNome();
         this.quantidade = equipamento.getQuantidade();
@@ -41,6 +41,9 @@ public class EquipamentoRow {
         btnExcluir = new MFXButton("", imageViewDelete);
         btnExcluir.setPrefSize(25, 25);
         btnExcluir.setStyle("-fx-background-color: red;");
+        btnExcluir.setOnAction(event -> {
+            equipamentoVM.excluir(equipamento);
+        });
     }
 
     public String getNome() {

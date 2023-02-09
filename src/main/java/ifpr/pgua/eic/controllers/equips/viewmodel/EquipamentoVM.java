@@ -20,13 +20,18 @@ public class EquipamentoVM {
 
     public EquipamentoVM(EquipamentoRepository equipamentoRepository) {
         this.equipamentoRepository = equipamentoRepository;
-        
+
         carregarLista();
     }
 
     public void carregarLista() {
         equipamentos.clear();
         equipamentos.addAll(equipamentoRepository.buscarTodos());
+    }
+
+    public void excluir(Equipamento equipamento) {
+        equipamentoRepository.excluir(equipamento);
+        carregarLista();
     }
 
     public SimpleStringProperty getNome() {
@@ -47,5 +52,5 @@ public class EquipamentoVM {
 
     public ObservableList<Equipamento> getEquipamentos() {
         return equipamentos;
-    }    
+    }
 }
