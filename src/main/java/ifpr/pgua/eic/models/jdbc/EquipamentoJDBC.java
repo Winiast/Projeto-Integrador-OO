@@ -18,7 +18,7 @@ import ifpr.pgua.eic.models.entity.Estado;
 
 public class EquipamentoJDBC implements EquipamentoDao {
 
-    private static final String INSERT = "INSERT INTO pi_equipamento (nomeEquipamento, idEsporte, quantidade, estado, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String INSERT = "INSERT INTO pi_equipamento (nomeEquipamento, idEsporte, quantidade, estado, criadoEm, status) VALUES (?, ?, ?, ?, ?, true)";
     private static final String UPDATE = "UPDATE pi_equipamento SET nomeEquipamento = ?, idEsporte = ?, quantidade = ?, estado = ?, atualizadoEm = ?, status = ? WHERE idEquipamento = ?";
     private static final String DELETE = "UPDATE pi_equipamento SET status = false WHERE idEquipamento = ?";
     private static final String SELECT_ACTIVE = "SELECT * FROM pi_equipamento WHERE status = true";
@@ -46,7 +46,6 @@ public class EquipamentoJDBC implements EquipamentoDao {
             statement.setInt(3, equipamento.getQuantidade());
             statement.setString(4, equipamento.getEstado().toString());
             statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
-            statement.setBoolean(6, equipamento.isStatus());
 
             statement.execute();
 

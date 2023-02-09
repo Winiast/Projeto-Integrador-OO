@@ -16,7 +16,7 @@ import ifpr.pgua.eic.models.entity.Esporte;
 
 public class EsporteJDBC implements EsporteDao {
 
-    private static final String INSERT = "INSERT INTO pi_esporte (nome, descricao, criadoEm, status) VALUES (?, ?, ?, ?);";
+    private static final String INSERT = "INSERT INTO pi_esporte (nome, descricao, criadoEm, status) VALUES (?, ?, ?, true);";
     private static final String UPDATE = "UPDATE pi_esporte SET nome = ?, descricao = ?, atualizadoEm = ?, status = ? WHERE idEsporte = ?;";
     private static final String DELETE = "UPDATE pi_esporte SET status = ?, atualizadoEm = ? WHERE idEsporte = ?;";
     private static final String SELECT_ACTIVE = "SELECT * FROM pi_esporte WHERE status = true;";
@@ -39,7 +39,6 @@ public class EsporteJDBC implements EsporteDao {
             statement.setString(1, esporte.getNome());
             statement.setString(2, esporte.getDescricao());
             statement.setTimestamp(3, Timestamp.valueOf(esporte.getCriadoEm()));
-            statement.setBoolean(4, esporte.isStatus());
 
             statement.execute();
 
