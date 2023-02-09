@@ -38,20 +38,20 @@ public class EmprestimoRow {
         Image imageCheck = new Image(getClass().getResourceAsStream("../../../images/check.png"));
         ImageView imageViewCheck = new ImageView(imageCheck);
 
-        btnEditar = new MFXButton("", imageViewEdit);
-        btnEditar.setPrefSize(25, 25);
-        btnEditar.setStyle("-fx-background-color: #0085FF;");
-        btnEditar.setOnAction(event -> {
-            CadastroEmprestimoController.emprestimo = emprestimo;
-            App.pushScreen("CADASTRO_EMPRESTIMO");
-        });
-
         btnCheck = new MFXButton("", imageViewCheck);
         btnCheck.setPrefSize(25, 25);
         btnCheck.setStyle("-fx-background-color: #5CD959;");
         btnCheck.setOnAction(event -> {
             emprestimoVM.finalizarEmprestimo(emprestimo);
             ;
+        });
+
+        btnEditar = new MFXButton("", imageViewEdit);
+        btnEditar.setPrefSize(25, 25);
+        btnEditar.setStyle("-fx-background-color: #0085FF;");
+        btnEditar.setOnAction(event -> {
+            CadastroEmprestimoController.emprestimo = emprestimo;
+            App.pushScreen("CADASTRO_EMPRESTIMO");
         });
     }
 
