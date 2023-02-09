@@ -16,7 +16,9 @@ import io.github.palexdev.materialfx.controls.MFXListView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Alert.AlertType;
 
 public class CadastroEmprestimoController implements Initializable {
@@ -119,8 +121,28 @@ public class CadastroEmprestimoController implements Initializable {
 
     @FXML
     public void adicionar() {
+
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem remover = new MenuItem("Remover");
+        remover.setOnAction(e -> {
+            remover();
+        });
+        contextMenu.getItems().add(remover);
+
         equipamentosSelecionados.getItems().add(equipamentoInput.getValue());
+        equipamentosSelecionados.setOnContextMenuRequested(e -> {
+            contextMenu.show(equipamentosSelecionados, e.getScreenX(), e.getScreenY());
+        });
         equipamentoInput.getItems().remove(equipamentoInput.getValue());
+    }
+
+    @FXML
+    private void remover() {
+        List<Equipamento> equi = equipamentosSelecionados.getSelectionModel().getSelectedValues();
+        equi.forEach(item -> {
+            equipamentosSelecionados.getItems().remove(item);
+            equipamentoInput.getItems().add(item);
+        });
     }
 
     @Override
