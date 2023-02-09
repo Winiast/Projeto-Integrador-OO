@@ -22,7 +22,7 @@ public class EmprestimoRow {
     private LocalDate diaEmprestimo;
     private LocalTime horarioEmprestimo;
     private Button btnEditar;
-    private Button btnExcluir;
+    private Button btnCheck;
 
     public EmprestimoRow(Emprestimo emprestimo, EmprestimoVM emprestimoVM) {
         this.nomeAluno = emprestimo.getNomeAluno();
@@ -35,8 +35,8 @@ public class EmprestimoRow {
         Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
         ImageView imageViewEdit = new ImageView(imageEdit);
 
-        Image imageDelete = new Image(getClass().getResourceAsStream("../../../images/trash.png"));
-        ImageView imageViewDelete = new ImageView(imageDelete);
+        Image imageCheck = new Image(getClass().getResourceAsStream("../../../images/check.png"));
+        ImageView imageViewCheck = new ImageView(imageCheck);
 
         btnEditar = new MFXButton("", imageViewEdit);
         btnEditar.setPrefSize(25, 25);
@@ -46,9 +46,13 @@ public class EmprestimoRow {
             App.pushScreen("CADASTRO_EMPRESTIMO");
         });
 
-        btnExcluir = new MFXButton("", imageViewDelete);
-        btnExcluir.setPrefSize(25, 25);
-        btnExcluir.setStyle("-fx-background-color: red;");
+        btnCheck = new MFXButton("", imageViewCheck);
+        btnCheck.setPrefSize(25, 25);
+        btnCheck.setStyle("-fx-background-color: #5CD959;");
+        btnCheck.setOnAction(event -> {
+            emprestimoVM.finalizarEmprestimo(emprestimo);
+            ;
+        });
     }
 
     public String getNomeAluno() {
@@ -79,7 +83,7 @@ public class EmprestimoRow {
         return btnEditar;
     }
 
-    public Button getBtnExcluir() {
-        return btnExcluir;
+    public Button getBtnCheck() {
+        return btnCheck;
     }
 }

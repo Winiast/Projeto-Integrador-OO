@@ -32,7 +32,7 @@ public class EmprestimoVM {
         emprestimos.addAll(emprestimoRepository.buscarTodos());
     }
 
-    public void excluir(Emprestimo emprestimo) {
+    public void finalizarEmprestimo(Emprestimo emprestimo) {
         emprestimoRepository.finalizarEmprestimo(emprestimo.getId());
         carregarLista();
     }

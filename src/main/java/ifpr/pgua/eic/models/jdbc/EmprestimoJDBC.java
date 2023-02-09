@@ -29,7 +29,7 @@ public class EmprestimoJDBC implements EmprestimoDao {
 
     private static final String UPDATE = "UPDATE pi_emprestimo SET idUsuario = ?, nomeAluno = ?, turmaAluno = ?, observacao = ?, atualizadoEm = ? WHERE idEmprestimo = ?";
 
-    private static final String SELECT = "SELECT * FROM pi_emprestimo";
+    private static final String SELECT = "SELECT * FROM pi_emprestimo WHERE dataDevolucaoEmprestimo is NULL";
     private static final String SELECT_EQUIPS = "SELECT * FROM pi_equip_emprestimo WHERE idEmprestimo = ?";
 
     public EmprestimoJDBC(FabricaConexoes fabricaConexoes, EquipamentoDao equipamentoDao, UsuarioDao usuarioDao) {

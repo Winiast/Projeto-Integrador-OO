@@ -43,7 +43,7 @@ public class ListaEmprestimoController implements Initializable {
     private TableColumn<EmprestimoRow, Button> tbcEditar;
 
     @FXML
-    private TableColumn<EmprestimoRow, Button> tbcExcluir;
+    private TableColumn<EmprestimoRow, Button> tbcFinalizar;
 
     private EmprestimoVM emprestimoVM;
 
@@ -98,8 +98,8 @@ public class ListaEmprestimoController implements Initializable {
         tbcObservacoes.setCellValueFactory(new PropertyValueFactory<>("observacoes"));
         tbcDia.setCellValueFactory(new PropertyValueFactory<>("diaEmprestimo"));
         tbcHorario.setCellValueFactory(new PropertyValueFactory<>("horarioEmprestimo"));
+        tbcFinalizar.setCellValueFactory(new PropertyValueFactory<>("btnCheck"));
         tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
-        tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
         emprestimoVM.getEmprestimos().forEach(emprestimo -> {
             tbEmprestimo.getItems().add(new EmprestimoRow(emprestimo, emprestimoVM));
