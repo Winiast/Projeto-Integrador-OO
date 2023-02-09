@@ -49,6 +49,10 @@ public class UsuarioRepository {
         return usuarioDao.excluir(usuario);
     }
 
+    public List<Usuario> buscarAtivos() {
+        return usuarioDao.buscarAtivos();
+    }
+
     public List<Usuario> buscarTodos() {
         return usuarioDao.buscarTodos();
     }

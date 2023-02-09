@@ -29,7 +29,7 @@ public class EmprestimoVM {
 
     public void carregarLista() {
         emprestimos.clear();
-        emprestimos.addAll(emprestimoRepository.buscarTodos());
+        emprestimos.addAll(emprestimoRepository.buscarAtivos());
     }
 
     public void finalizarEmprestimo(Emprestimo emprestimo) {

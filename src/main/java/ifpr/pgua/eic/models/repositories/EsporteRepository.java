@@ -24,6 +24,10 @@ public class EsporteRepository {
         return esporteDao.excluir(id);
     }
 
+    public List<Esporte> buscarAtivos() {
+        return esporteDao.buscarAtivos();
+    }
+
     public List<Esporte> buscarPorNome(String nome) {
         return esporteDao.buscarPorNome(nome);
     }
