@@ -1,7 +1,6 @@
 package ifpr.pgua.eic.controllers.loan.viewmodel;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import ifpr.pgua.eic.App;
@@ -19,8 +18,8 @@ public class EmprestimoRow {
     private String turma;
     private List<Equipamento> equipamento;
     private String observacoes;
-    private LocalDate diaEmprestimo;
-    private LocalTime horarioEmprestimo;
+    private String diaEmprestimo;
+    private String horarioEmprestimo;
     private Button btnEditar;
     private Button btnCheck;
 
@@ -29,8 +28,8 @@ public class EmprestimoRow {
         this.turma = emprestimo.getTurma();
         this.equipamento = emprestimo.getEquipamento();
         this.observacoes = emprestimo.getObservacoes();
-        this.diaEmprestimo = emprestimo.getCriadoEm().toLocalDate();
-        this.horarioEmprestimo = emprestimo.getCriadoEm().toLocalTime();
+        this.diaEmprestimo = emprestimo.getCriadoEm().toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.horarioEmprestimo = emprestimo.getCriadoEm().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 
         Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
         ImageView imageViewEdit = new ImageView(imageEdit);
@@ -71,11 +70,11 @@ public class EmprestimoRow {
         return observacoes;
     }
 
-    public LocalDate getDiaEmprestimo() {
+    public String getDiaEmprestimo() {
         return diaEmprestimo;
     }
 
-    public LocalTime getHorarioEmprestimo() {
+    public String getHorarioEmprestimo() {
         return horarioEmprestimo;
     }
 
