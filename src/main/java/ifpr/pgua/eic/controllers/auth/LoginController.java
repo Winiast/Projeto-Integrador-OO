@@ -38,6 +38,8 @@ public class LoginController {
 
             if (usuario != null) {
                 App.usuarioLogado = usuario;
+                tfUsuario.clear();
+                tfSenha.clear();
                 App.pushScreen("MENU");
             }
         }
