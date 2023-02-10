@@ -41,26 +41,6 @@ public class ListaUsuarioController implements Initializable {
     }
 
     @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
     public void cadastrar() {
         CadastroUsuarioController.usuario = null;
         App.changeScreenRegion("CADASTRO_USUARIO", BorderPaneRegion.CENTER);
@@ -69,11 +49,6 @@ public class ListaUsuarioController implements Initializable {
     @FXML
     public void buscarUsuario() {
         System.out.println("Buscar");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
     }
 
     @Override

@@ -39,31 +39,6 @@ public class EsporteListaController implements Initializable {
     }
 
     @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
-    }
-
-    @FXML
     public void cadastrarEsporte() {
         EsporteCadastroController.esporte = null;
         App.changeScreenRegion("CADASTRO_ESPORTE", BorderPaneRegion.CENTER);

@@ -32,31 +32,6 @@ public class EsporteCadastroController implements Initializable {
     public EsporteCadastroController(EsporteRepository esporteRepository) {
         this.esporteRepository = esporteRepository;
     }
-
-    @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
-    }
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

@@ -45,31 +45,6 @@ public class CadastroEquipamentosController implements Initializable {
     }
 
     @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
-    }
-
-    @FXML
     public void cadastrar() {
 
         if (tfNomeEquipamento.getText().isBlank() || tfQuantidade.getText().isBlank()
