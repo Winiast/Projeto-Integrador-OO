@@ -7,6 +7,7 @@ import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.models.entity.Emprestimo;
 import ifpr.pgua.eic.models.entity.Equipamento;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -42,7 +43,6 @@ public class EmprestimoRow {
         btnCheck.setStyle("-fx-background-color: #5CD959;");
         btnCheck.setOnAction(event -> {
             emprestimoVM.finalizarEmprestimo(emprestimo);
-            ;
         });
 
         btnEditar = new MFXButton("", imageViewEdit);
@@ -50,7 +50,7 @@ public class EmprestimoRow {
         btnEditar.setStyle("-fx-background-color: #0085FF;");
         btnEditar.setOnAction(event -> {
             CadastroEmprestimoController.emprestimo = emprestimo;
-            App.pushScreen("CADASTRO_EMPRESTIMO");
+            App.changeScreenRegion("CADASTRO_EMPRESTIMO", BorderPaneRegion.CENTER);
         });
     }
 

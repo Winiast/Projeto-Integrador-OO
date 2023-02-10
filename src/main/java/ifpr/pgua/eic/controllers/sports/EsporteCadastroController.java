@@ -7,6 +7,7 @@ import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.entity.Esporte;
 import ifpr.pgua.eic.models.repositories.EsporteRepository;
 import ifpr.pgua.eic.utils.Utils;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -58,7 +59,7 @@ public class EsporteCadastroController implements Initializable {
             if(esporte == null) {
                 if(esporteRepository.cadastrar(new Esporte(nomeEsporte, descricao))) {
                     Utils.exibeAlert(AlertType.CONFIRMATION, "Esporte cadastrado com sucesso!!").showAndWait();
-                    App.popScreen();
+                    App.changeScreenRegion("LISTA_ESPORTE", BorderPaneRegion.CENTER);
                 } else {
                     Utils.exibeAlert(AlertType.ERROR, "Erro ao cadastrar esporte!!").showAndWait();
                 }
@@ -68,7 +69,7 @@ public class EsporteCadastroController implements Initializable {
                 
                 if(esporteRepository.atualizar(esporte)) {
                     Utils.exibeAlert(AlertType.CONFIRMATION, "Esporte atualizado com sucesso!!").showAndWait();
-                    App.popScreen();
+                    App.changeScreenRegion("LISTA_ESPORTE", BorderPaneRegion.CENTER);
                 } else {
                     Utils.exibeAlert(AlertType.ERROR, "Erro ao atualizar esporte!!").showAndWait();
                 }

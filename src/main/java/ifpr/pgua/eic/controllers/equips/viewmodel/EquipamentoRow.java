@@ -4,6 +4,7 @@ import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.equips.CadastroEquipamentosController;
 import ifpr.pgua.eic.models.entity.Equipamento;
 import ifpr.pgua.eic.models.entity.Estado;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -35,7 +36,7 @@ public class EquipamentoRow {
         btnEditar.setStyle("-fx-background-color: #0085FF;");
         btnEditar.setOnAction(event -> {
             CadastroEquipamentosController.equipamento = equipamento;
-            App.pushScreen("CADASTRO_EQUIPAMENTO");
+            App.changeScreenRegion("CADASTRO_EQUIPAMENTO", BorderPaneRegion.CENTER);
         });
 
         btnExcluir = new MFXButton("", imageViewDelete);

@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import ifpr.pgua.eic.utils.Utils;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 
 public class CadastroEquipamentosController implements Initializable {
 
@@ -61,7 +62,7 @@ public class CadastroEquipamentosController implements Initializable {
                 if (equipamento == null) {
                     if (equipamentoRepository.cadastrar(nome, esporte, quantidade, estado)) {
                         Utils.exibeAlert(AlertType.CONFIRMATION, "Equipamento cadastrado com sucesso!!").showAndWait();
-                        App.popScreen();
+                        App.changeScreenRegion("LISTA_EQUIPAMENTO", BorderPaneRegion.CENTER);
                     } else {
                         Utils.exibeAlert(AlertType.ERROR, "Erro ao cadastrar equipamento!!").showAndWait();
                     }
@@ -73,7 +74,7 @@ public class CadastroEquipamentosController implements Initializable {
 
                     if (equipamentoRepository.atualizar(equipamento)) {
                         Utils.exibeAlert(AlertType.CONFIRMATION, "Equipamento atualizado com sucesso!!").showAndWait();
-                        App.popScreen();
+                        App.changeScreenRegion("LISTA_EQUIPAMENTO", BorderPaneRegion.CENTER);
                     } else {
                         Utils.exibeAlert(AlertType.ERROR, "Erro ao atualizar equipamento!!").showAndWait();
                     }
