@@ -3,6 +3,7 @@ package ifpr.pgua.eic.controllers.users.viewmodel;
 import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.users.CadastroUsuarioController;
 import ifpr.pgua.eic.models.entity.Usuario;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -32,7 +33,7 @@ public class UsuarioRow {
         btnEditar.setStyle("-fx-background-color: #0085FF;");
         btnEditar.setOnAction(event -> {
             CadastroUsuarioController.usuario = usuario;
-            App.pushScreen("CADASTRO_USUARIO");
+            App.changeScreenRegion("CADASTRO_USUARIO", BorderPaneRegion.CENTER);
         });
 
         btnExcluir = new MFXButton("", imageViewDelete);

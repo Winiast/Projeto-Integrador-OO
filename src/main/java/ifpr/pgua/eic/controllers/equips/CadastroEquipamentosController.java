@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import ifpr.pgua.eic.utils.Utils;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 
 public class CadastroEquipamentosController implements Initializable {
 
@@ -45,31 +46,6 @@ public class CadastroEquipamentosController implements Initializable {
     }
 
     @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
-    }
-
-    @FXML
     public void cadastrar() {
 
         if (tfNomeEquipamento.getText().isBlank() || tfQuantidade.getText().isBlank()
@@ -86,7 +62,7 @@ public class CadastroEquipamentosController implements Initializable {
                 if (equipamento == null) {
                     if (equipamentoRepository.cadastrar(nome, esporte, quantidade, estado)) {
                         Utils.exibeAlert(AlertType.CONFIRMATION, "Equipamento cadastrado com sucesso!!").showAndWait();
-                        App.popScreen();
+                        App.changeScreenRegion("LISTA_EQUIPAMENTO", BorderPaneRegion.CENTER);
                     } else {
                         Utils.exibeAlert(AlertType.ERROR, "Erro ao cadastrar equipamento!!").showAndWait();
                     }
@@ -98,7 +74,7 @@ public class CadastroEquipamentosController implements Initializable {
 
                     if (equipamentoRepository.atualizar(equipamento)) {
                         Utils.exibeAlert(AlertType.CONFIRMATION, "Equipamento atualizado com sucesso!!").showAndWait();
-                        App.popScreen();
+                        App.changeScreenRegion("LISTA_EQUIPAMENTO", BorderPaneRegion.CENTER);
                     } else {
                         Utils.exibeAlert(AlertType.ERROR, "Erro ao atualizar equipamento!!").showAndWait();
                     }

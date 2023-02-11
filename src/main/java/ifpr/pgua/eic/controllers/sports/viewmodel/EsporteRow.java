@@ -3,6 +3,7 @@ package ifpr.pgua.eic.controllers.sports.viewmodel;
 import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.sports.EsporteCadastroController;
 import ifpr.pgua.eic.models.entity.Esporte;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -30,7 +31,7 @@ public class EsporteRow {
         btnEditar.setStyle("-fx-background-color: #0085FF;");
         btnEditar.setOnAction(event -> {
             EsporteCadastroController.esporte = esporte;
-            App.pushScreen("CADASTRO_ESPORTE");
+            App.changeScreenRegion("CADASTRO_ESPORTE", BorderPaneRegion.CENTER);
         });
 
         btnExcluir = new MFXButton("", imageViewDelete);

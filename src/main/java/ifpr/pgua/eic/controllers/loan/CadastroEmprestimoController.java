@@ -10,6 +10,7 @@ import ifpr.pgua.eic.models.entity.Equipamento;
 import ifpr.pgua.eic.models.repositories.EmprestimoRepository;
 import ifpr.pgua.eic.models.repositories.EquipamentoRepository;
 import ifpr.pgua.eic.utils.Utils;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXListView;
@@ -57,31 +58,6 @@ public class CadastroEmprestimoController implements Initializable {
     }
 
     @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
-    }
-
-    @FXML
     public void cadastrar() {
 
         if (verifyFields()) {
@@ -97,7 +73,7 @@ public class CadastroEmprestimoController implements Initializable {
                 if (emprestimoRepository
                         .cadastrar(new Emprestimo(equipamentos, nomeAluno, turma, observacoes, App.usuarioLogado))) {
                     Utils.exibeAlert(AlertType.INFORMATION, "Emprestimo cadastrado com sucesso!").showAndWait();
-                    App.popScreen();
+                    App.changeScreenRegion("LISTA_EMPRESTIMO", BorderPaneRegion.CENTER);
                 } else {
                     Utils.exibeAlert(AlertType.ERROR, "Erro ao cadastrar emprestimo!").showAndWait();
                 }
@@ -110,7 +86,7 @@ public class CadastroEmprestimoController implements Initializable {
 
                 if (emprestimoRepository.atualizar(emprestimo)) {
                     Utils.exibeAlert(AlertType.CONFIRMATION, "Emprestimo atualizado com sucesso!").showAndWait();
-                    App.popScreen();
+                    App.changeScreenRegion("LISTA_EMPRESTIMO", BorderPaneRegion.CENTER);
                 } else {
                     Utils.exibeAlert(AlertType.ERROR, "Erro ao atualizar emprestimo!").showAndWait();
                     return;

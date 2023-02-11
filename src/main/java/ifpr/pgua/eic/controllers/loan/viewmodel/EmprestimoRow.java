@@ -1,13 +1,13 @@
 package ifpr.pgua.eic.controllers.loan.viewmodel;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.loan.CadastroEmprestimoController;
 import ifpr.pgua.eic.models.entity.Emprestimo;
 import ifpr.pgua.eic.models.entity.Equipamento;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -19,8 +19,8 @@ public class EmprestimoRow {
     private String turma;
     private List<Equipamento> equipamento;
     private String observacoes;
-    private LocalDate diaEmprestimo;
-    private LocalTime horarioEmprestimo;
+    private String diaEmprestimo;
+    private String horarioEmprestimo;
     private Button btnEditar;
     private Button btnCheck;
 
@@ -29,8 +29,8 @@ public class EmprestimoRow {
         this.turma = emprestimo.getTurma();
         this.equipamento = emprestimo.getEquipamento();
         this.observacoes = emprestimo.getObservacoes();
-        this.diaEmprestimo = emprestimo.getCriadoEm().toLocalDate();
-        this.horarioEmprestimo = emprestimo.getCriadoEm().toLocalTime();
+        this.diaEmprestimo = emprestimo.getCriadoEm().toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.horarioEmprestimo = emprestimo.getCriadoEm().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
 
         Image imageEdit = new Image(getClass().getResourceAsStream("../../../images/edit1.png"));
         ImageView imageViewEdit = new ImageView(imageEdit);
@@ -43,7 +43,6 @@ public class EmprestimoRow {
         btnCheck.setStyle("-fx-background-color: #5CD959;");
         btnCheck.setOnAction(event -> {
             emprestimoVM.finalizarEmprestimo(emprestimo);
-            ;
         });
 
         btnEditar = new MFXButton("", imageViewEdit);
@@ -51,7 +50,7 @@ public class EmprestimoRow {
         btnEditar.setStyle("-fx-background-color: #0085FF;");
         btnEditar.setOnAction(event -> {
             CadastroEmprestimoController.emprestimo = emprestimo;
-            App.pushScreen("CADASTRO_EMPRESTIMO");
+            App.changeScreenRegion("CADASTRO_EMPRESTIMO", BorderPaneRegion.CENTER);
         });
     }
 
@@ -71,11 +70,11 @@ public class EmprestimoRow {
         return observacoes;
     }
 
-    public LocalDate getDiaEmprestimo() {
+    public String getDiaEmprestimo() {
         return diaEmprestimo;
     }
 
-    public LocalTime getHorarioEmprestimo() {
+    public String getHorarioEmprestimo() {
         return horarioEmprestimo;
     }
 

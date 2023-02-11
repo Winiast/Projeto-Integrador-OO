@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioRow;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioVM;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -40,39 +41,14 @@ public class ListaUsuarioController implements Initializable {
     }
 
     @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
     public void cadastrar() {
         CadastroUsuarioController.usuario = null;
-        App.pushScreen("CADASTRO_USUARIO");
+        App.changeScreenRegion("CADASTRO_USUARIO", BorderPaneRegion.CENTER);
     }
 
     @FXML
     public void buscarUsuario() {
         System.out.println("Buscar");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
     }
 
     @Override

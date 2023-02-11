@@ -7,6 +7,7 @@ import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.equips.viewmodel.EquipamentoRow;
 import ifpr.pgua.eic.controllers.equips.viewmodel.EquipamentoVM;
 import ifpr.pgua.eic.models.entity.Estado;
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,31 +49,6 @@ public class ListaEquipamentosController implements Initializable {
     }
 
     @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
-    }
-
-    @FXML
     public void buscarEquipamento() {
         System.out.println("Buscando Equipamento");
     }
@@ -80,7 +56,7 @@ public class ListaEquipamentosController implements Initializable {
     @FXML
     public void cadastrarEquipamento() {
         CadastroEquipamentosController.equipamento = null;
-        App.pushScreen("CADASTRO_EQUIPAMENTO");
+        App.changeScreenRegion("CADASTRO_EQUIPAMENTO", BorderPaneRegion.CENTER);
     }
 
     @Override

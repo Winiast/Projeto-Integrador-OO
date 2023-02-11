@@ -74,6 +74,8 @@ public class App extends BaseAppNavigator {
         @Override
         public void registrarTelas() {
 
+                registraTela("MENU", new ScreenRegistryFXML(getClass(), "fxml/Menu.fxml", null));
+
                 registraTela("CADASTRO_EMPRESTIMO",
                                 new ScreenRegistryFXML(getClass(), "fxml/loan/CadastroEmprestimo.fxml",
                                                 (o) -> new CadastroEmprestimoController(emprestimoRepository,

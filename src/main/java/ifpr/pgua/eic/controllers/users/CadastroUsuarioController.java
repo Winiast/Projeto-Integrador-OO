@@ -3,7 +3,6 @@ package ifpr.pgua.eic.controllers.users;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.entity.Usuario;
 import ifpr.pgua.eic.models.repositories.UsuarioRepository;
 
@@ -33,31 +32,6 @@ public class CadastroUsuarioController implements Initializable {
 
     public CadastroUsuarioController(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
-    }
-
-    @FXML
-    public void usuarioLista() {
-        App.pushScreen("LISTA_USUARIO");
-    }
-
-    @FXML
-    public void emprestimoLista() {
-        App.pushScreen("LISTA_EMPRESTIMO");
-    }
-
-    @FXML
-    public void equipamentosLista() {
-        App.pushScreen("LISTA_EQUIPAMENTO");
-    }
-
-    @FXML
-    public void esporteLista() {
-        App.pushScreen("LISTA_ESPORTE");
-    }
-
-    @FXML
-    public void sair() {
-        App.pushScreen("LOGIN");
     }
 
     @FXML
