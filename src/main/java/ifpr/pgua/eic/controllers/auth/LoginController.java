@@ -3,7 +3,6 @@ package ifpr.pgua.eic.controllers.auth;
 import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.entity.Usuario;
 import ifpr.pgua.eic.models.repositories.UsuarioRepository;
-import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.fxml.FXML;
 
@@ -42,7 +41,6 @@ public class LoginController {
                 tfUsuario.clear();
                 tfSenha.clear();
                 App.pushScreen("MENU");
-                App.changeScreenRegion("LISTA_EMPRESTIMO", BorderPaneRegion.CENTER);
             }
         }
     }

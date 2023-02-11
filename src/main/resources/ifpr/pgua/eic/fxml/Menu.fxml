@@ -29,10 +29,10 @@
                 </ImageView>
             </VBox>
             <VBox prefHeight="500.0" prefWidth="200.0" styleClass="buttons-menu" spacing="4.0">
-                <MFXButton alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Usuarios" styleClass="button-menu-special" onAction="#mudarTelaUsuarios" />
-                <MFXButton alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Empréstimos" styleClass="button-menu" onAction="#mudarTelaEmprestimos" />
-                <MFXButton alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Equipamentos" styleClass="button-menu" onAction="#mudarTelaEquipamentos" />
-                <MFXButton alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Esportes" styleClass="button-menu" onAction="#mudarTelaEsportes" />
+                <MFXButton fx:id="btnUsuario" alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Usuarios" onAction="#mudarTelaUsuarios" />
+                <MFXButton fx:id="btnEmprestimo" alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Empréstimos" onAction="#mudarTelaEmprestimos" />
+                <MFXButton fx:id="btnEquipamento" alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Equipamentos" onAction="#mudarTelaEquipamentos" />
+                <MFXButton fx:id="btnEsporte" alignment="center" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Esportes" onAction="#mudarTelaEsportes" />
             </VBox>
             <VBox styleClass="button-sair" prefHeight="200">
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="40.0" prefWidth="200.0"  text="Sair" styleClass="button-menu" onAction="#sair" />
