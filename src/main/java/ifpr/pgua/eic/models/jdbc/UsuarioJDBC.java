@@ -16,7 +16,7 @@ import ifpr.pgua.eic.models.entity.Usuario;
 
 public class UsuarioJDBC implements UsuarioDao {
 
-    private static final String INSERT = "INSERT INTO pi_user (nome, sobrenome, email, senha, criadoEm, status) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String INSERT = "INSERT INTO pi_user (nome, sobrenome, email, senha, criadoEm, status) VALUES (?, ?, ?, ?, ?, false)";
     private static final String UPDATE = "UPDATE pi_user SET nome = ?, sobrenome = ?, email = ?, senha = ?, atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String DELETE = "UPDATE pi_user SET atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String FIND_BY_NAME = "SELECT * FROM pi_user WHERE nome LIKE ?";
@@ -41,7 +41,6 @@ public class UsuarioJDBC implements UsuarioDao {
             statement.setString(3, usuario.getEmail());
             statement.setString(4, usuario.getSenha());
             statement.setTimestamp(5, Timestamp.valueOf(usuario.getCriadoEm()));
-            statement.setBoolean(6, usuario.isStatus());
 
             statement.execute();
 

@@ -36,7 +36,7 @@
 
     <MFXPasswordField floatMode="BORDER" floatingText="Confirmar Senha" prefWidth="275" prefHeight="35" fx:id="tfConfirmarSenha" />
 
-    <MFXButton prefWidth="90" prefHeight="35" text="Entrar" styleClass="btn"/>
+    <MFXButton prefWidth="90" prefHeight="35" text="Entrar" styleClass="btn" onAction="#alterarSenha" />
 
     <MFXButton prefWidth="60" prefHeight="35" text="Voltar" styleClass="btn" onAction="#voltar" />
 

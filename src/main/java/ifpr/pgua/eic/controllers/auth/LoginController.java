@@ -38,9 +38,14 @@ public class LoginController {
 
             if (usuario != null) {
                 App.usuarioLogado = usuario;
-                tfUsuario.clear();
                 tfSenha.clear();
-                App.pushScreen("MENU");
+                
+                if(usuario.getAtualizadoEm() == null) {
+                    App.pushScreen("ALTERAR_SENHA");
+                } else {
+                    tfUsuario.clear();
+                    App.pushScreen("MENU");
+                }
             }
         }
     }

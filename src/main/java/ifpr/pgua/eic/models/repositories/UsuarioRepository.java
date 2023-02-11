@@ -42,6 +42,7 @@ public class UsuarioRepository {
     }
 
     public boolean atualizar(Usuario usuario) {
+        usuario.setSenha(Utils.gerarHash(usuario.getSenha()));
         return usuarioDao.atualizar(usuario);
     }
 
