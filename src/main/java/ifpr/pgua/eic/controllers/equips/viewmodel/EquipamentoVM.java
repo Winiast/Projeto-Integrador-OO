@@ -29,6 +29,11 @@ public class EquipamentoVM {
         equipamentos.addAll(equipamentoRepository.buscarAtivos());
     }
 
+    public void buscarEquipamentos(String nomeEquipamento) {
+        equipamentos.clear();
+        equipamentos.addAll(equipamentoRepository.buscarEquipamento(nomeEquipamento));
+    }
+
     public void excluir(Equipamento equipamento) {
         equipamentoRepository.excluir(equipamento);
         carregarLista();

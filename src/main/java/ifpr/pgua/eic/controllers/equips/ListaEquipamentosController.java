@@ -19,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ListaEquipamentosController implements Initializable {
 
     @FXML
-    private MFXTextField tfBuscaEquipamento;
+    private MFXTextField tfBusca;
 
     @FXML
     private TableView<EquipamentoRow> tbEquipamento;
@@ -50,7 +50,15 @@ public class ListaEquipamentosController implements Initializable {
 
     @FXML
     public void buscarEquipamento() {
-        System.out.println("Buscando Equipamento");
+        if(!tfBusca.getText().isBlank()) {
+            String nome = tfBusca.getText();
+
+            equipamentoVM.buscarEquipamentos(nome);
+            carregarTableView();
+        } else {
+            equipamentoVM.carregarLista();
+            carregarTableView();
+        }
     }
 
     @FXML
@@ -68,9 +76,13 @@ public class ListaEquipamentosController implements Initializable {
         tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
         tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
+        carregarTableView();
+    }
+
+    private void carregarTableView() {
+        tbEquipamento.getItems().clear();
         equipamentoVM.getEquipamentos().forEach(equipamento -> {
             tbEquipamento.getItems().add(new EquipamentoRow(equipamento, equipamentoVM));
         });
     }
-
 }
