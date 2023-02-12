@@ -32,6 +32,11 @@ public class EmprestimoVM {
         emprestimos.addAll(emprestimoRepository.buscarAtivos());
     }
 
+    public void buscarEmprestimos(String nomeAluno) {
+        emprestimos.clear();
+        emprestimos.addAll(emprestimoRepository.buscarPorNomeAluno(nomeAluno));
+    }
+
     public void finalizarEmprestimo(Emprestimo emprestimo) {
         emprestimoRepository.finalizarEmprestimo(emprestimo.getId());
         carregarLista();

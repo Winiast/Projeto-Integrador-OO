@@ -15,4 +15,6 @@ public interface EmprestimoDao {
     List<Emprestimo> buscarAtivos();
 
     List<Emprestimo> buscarTodos();
+
+    List<Emprestimo> buscarPorNomeAluno(String nomeAluno);
 }

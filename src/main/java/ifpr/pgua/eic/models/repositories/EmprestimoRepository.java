@@ -33,4 +33,8 @@ public class EmprestimoRepository {
         return emprestimoDao.buscarTodos();
     }
 
+    public List<Emprestimo> buscarPorNomeAluno(String nomeAluno) {
+        return emprestimoDao.buscarPorNomeAluno(nomeAluno);
+    }
+
 }
