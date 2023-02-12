@@ -103,7 +103,7 @@ public class App extends BaseAppNavigator {
 
                 registraTela("ALTERAR_SENHA",
                                 new ScreenRegistryFXML(getClass(), "fxml/auth/AlterarSenha.fxml",
-                                                (o) -> new AlterarSenhaController()));
+                                                (o) -> new AlterarSenhaController(usuarioRepository)));
 
                 registraTela("CADASTRO_EQUIPAMENTO",
                                 new ScreenRegistryFXML(getClass(), "fxml/equips/CadastroEquipamentos.fxml",
