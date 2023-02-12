@@ -3,10 +3,10 @@ package ifpr.pgua.eic.controllers.users;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.models.entity.Usuario;
 import ifpr.pgua.eic.models.repositories.UsuarioRepository;
-
-
+import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,6 +52,7 @@ public class CadastroUsuarioController implements Initializable {
             usuario.setSobrenome(sobrenome);
             usuarioRepository.atualizar(usuario);
         }
+        App.changeScreenRegion("LISTA_USUARIO", BorderPaneRegion.CENTER);
 
     }
 

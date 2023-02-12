@@ -31,23 +31,22 @@ public class AlterarSenhaController implements Initializable {
     @FXML
     public void alterarSenha() {
         if(tfSenha.getText().isBlank() || tfConfirmarSenha.getText().isBlank()) {
-            Utils.exibeAlert(AlertType.ERROR, "Preencha os dois campos corretamente!!");
+            Utils.exibeAlert(AlertType.ERROR, "Preencha os dois campos corretamente!!").showAndWait();
         } else {
             if(tfSenha.getText().equals(tfConfirmarSenha.getText())) {
                 String senha = tfSenha.getText();
                 App.usuarioLogado.setSenha(senha);
                 App.usuarioLogado.setStatus(true);
                 if(usuarioRepository.atualizar(App.usuarioLogado)) {
-                    Utils.exibeAlert(AlertType.CONFIRMATION, "Senha alterada com sucesso!!");
+                    Utils.exibeAlert(AlertType.CONFIRMATION, "Senha alterada com sucesso!!").showAndWait();
                     App.popScreen();
                 } else {
-                    Utils.exibeAlert(AlertType.ERROR, "Ocorreu um erro ao alterar a senha, tente novamente!!");
+                    Utils.exibeAlert(AlertType.ERROR, "Ocorreu um erro ao alterar a senha, tente novamente!!").showAndWait();
                 }
             } else {
-                Utils.exibeAlert(AlertType.ERROR, "As senhas não coincidem!!");
+                Utils.exibeAlert(AlertType.ERROR, "As senhas não coincidem!!").showAndWait();
             }
         }
-
     } 
 
     @FXML
