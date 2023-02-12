@@ -56,7 +56,10 @@ public class ListaUsuarioController implements Initializable {
             String nome = tfBusca.getText();
 
             usuarioVM.buscarUsuario(nome);
-            carregarLista();
+            carregarTableView();
+        } else {
+            usuarioVM.carregarLista();
+            carregarTableView();
         }
     }
 
@@ -69,10 +72,10 @@ public class ListaUsuarioController implements Initializable {
         tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
         tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
-        carregarLista();
+        carregarTableView();
     }
 
-    public void carregarLista() {
+    public void carregarTableView() {
         tbUsuarios.getItems().clear();
         usuarioVM.getUsuarios().forEach(usuario -> {
             tbUsuarios.getItems().add(new UsuarioRow(usuario, usuarioVM));

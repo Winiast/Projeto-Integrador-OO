@@ -19,7 +19,7 @@ public class UsuarioJDBC implements UsuarioDao {
     private static final String INSERT = "INSERT INTO pi_user (nome, sobrenome, email, senha, criadoEm, status) VALUES (?, ?, ?, ?, ?, false)";
     private static final String UPDATE = "UPDATE pi_user SET nome = ?, sobrenome = ?, email = ?, senha = ?, atualizadoEm = ?, status = ? WHERE idUser = ?";
     private static final String DELETE = "UPDATE pi_user SET atualizadoEm = ?, status = ? WHERE idUser = ?";
-    private static final String FIND_BY_NAME = "SELECT * FROM pi_user WHERE nome LIKE ?";
+    private static final String FIND_BY_NAME = "SELECT * FROM pi_user WHERE status = true AND nome LIKE ?";
     private static final String FIND_ALL = "SELECT * FROM pi_user";
     private static final String FIND_ACTIVE = "SELECT * FROM pi_user WHERE status = true";
     private static final String FIND_BY_ID = "SELECT * FROM pi_user WHERE idUser = ?";

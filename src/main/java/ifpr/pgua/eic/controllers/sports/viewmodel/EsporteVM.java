@@ -21,9 +21,14 @@ public class EsporteVM {
         carregarLista();
     }
 
-    private void carregarLista() {
+    public void carregarLista() {
         esportes.clear();
         esportes.addAll(esporteRepository.buscarAtivos());
+    }
+
+    public void buscarEsportes(String nomeEsporte) {
+        esportes.clear();
+        esportes.addAll(esporteRepository.buscarPorNome(nomeEsporte));
     }
 
     public boolean excluirEsporte(Esporte esporte) {
