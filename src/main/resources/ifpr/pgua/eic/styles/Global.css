@@ -80,8 +80,8 @@
 
 .form-search {
     -fx-alignment: center;
-    -fx-border-radius: 0;
-    -fx-background-radius: 0;
+    -fx-border-radius: 8 0 0 8;
+    -fx-background-radius: 8 0 0 8;
 }
 
 .form-btn-search {
@@ -90,7 +90,7 @@
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-background-radius: 0 8 8 0;
-    -fx-border-radius: 0 0 0 8;
+    -fx-border-radius: 0 8 8 0;
     -fx-cursor: hand;
 }
 

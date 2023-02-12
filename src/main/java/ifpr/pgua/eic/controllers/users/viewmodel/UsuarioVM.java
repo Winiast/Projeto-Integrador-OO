@@ -28,6 +28,11 @@ public class UsuarioVM {
         usuarios.addAll(usuarioRepository.buscarAtivos());
     }
 
+    public void buscarUsuario(String nome) {
+        usuarios.clear();
+        usuarios.addAll(usuarioRepository.buscarPorNome(nome));
+    }
+
     public boolean deletarUsuario(Usuario usuario) {
         return usuarioRepository.excluir(usuario);
     }
