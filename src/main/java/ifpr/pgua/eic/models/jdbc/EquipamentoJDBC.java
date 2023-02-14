@@ -23,7 +23,7 @@ public class EquipamentoJDBC implements EquipamentoDao {
     private static final String DELETE = "UPDATE pi_equipamento SET status = false WHERE idEquipamento = ?";
     private static final String SELECT_ACTIVE = "SELECT * FROM pi_equipamento WHERE status = true";
     private static final String SELECT_ALL = "SELECT * FROM pi_equipamento";
-    private static final String SELECT_BY_NAME = "SELECT * FROM pi_equipamento WHERE nomeEquipamento LIKE ?";
+    private static final String SELECT_BY_NAME = "SELECT * FROM pi_equipamento WHERE status = true AND nomeEquipamento LIKE ?";
     private static final String SELECT_BY_ID = "SELECT * FROM pi_equipamento WHERE idEquipamento = ?";
 
     private FabricaConexoes fabricaConexoes;

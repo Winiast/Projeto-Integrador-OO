@@ -21,7 +21,7 @@ public class EsporteJDBC implements EsporteDao {
     private static final String DELETE = "UPDATE pi_esporte SET status = ?, atualizadoEm = ? WHERE idEsporte = ?;";
     private static final String SELECT_ACTIVE = "SELECT * FROM pi_esporte WHERE status = true;";
     private static final String SELECT_ALL = "SELECT * FROM pi_esporte;";
-    private static final String SELECT_BY_NAME = "SELECT * FROM pi_esporte WHERE nome LIKE ?;";
+    private static final String SELECT_BY_NAME = "SELECT * FROM pi_esporte WHERE status = true AND nome LIKE ?;";
     private static final String SELECT_BY_ID = "SELECT * FROM pi_esporte WHERE idEsporte = ?;";
 
     private FabricaConexoes fabricaConexoes;

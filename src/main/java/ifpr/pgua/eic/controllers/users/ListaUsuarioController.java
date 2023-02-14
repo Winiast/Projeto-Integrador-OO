@@ -7,6 +7,7 @@ import ifpr.pgua.eic.App;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioRow;
 import ifpr.pgua.eic.controllers.users.viewmodel.UsuarioVM;
 import ifpr.pgua.eic.utils.Navigator.BorderPaneRegion;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,6 +16,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ListaUsuarioController implements Initializable {
+
+    @FXML
+    private MFXTextField tfBusca;
 
     @FXML
     private TableView<UsuarioRow> tbUsuarios;
@@ -48,7 +52,15 @@ public class ListaUsuarioController implements Initializable {
 
     @FXML
     public void buscarUsuario() {
-        System.out.println("Buscar");
+        if(!tfBusca.getText().isBlank()) {
+            String nome = tfBusca.getText();
+
+            usuarioVM.buscarUsuario(nome);
+            carregarTableView();
+        } else {
+            usuarioVM.carregarLista();
+            carregarTableView();
+        }
     }
 
     @Override
@@ -60,6 +72,11 @@ public class ListaUsuarioController implements Initializable {
         tbcEditar.setCellValueFactory(new PropertyValueFactory<>("btnEditar"));
         tbcExcluir.setCellValueFactory(new PropertyValueFactory<>("btnExcluir"));
 
+        carregarTableView();
+    }
+
+    public void carregarTableView() {
+        tbUsuarios.getItems().clear();
         usuarioVM.getUsuarios().forEach(usuario -> {
             tbUsuarios.getItems().add(new UsuarioRow(usuario, usuarioVM));
         });

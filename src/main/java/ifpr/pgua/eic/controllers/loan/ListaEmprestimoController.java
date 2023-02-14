@@ -20,6 +20,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ListaEmprestimoController implements Initializable {
 
     @FXML
+    private MFXTextField tfBusca;
+
+    @FXML
     private TableView<EmprestimoRow> tbEmprestimo;
 
     @FXML
@@ -57,7 +60,15 @@ public class ListaEmprestimoController implements Initializable {
 
     @FXML
     public void buscarEmprestimo() {
-        System.out.println("Buscando empréstimo");
+        if(!tfBusca.getText().isBlank()) {
+            String nome = tfBusca.getText();
+
+            emprestimoVM.buscarEmprestimos(nome);
+            carregarTableView();
+        } else {
+            emprestimoVM.carregarLista();
+            carregarTableView();
+        }
     }
 
     @FXML
@@ -81,5 +92,12 @@ public class ListaEmprestimoController implements Initializable {
             tbEmprestimo.getItems().add(new EmprestimoRow(emprestimo, emprestimoVM));
         });
 
+    }
+
+    private void carregarTableView() {
+        tbEmprestimo.getItems().clear();
+        emprestimoVM.getEmprestimos().forEach(emprestimo -> {
+            tbEmprestimo.getItems().add(new EmprestimoRow(emprestimo, emprestimoVM));
+        });
     }
 }

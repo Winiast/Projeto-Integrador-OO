@@ -23,9 +23,14 @@ public class UsuarioVM {
         carregarLista();
     }
 
-    private void carregarLista() {
+    public void carregarLista() {
         usuarios.clear();
         usuarios.addAll(usuarioRepository.buscarAtivos());
+    }
+
+    public void buscarUsuario(String nome) {
+        usuarios.clear();
+        usuarios.addAll(usuarioRepository.buscarPorNome(nome));
     }
 
     public boolean deletarUsuario(Usuario usuario) {

@@ -30,9 +30,17 @@
         <children>
            <Label text="Lista de Equipamentos" styleClass="form-title" />
            <HBox prefWidth="1000" alignment="center" styleClass="container-search" >
-               <MFXTextField floatMode="BORDER" floatingText="Nome do Equipamento"  prefWidth="400" prefHeight="50" styleClass="form-search" fx:id="tfBuscaEquipamento"/>
+               <MFXTextField floatMode="BORDER" floatingText="Nome do Equipamento"  prefWidth="400" prefHeight="50" styleClass="form-search" fx:id="tfBusca"/>
                <HBox prefWidth="600" spacing="200.0">
-                <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Buscar" styleClass="form-btn-search" onAction="#buscarEquipamento" />
+                <MFXButton alignment="center" mnemonicParsing="false" text="" prefHeight="50.0" prefWidth="100.0" styleClass="form-btn-search" onAction="#buscarEquipamento">
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../images/search.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </MFXButton>
                 <MFXButton alignment="center" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0"  text="Novo +" styleClass="form-btn-new" onAction="#cadastrarEquipamento"/>
                </HBox>
 
